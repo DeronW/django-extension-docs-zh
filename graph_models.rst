@@ -1,0 +1,76 @@
+Graph models
+============
+
+:概要: 将整个项目或指定app的models结果渲染成图形 [1]_.
+
+创建一个 GraphViz_ 格式文件,包含对于指定app的models的描述.可以传入多个app,这样就会把它们渲染到同一个文件中.输出结果通常是一个打算难度的 ``.dot`` 后缀文件.
+
+``graph_model`` 命令可以通过些参数改变生成的图形,比如: 分组模型,包含继承,去除部分模型,改变模型中列的位置等.
+
+With the latest revisions it's also possible to specify an output file if
+pygraphviz_ is installed and render directly to an image or other supported
+file-type.
+
+新版的django-extensions
+
+选择生成图表的库
+-------------------
+
+``graph_model`` 命令可以指定使用哪个库来生成图片,使用参数 ``--pygraphviz`` 或 ``--pydot`` ,需要安装相应的依赖库.
+
+默认选择 ``pygraphviz`` 库生成图表,如果没有指定参数,也没有安装 ``pygraphviz`` 库,则会抛出异常.
+
+安装 ``pygraphviz`` 库::
+
+  $ pip install pygraphviz
+
+安装是可能因为无法编译需要的C扩展而安装失败.那么可能需要尝试其它安装方法,或使用 ``PyDot``.
+
+安装 ``pydot`` 库::
+
+  $ pip install pyparsing==1.5.7
+  $ pip install pydot
+
+安装过程会很快,注意要安装指定版本的 ``pyparsing`` .否则可能会出错::
+
+    Couldn't import dot_parser, loading of dot files will not be possible.
+
+默认配置
+----------------
+
+在项目的配置文件中可以使用 ``GRAPH_MODELS`` 配置生成图表时的默认参数::
+
+  GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+  }
+
+配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的剪好换成下划线.
+
+用例
+-------------
+
+安装 ``django-extensions`` 后,就可以创建 ``.dot`` 文件.或通过 ``graph_models`` 命令生成图表,看下面的例子::
+
+  # 创建一个 .dot 文件
+  $ ./manage.py graph_models -a > my_project.dot
+
+::
+
+  # 创建一个PNG图片,包含应用的结构,把图片命名为my_project_visualized.png
+  $ ./manage.py graph_models -a -g -o my_project_visualized.png
+
+  # 这个例子中指明了使用哪个Python的图表库
+  $ ./manage.py graph_models --pygraphviz -a -g -o my_project_visualized.png
+  $ ./manage.py graph_models --pydot -a -g -o my_project_visualized.png
+
+::
+
+  # 创建一个只包含 'foo' 和 'bar' 应用的 dot 文件
+  $ ./manage.py graph_models foo bar > my_project.dot
+
+.. _GraphViz: http://www.graphviz.org/
+.. _pygraphviz: https://networkx.lanl.gov/wiki/pygraphviz
+.. _pydot: https://pypi.python.org/pypi/pydot
+
+.. [1] 渲染出的是图形的描述语言,需要用特定软件才能看到图形,如果用文本编辑器打开则会看到描述字符

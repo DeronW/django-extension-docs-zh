@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>执行脚本 &mdash; django-extensions 1.2.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
+    <link rel="next" title="导出邮件列表" href="export_emails.html" />
+    <link rel="prev" title="dumpscript" href="dumpscript.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="export_emails.html" title="导出邮件列表"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dumpscript.html" title="dumpscript"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>执行脚本<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">该要:</th><td class="field-body">在当前项目环境下执行脚本.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h2>介绍<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">runscript</span></tt> 命令允许在django项目的环境下执行任意脚本.就像在 <tt class="docutils literal"><span class="pre">shell</span></tt> 命令中执行脚本一样:</p>
+<div class="highlight-python"><pre>$ python manage.py shell</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>开始使用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>首先要在项目根目录下创建一个脚本的目录,名字是 <tt class="docutils literal"><span class="pre">scripts</span></tt></p>
+<div class="highlight-python"><pre>$ mkdir scripts
+$ touch scripts/__init__.py</pre>
+</div>
+<p>然后,创建一个想要执行的Python脚本:</p>
+<div class="highlight-python"><pre>$ touch scripts/delete_all_polls.py</pre>
+</div>
+<p>这个脚本文件中必须包含 <tt class="docutils literal"><span class="pre">run()</span></tt> 方法,通过 <tt class="docutils literal"><span class="pre">runscript</span></tt> 命令执行时会自动调用该方法.这个脚本中可以引用django项目中的任意模块或数据模型.</p>
+<p>例如:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># scripts/delete_all_polls.py</span>
+
+<span class="kn">from</span> <span class="nn">Polls.models</span> <span class="kn">import</span> <span class="n">Poll</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="c"># Get all polls</span>
+    <span class="n">all_polls</span> <span class="o">=</span> <span class="n">Poll</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="c"># Delete polls</span>
+    <span class="n">all_polls</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>提示: <tt class="docutils literal"><span class="pre">runscript</span></tt> 命令可以找到任意app下 <em>scripts</em> 目录中的脚本文件.</p>
+</div>
+<div class="section" id="id4">
+<h2>用法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">runscript</span></tt> 命令可以在shell中调用 <em>scripts</em> 目录下的Python脚本.</p>
+<p>例如:</p>
+<div class="highlight-python"><pre>$ python manage.py runscript delete_all_polls</pre>
+</div>
+<p>提示: <tt class="docutils literal"><span class="pre">runscript</span></tt> 命令会首先检查每个app下的 <em>scripts</em> 目录,如果找到对应名字的脚本就会执行.然后检查 <em>project_root/scripts</em> 目录下是否包含符合名字的脚本,如果找到也会执行.也就是说,我们可以在不同的app中创建相同名字的脚本,并且都会被执行.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">执行脚本</a><ul>
+<li><a class="reference internal" href="#id2">介绍</a></li>
+<li><a class="reference internal" href="#id3">开始使用</a></li>
+<li><a class="reference internal" href="#id4">用法</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dumpscript.html"
+                        title="previous chapter">dumpscript</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="export_emails.html"
+                        title="next chapter">导出邮件列表</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/runscript.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="export_emails.html" title="导出邮件列表"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dumpscript.html" title="dumpscript"
+             >previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

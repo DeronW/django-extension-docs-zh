@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>扩展测试服务 &mdash; django-extensions 1.2.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
+    <link rel="next" title="同步文件到S3" href="sync_s3.html" />
+    <link rel="prev" title="跟踪分析服务" href="runprofileserver.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sync_s3.html" title="同步文件到S3"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="runprofileserver.html" title="跟踪分析服务"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>扩展测试服务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body"><tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 命令启动测试服务,并用 <a class="reference external" href="http://werkzeug.pocoo.org/">Werkzeug</a> 作为调试后台</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h2>简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 命令需要安装 <cite>Werkzeug WSGI utilities</cite> . <tt class="docutils literal"><span class="pre">Werkzeug</span></tt> 是Python的杀手级调试工具,还能调试基于ajax的请求(允许在出错的地方执行代码). 还提供了一个漂亮的错误展示页面.</p>
+</div>
+<div class="section" id="id3">
+<h2>开始使用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在启动Django的测试服务时,只要用 <tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 命令代替 <tt class="docutils literal"><span class="pre">runserver</span></tt> 命令就可以了:</p>
+<div class="highlight-python"><pre>$ python manage.py runserver_plus
+
+* Running on http://127.0.0.1:8000/
+* Restarting with reloader...
+
+Validating models...
+0 errors found
+
+Django version 0.97-newforms-admin-SVN-unknown, using settings 'screencasts.settings'
+Development server is running at http://127.0.0.1:8000/
+Using the Werkzeug debugger (http://werkzeug.pocoo.org/)
+Quit the server with CONTROL-C.</pre>
+</div>
+<p>提示: <tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 命令接受原来的所有参数.也就是可以随意指定端口和host,跟原生的 <tt class="docutils literal"><span class="pre">runserver</span></tt> 命令一模一样.</p>
+</div>
+<div class="section" id="id4">
+<h2>深入使用<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>通过 <tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 命令启动服务后,如果遇到服务代码抛出异常,我们会得到一个 <a class="reference external" href="http://werkzeug.pocoo.org/">Werkzeug</a> 的错误显示页面,而不是默认的Django错误页面.</p>
+<img alt="werkzeug-traceback" src="https://f.cloud.github.com/assets/202559/1261027/2637f826-2c22-11e3-83c6-646acc87808b.png" />
+<p>当鼠标划过特定错误堆栈时,还能显示出扩展功能,注意图片右边出现的2个按钮:</p>
+<img alt="werkzeug-options" src="https://f.cloud.github.com/assets/202559/1261035/558ad0ee-2c22-11e3-8ddd-6678d84d77e7.png" />
+<p>这几个选项是:</p>
+<div class="section" id="id5">
+<h3>查看源码<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>这是点击 <em>显示源码</em> 后的效果:</p>
+<img alt="werkzeug-source" src="https://f.cloud.github.com/assets/202559/1261036/583c8c42-2c22-11e3-9eb9-5c16b8732512.png" />
+<p>产看错误产生的源码有助于快速定位错误原因.抛出异常的部分被高亮显示,这样更方便查看.</p>
+<p>有一个不够人性化的地方是,点击 <em>查看源码</em> 后,页面没有自动滚动到底部(源码显示的地方),这容易让人觉得什么都没有发生,其实是没有看到.</p>
+</div>
+<div class="section" id="id6">
+<h3>命令行调试<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>在错误页面上点击命令行调试按钮后,会显示出一个命令行调试工具(网页里面的输入框),是不是屌爆了:</p>
+<img alt="werkzeug-debugger" src="https://f.cloud.github.com/assets/202559/1261037/5d12eda6-2c22-11e3-802a-2639ff8813fa.png" />
+<p>这样就回出现一个ajax的命令行调试工具,然后就可以任意发挥了.截图中,在调试框里输入了 <tt class="docutils literal"><span class="pre">print</span> <span class="pre">environ</span></tt> 命令来查看当前环境中给方法传入了哪些参数.</p>
+<p><em>警告</em> : 改方法不能被用在人和正式环境中,即使是在正式环境中检测问题时也不行.命令行调试工具允许在服务器端执行Python命令,这是非常危险的.</p>
+</div>
+<div class="section" id="ssl">
+<h3>SSL<a class="headerlink" href="#ssl" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 还支持SSL,这样就可以方便的调试 <tt class="docutils literal"><span class="pre">https</span></tt> 请求了.使用SSL时需要提供证书的名字,然后 <tt class="docutils literal"><span class="pre">runserver_plus</span></tt> 会自动生成一个证书:</p>
+<div class="highlight-python"><pre>$ python manage.py runserver_plus --cert cert
+Validating models...
+0 errors found
+
+Django version 1.6.dev20130122125534, using settings 'mysite.settings'
+Development server is running at http://127.0.0.1:8000/
+Using the Werkzeug debugger (http://werkzeug.pocoo.org/)
+Quit the server with CONTROL-C.
+ * Running on https://127.0.0.1:8000/
+ * Restarting with reloader
+Validating models...
+0 errors found
+
+Django version 1.6.dev20130122125534, using settings 'mysite.settings'
+Development server is running at http://127.0.0.1:8000/
+Using the Werkzeug debugger (http://werkzeug.pocoo.org/)
+Quit the server with CONTROL-C.</pre>
+</div>
+<p>执行上面的命令后就可以通过 <tt class="docutils literal"><span class="pre">https://127.0.0.1:8000</span></tt> 在安全模式下访问服务了.在项目目录下会创建2个新的文件,分别是密钥文件和证书文件.重启测试服务时,这2个文件会被保留下来,这样浏览器就不用反复处理证书授权了.如果想使用指定证书文件,可以使用路径参数指向该证书文件:</p>
+<div class="highlight-python"><pre>$ python manage.py runserver_plus --cert /tmp/cert</pre>
+</div>
+<p>使用SSL时需要安装 <tt class="docutils literal"><span class="pre">OpenSSL</span></tt> 库. <tt class="docutils literal"><span class="pre">Werkzeug</span></tt> 0.9版本后才允许重用证书文件.通过以下命令安装 <tt class="docutils literal"><span class="pre">OpenSSL</span></tt> 库:</p>
+<div class="highlight-python"><pre>$ pip install pyOpenSSL</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">扩展测试服务</a><ul>
+<li><a class="reference internal" href="#id2">简介</a></li>
+<li><a class="reference internal" href="#id3">开始使用</a></li>
+<li><a class="reference internal" href="#id4">深入使用</a><ul>
+<li><a class="reference internal" href="#id5">查看源码</a></li>
+<li><a class="reference internal" href="#id6">命令行调试</a></li>
+<li><a class="reference internal" href="#ssl">SSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="runprofileserver.html"
+                        title="previous chapter">跟踪分析服务</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sync_s3.html"
+                        title="next chapter">同步文件到S3</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/runserver_plus.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sync_s3.html" title="同步文件到S3"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="runprofileserver.html" title="跟踪分析服务"
+             >previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

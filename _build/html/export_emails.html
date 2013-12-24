@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>导出邮件列表 &mdash; django-extensions 1.2.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
+    <link rel="next" title="字段扩展" href="field_extensions.html" />
+    <link rel="prev" title="执行脚本" href="runscript.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="field_extensions.html" title="字段扩展"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="runscript.html" title="执行脚本"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>导出邮件列表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">以不同的格式导出用户的邮件呢列表</td>
+</tr>
+</tbody>
+</table>
+<p>大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs邀请, 修改权限, LinkedLn用户组等等). <tt class="docutils literal"><span class="pre">export_emails</span></tt> 命令为此而设计.导出的用户信息的同时可以对其进行分组.</p>
+<div class="section" id="id2">
+<h2>用例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre># 将所有用户信息导出成 ``'"First Last" &lt;my@addr.com&gt;;'`` 格式.
+$ ./manage.py export_emails &gt; addresses.txt</pre>
+</div>
+<div class="highlight-python"><pre># 以LinkedIn pre-approve格式从 ``Attendees`` 组中导出用户信息
+$ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv</pre>
+</div>
+<div class="highlight-python"><pre># 以GMail(Google Docs)格式创建一个CSV文件
+$ ./manage.py export_emails --format=google google.csv</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>可选用的格式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="address">
+<h3>address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
+<p>默认的文本格式,每个实例占一行并保存成如下格式:</p>
+<div class="highlight-python"><pre>"First Last" &lt;user@host.com&gt;;</pre>
+</div>
+<p>这可以被用在任意的邮件服务中.</p>
+</div>
+<div class="section" id="google">
+<h3>google<a class="headerlink" href="#google" title="Permalink to this headline">¶</a></h3>
+<p>CSV格式文件,可以导入到google的应用中.可以被直接用在GMail中,在GMail中添加一组邮件列表,谷歌文档的邀请,谷歌文档权限批量修改,谷歌日历服务,等等.</p>
+<p>输出文件仅包含两列.一列是用户名,一列是邮箱地址.这个格式也适合用来做电子表格文件.</p>
+</div>
+<div class="section" id="outlook">
+<h3>outlook<a class="headerlink" href="#outlook" title="Permalink to this headline">¶</a></h3>
+<p>CSV格式文件,可以导入到到Outlook,支持Outlook中的&#8217;必填&#8217;字段,但只有name和email有值.</p>
+</div>
+<div class="section" id="linkedin">
+<h3>linkedin<a class="headerlink" href="#linkedin" title="Permalink to this headline">¶</a></h3>
+<p>CSV格式文件,可以被导入到 <a class="reference external" href="http://www.linkedin.com/static?key=groups_info">LinkedIn Groups</a> ,邀请列表中的用户加入该组.</p>
+<p>包含3列数据: <tt class="docutils literal"><span class="pre">名</span></tt> <tt class="docutils literal"><span class="pre">姓</span></tt> <tt class="docutils literal"><span class="pre">邮箱</span></tt> .这也是最适合电子表格的格式.</p>
+</div>
+<div class="section" id="vcard">
+<h3>vcard<a class="headerlink" href="#vcard" title="Permalink to this headline">¶</a></h3>
+<p>vCard格式,可以被导入到苹果系统的联系人目录中.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">导出邮件列表</a><ul>
+<li><a class="reference internal" href="#id2">用例</a></li>
+<li><a class="reference internal" href="#id3">可选用的格式</a><ul>
+<li><a class="reference internal" href="#address">address</a></li>
+<li><a class="reference internal" href="#google">google</a></li>
+<li><a class="reference internal" href="#outlook">outlook</a></li>
+<li><a class="reference internal" href="#linkedin">linkedin</a></li>
+<li><a class="reference internal" href="#vcard">vcard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="runscript.html"
+                        title="previous chapter">执行脚本</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="field_extensions.html"
+                        title="next chapter">字段扩展</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/export_emails.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="field_extensions.html" title="字段扩展"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="runscript.html" title="执行脚本"
+             >previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

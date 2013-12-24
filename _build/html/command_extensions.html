@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>扩展命令 &mdash; django-extensions 1.2.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
+    <link rel="next" title="扩展命令的计划" href="command_extension_ideas.html" />
+    <link rel="prev" title="安装django-extensions" href="installation_instructions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="command_extension_ideas.html" title="扩展命令的计划"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation_instructions.html" title="安装django-extensions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>扩展命令<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">扩展命令列表</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><a class="reference internal" href="shell_plus.html"><em>shell_plus</em></a> - Django shell的加强版.  自动载入所有app的models,可以方便的使用这些ORM.</li>
+<li><cite>create_app</cite> - 新建一个app的简便方法,可以通过 &#8211;template 参数指定一个app作为模板来创建一个新的app <a class="footnote-reference" href="#id5" id="id2">[1]</a>.</li>
+<li><em>create_command</em> - 在指定app内创建一个命令扩展目录,方便添加新的扩展命令(或者只能手动创建扩展命令的目录).</li>
+<li><em>create_jobs</em> - 在指定app内创建一个定时任务扩展目录,可以定期执行指定任务</li>
+<li><em>create_superuser</em> - 方便的创建一个超级管理员 <a class="footnote-reference" href="#id6" id="id3">[2]</a></li>
+<li><em>describe_form</em> - 显示针对一个model的form描述.复制输出的内容到forms.py中可以完整定义一个对应model的form.</li>
+<li><a class="reference internal" href="dumpscript.html"><em>dumpscript</em></a> - Generates a Python script that will
+repopulate the database using objects. The advantage of this approach is that
+it is easy to understand, and more flexible than directly populating the
+database, or using XML.</li>
+<li><a class="reference external" href="export_emails.html">export_emails</a> - 从用户表中导出联系人信息,支持多种导出格式: 地址,谷歌,Outlook,LinkedIn和VCard.</li>
+<li><em>generate_secret_key</em> - 重新生成一个项目密钥.</li>
+<li><a class="reference external" href="graph_models.html">graph_models</a> - 生成一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 文件.将输出内容写入一个文件.以图形化数据模型.传入多个app的名字作为参数,可以在一个文件中显示多个模型的图形化格式 <a class="footnote-reference" href="#id7" id="id4">[3]</a>.</li>
+<li><em>mail_debug</em> - 开启一个邮件服务,将发出的邮件从控制台输出,而不是真的发送出去.</li>
+<li><em>passwd</em> - 重新设定某个用户的密码.</li>
+<li><a class="reference external" href="print_settings.html">print_settings</a> - 与 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 功能类似,但会显示Django的全部配置.</li>
+<li><em>print_user_for_session</em> - 通过session key来查看当前用户信息,这个方法在查找哪个用户行为导致程序异常非常有帮助.</li>
+<li><em>reset_db</em> - 重置数据库 (目前支持 sqlite3, mysql, postgres).</li>
+<li><em>runjob</em> - 执行一个单独的任务, 是任务系统中的一个功能.</li>
+<li><em>runjobs</em> - 执行计划任务. 分为按小时执行,按天执行,按周执行,按月执行.是任务系统中的一部分功能.</li>
+<li><a class="reference internal" href="runprofileserver.html"><em>runprofileserver</em></a> - Starts <em>runserver</em> with hotshot/profiling tools enabled.
+I haven&#8217;t had a chance to check this one out, but it looks really cool.</li>
+<li><a class="reference external" href="runscript.html">runscript</a> - 在当前项目的环境下执行脚本.</li>
+<li><a class="reference external" href="runserver_plus.html">runserver_plus</a> - 在Werkzeug debugger模式下开启服务. 需要安装 <a class="reference external" href="http://werkzeug.pocoo.org/">Werkzeug</a>. 这是个杀手级应用.</li>
+<li><em>set_fake_passwords</em> -  将所有用户的密码设置为一个统一值 (默认密码). <em>一定在测试环境下使用</em>.</li>
+<li><em>show_urls</em> - 粗略的显示项目中包含的所有url.</li>
+<li><a class="reference internal" href="sqldiff.html"><em>sqldiff</em></a> - 显示app的models与数据库中的表的不同.这个功能非常好用,但还处于实验阶段,虽然不能捕获所有异常,但能很好的检查出不同的内容.</li>
+<li><a class="reference internal" href="sqlcreate.html"><em>sqlcreate命令</em></a> - 根据配置文件的内容,生成创建数据库表的SQL语句.</li>
+<li><a class="reference external" href="sync_s3.html">sync_s3</a> - 将settings.MEDIA_ROOT目录中文件复制到S3中.可以通过参数设置否是使用gzip压缩,文件编码,文件的缓存时间等.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Django1.6版本也开始支持通过模板创建app, 参考 <a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/django-admin/#startapp-appname-destination">https://docs.djangoproject.com/en/1.6/ref/django-admin/#startapp-appname-destination</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>没看到有这个命令哇 delong</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>类似MySQL的relationship map, 将models的关系以描述方式输出,虽然是文本描述,但是使用了GraphViz格式,可以打开成图形</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation_instructions.html"
+                        title="previous chapter">安装django-extensions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="command_extension_ideas.html"
+                        title="next chapter">扩展命令的计划</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/command_extensions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="command_extension_ideas.html" title="扩展命令的计划"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation_instructions.html" title="安装django-extensions"
+             >previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

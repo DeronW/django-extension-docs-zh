@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>sqlcreate命令 &mdash; django-extensions 1.2.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
+    <link rel="next" title="validate_templates命令" href="validate_templates.html" />
+    <link rel="prev" title="sqldiff" href="sqldiff.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="validate_templates.html" title="validate_templates命令"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sqldiff.html" title="sqldiff"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sqlcreate">
+<h1>sqlcreate命令<a class="headerlink" href="#sqlcreate" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body"><tt class="docutils literal"><span class="pre">sqlcreate</span></tt> 命令可以更方便的创建数据库.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>不用再手动创建数据库, <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件中已经包含了需要的信息,所以Do It Yourself.</p>
+</div>
+<div class="section" id="id2">
+<h2>用法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>$ python manage.py sqlcreate [--router=&lt;routername&gt;] | &lt;my_database_shell_command&gt;</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">sqlcreate</span></tt> 命令会将SQL语句输出用来检查(如果你想检查的话).但最终还是要输入到数据库的shell中来执行.</p>
+<p>如果有合适的方法证明当前用户有修改数据库的权限,那就可以把输出结果直接导入到数据库中.但是因为项目的配置方式,这种直接修改数据库的方式是不能接受的.</p>
+</div>
+<div class="section" id="id3">
+<h2>例子<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="postgresql">
+<h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ ./manage.py sqlcreate [--router=&lt;routername&gt;] | psql -U &lt;db_administrator&gt; -W</pre>
+</div>
+</div>
+<div class="section" id="mysql">
+<h3>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>$ ./manage.py sqlcreate [--router=&lt;routername&gt;] | mysql -u &lt;db_administrator&gt; -p</pre>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>存在的问题<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>CREATE DATABASE 不是SQL标准语句,所以可能不能支持所有数据库 <a class="footnote-reference" href="#id7" id="id5">[1]</a>.</li>
+<li>回滚数据库时没有创建用户名及密码,但缺尝试分配一个数据库用户 <a class="footnote-reference" href="#id8" id="id6">[2]</a> .</li>
+<li>缺少表空间的设置,等等.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>sqlite3 数据库创建就不是通过CREATE DATABASE语句,不过绝大多数数据库都没问题.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[2]</a></td><td>译者也不确定明白这个问题指的是什么.sorry.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">sqlcreate命令</a><ul>
+<li><a class="reference internal" href="#id1">简介</a></li>
+<li><a class="reference internal" href="#id2">用法</a></li>
+<li><a class="reference internal" href="#id3">例子</a><ul>
+<li><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
+<li><a class="reference internal" href="#mysql">MySQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">存在的问题</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sqldiff.html"
+                        title="previous chapter">sqldiff</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="validate_templates.html"
+                        title="next chapter">validate_templates命令</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/sqlcreate.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="validate_templates.html" title="validate_templates命令"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sqldiff.html" title="sqldiff"
+             >previous</a> |</li>
+        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

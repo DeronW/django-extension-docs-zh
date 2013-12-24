@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>django-extensions 文档 &mdash; django-extensions 1.2.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-extensions 1.2.5 documentation" href="#" />
+    <link rel="next" title="安装django-extensions" href="installation_instructions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installation_instructions.html" title="安装django-extensions"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="django-extensions">
+<h1>django-extensions 文档<a class="headerlink" href="#django-extensions" title="Permalink to this headline">¶</a></h1>
+<p>Django Extensions 是针对Django框架的自定义扩展.</p>
+<p>扩展中包括命令行的命令,扩展的数据库字段类型,后台管理扩展等.</p>
+<p>译者注: 文档中包含了部分 <a class="reference external" href="http://git-scm.com">git</a> , <a class="reference external" href="https://github.com/">github</a> , <a class="reference external" href="http://docs.python.org/2/library/os.html#os.environ">Python env</a> 相关内容, 阅读时遇到相关只是请参考相应文档.</p>
+</div>
+<div class="section" id="id1">
+<h1>开始<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>了解Django Eextensions最简单的方式是查看 <a class="reference external" href="http://ericholscher.com/blog/2008/sep/12/screencast-django-command-extensions/">excllent screencast by Eric Holscher</a> .只要几分钟的时间,Eric就能让你了解一半的扩展命令是做什么用的.</p>
+</div>
+<div class="section" id="id2">
+<h1>安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>可以通过pip或easy_install安装django-extensions:</p>
+<div class="highlight-python"><pre>$ pip install django-extensions</pre>
+</div>
+<dl class="docutils">
+<dt>或::</dt>
+<dd>$ easy_install django-extensions</dd>
+</dl>
+<p>还可以从github上下载源码安装:</p>
+<div class="highlight-python"><pre>$ git clone git://github.com/django-extensions/django-extensions.git
+$ cd django-extensions
+$ python setup.py install</pre>
+</div>
+<p>更多安装细节,查看 <a class="reference internal" href="installation_instructions.html"><em>安装django-extensions</em></a>.</p>
+</div>
+<div class="section" id="pythondjango">
+<h1>Python和Django的版本兼容性<a class="headerlink" href="#pythondjango" title="Permalink to this headline">¶</a></h1>
+<p>django-extensions尽量根据Django版本发布计划支持相应的Django和Python版本 <a class="footnote-reference" href="#id7" id="id3">[1]</a>.</p>
+<p>django-extensions可能在旧版本的Django或Python中运行,但是我们不会针对未支持的版本修复bug.</p>
+<p>当前最低的Python版本要求是2.5 <a class="footnote-reference" href="#id8" id="id4">[2]</a>.</p>
+</div>
+<div class="section" id="id5">
+<h1>目录<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation_instructions.html">安装django-extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation_instructions.html#id1">下载和安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#pipeasy-install">通过pip和easy_install安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#id2">下载源码安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#django">在Django中使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation_instructions.html#id4">版本控制</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command_extensions.html">扩展命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_extension_ideas.html">扩展命令的计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin_extensions.html">admin后台管理的扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell_plus.html">shell_plus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell_plus.html#python-shells">交互式的 Python Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_plus.html#id1">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_plus.html#id2">附加的引入模块</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="create_app.html">创建app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="create_app.html#id1">用法举例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_app.html#sample-diaapp">从sample.dia文件生成app</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dumpscript.html">dumpscript</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dumpscript.html#id1">为什么有这个功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dumpscript.html#id2">特性支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dumpscript.html#id3">还不支持的特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dumpscript.html#id5">如何使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dumpscript.html#id6">警告</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dumpscript.html#id7">命名冲突</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runscript.html">执行脚本</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="runscript.html#id2">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runscript.html#id3">开始使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runscript.html#id4">用法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="export_emails.html">导出邮件列表</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="export_emails.html#id2">用例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_emails.html#id3">可选用的格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="export_emails.html#address">address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export_emails.html#google">google</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export_emails.html#outlook">outlook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export_emails.html#linkedin">linkedin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export_emails.html#vcard">vcard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="field_extensions.html">字段扩展</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="field_extensions.html#id2">当前数据模型的字段的扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graph_models.html">Graph models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph_models.html#id2">选择生成图表的库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_models.html#id3">默认配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_models.html#id4">用例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jobs_scheduling.html">定时任务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jobs_scheduling.html#id2">定时的计划任务</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jobs_scheduling.html#this-page-is-very-much-work-in-progress">This page is very much; Work in Progress</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_extensions.html">数据库字段扩展</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_extensions.html#id2">数据库字段的扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="namespace_proposal.html">命名空间的建议</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_proposal.html#id2">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_proposal.html#id3">命名空间的建议</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="print_settings.html">输出配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="print_settings.html#id2">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="print_settings.html#id4">详情</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runprofileserver.html">跟踪分析服务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#id2">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#profile">聚合profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#kcachegrind">KCacheGrind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#id3">相关知识链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runserver_plus.html">扩展测试服务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id2">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id3">开始使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id4">深入使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="runserver_plus.html#id5">查看源码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runserver_plus.html#id6">命令行调试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runserver_plus.html#ssl">SSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sync_s3.html">同步文件到S3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sync_s3.html#id2">用法举例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_s3.html#id3">依赖的库和配置</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sqldiff.html">sqldiff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sqldiff.html#id1">支持的数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqldiff.html#id2">用法举例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sqlcreate.html">sqlcreate命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sqlcreate.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqlcreate.html#id2">用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqlcreate.html#id3">例子</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sqlcreate.html#postgresql">PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sqlcreate.html#mysql">MySQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sqlcreate.html#id4">存在的问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="validate_templates.html">validate_templates命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="validate_templates.html#id1">参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validate_templates.html#verbosity">verbosity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate_templates.html#break">break</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate_templates.html#includes">includes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validate_templates.html#id2">配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validate_templates.html#validate-templates-extra-template-dirs">VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validate_templates.html#id3">用法举例</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Django的某个版本指定了需要的Python版本,支持某个Django版本就代表同事支持相应的Python版本.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td>目前最新的Django1.6版本后要求不能使用Python2.6以前的版本,这也是未来Django对Python的最低要求.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">django-extensions 文档</a></li>
+<li><a class="reference internal" href="#id1">开始</a></li>
+<li><a class="reference internal" href="#id2">安装</a></li>
+<li><a class="reference internal" href="#pythondjango">Python和Django的版本兼容性</a></li>
+<li><a class="reference internal" href="#id5">目录</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation_instructions.html"
+                        title="next chapter">安装django-extensions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installation_instructions.html" title="安装django-extensions"
+             >next</a> |</li>
+        <li><a href="#">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
