@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>跟踪分析服务 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>runprofileserver &mdash; django-extensions 1.2.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
     <link rel="next" title="扩展测试服务" href="runserver_plus.html" />
-    <link rel="prev" title="输出配置" href="print_settings.html" /> 
+    <link rel="prev" title="print_settings" href="print_settings.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="runserver_plus.html" title="扩展测试服务"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="print_settings.html" title="输出配置"
+          <a href="print_settings.html" title="print_settings"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -51,12 +51,12 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="id1">
-<h1>跟踪分析服务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="runprofileserver">
+<h1>runprofileserver<a class="headerlink" href="#runprofileserver" title="Permalink to this headline">¶</a></h1>
 <p><em>首先,在跟踪分析一门语言和框架前,应该深入了解一下正在使用的语言(框架),这样才能事半功倍.不够扎实的功底会导致在跟踪分析服务时做出错误的假设和判断.有一条经验法则很实用:干净整洁的代码比热情和耐心更实用.</em></p>
 <p><em>这部分功能正在持续改进中,如果你有好的办法能够跟踪,分析Django框架,请给我们留言</em></p>
-<div class="section" id="id2">
-<h2>简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">runprofileserver</span></tt> 命令在启动django服务的同时其用了跟踪分析工具,会将服务的分析信息保存到 <tt class="docutils literal"><span class="pre">.prof</span></tt> 后缀文件中.使用 <tt class="docutils literal"><span class="pre">--prof-path</span></tt> 参数指定保存分析文件到指定目录.每一个请求的分析数据都会被保存成一个profile文件.</p>
 <p>如果没有指定 <tt class="docutils literal"><span class="pre">--prof-path</span></tt> 参数,分析数据的 <tt class="docutils literal"><span class="pre">.prof</span></tt> 文件会被保存到 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录下.建议使用特定目录保存分析文件,这样方便我们随时查看分析数据,也不会弄乱 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录,使用windows系统时一定要指定``&#8211;prof-path`` 参数,因为windows系统没有 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录.</p>
 <p>分析文件的名字默认名字是:</p>
@@ -97,8 +97,8 @@ Quit the server with CONTROL-C.
 $ kcachegrind /tmp/my-profile-data/root.12574391.592.prof</pre>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>相关知识链接<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>相关知识链接<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://code.djangoproject.com/wiki/ProfilingDjango">http://code.djangoproject.com/wiki/ProfilingDjango</a></li>
 <li><a class="reference external" href="http://www.rkblog.rk.edu.pl/w/p/django-profiling-hotshot-and-kcachegrind/">http://www.rkblog.rk.edu.pl/w/p/django-profiling-hotshot-and-kcachegrind/</a></li>
@@ -117,18 +117,18 @@ $ kcachegrind /tmp/my-profile-data/root.12574391.592.prof</pre>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">跟踪分析服务</a><ul>
-<li><a class="reference internal" href="#id2">简介</a></li>
+<li><a class="reference internal" href="#">runprofileserver</a><ul>
+<li><a class="reference internal" href="#id1">简介</a></li>
 <li><a class="reference internal" href="#profile">聚合profile</a></li>
 <li><a class="reference internal" href="#kcachegrind">KCacheGrind</a></li>
-<li><a class="reference internal" href="#id3">相关知识链接</a></li>
+<li><a class="reference internal" href="#id2">相关知识链接</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="print_settings.html"
-                        title="previous chapter">输出配置</a></p>
+                        title="previous chapter">print_settings</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="runserver_plus.html"
                         title="next chapter">扩展测试服务</a></p>
@@ -164,7 +164,7 @@ $ kcachegrind /tmp/my-profile-data/root.12574391.592.prof</pre>
           <a href="runserver_plus.html" title="扩展测试服务"
              >next</a> |</li>
         <li class="right" >
-          <a href="print_settings.html" title="输出配置"
+          <a href="print_settings.html" title="print_settings"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

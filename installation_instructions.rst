@@ -7,10 +7,10 @@
 下载和安装
 -------------------------
 
-通过pip和easy_install安装
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+通过 ``pip`` 或 ``easy_install`` 安装
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-可以通过pip或easy_install安装django-extensions::
+可以通过 ``pip`` 或 ``easy_install`` 安装 ``django-extensions`` ::
 
     $ pip install django-extensions
 
@@ -21,23 +21,23 @@
 下载源码安装
 ^^^^^^^^^^^^
 
-从 `<http://pypi.python.org/pypi/django-extensions/>`_ 下载最新的代码.解包后,目录下包含一个 ``setup.py`` 文件,在目录下执行安装命令::
+从 `<http://pypi.python.org/pypi/django-extensions/>`_ 下载最新的源码.解压缩后,在目录下执行Python安装命令::
 
     python setup.py install
 
-...这样就可以自动安装了.
+...这样就可以自动安装了. 注: 这是Python默认的包安装方式.
 
 在Django中使用
 ^^^^^^^^^^^^^^
 
-在Django项目的配置文件中,把 *django_extensions* 添加到 `INSTALLED_APPS` 列表中::
+在Django项目的配置文件中,把 *django_extensions* 添加到 ``INSTALLED_APPS`` 列表中::
 
   INSTALLED_APPS = (
       ...
       'django_extensions',
   )
 
-这样就可以在Django的命令行中使用 *django-extensions* 提供的扩展命令了.
+这样就可以在Django的命令行中使用 ``django-extensions`` 提供的扩展命令了.
 
 再次运行 *./manage.py help* 命令时,就可以看到新的命令.
 
@@ -52,29 +52,25 @@
 版本控制
 ---------------
 
-Django-extensions目前被托管在github上: `<https://github.com/django-extensions/django-extensions>`_
+``django-extensions`` 目前被托管在github上: `<https://github.com/django-extensions/django-extensions>`_
 
 *django command extensions* 的dev版本在包含了新特性的同时还可以稳定运行,在正式环境下也推荐使用 [2]_. 
 
-使用git命令克隆 *django-extensions* 源码到本地:
-
-Git克隆命令::
+使用git命令克隆 ``django-extensions`` 源码到本地::
 
   git clone git://github.com/django-extensions/django-extensions.git
 
-下载源码后可以在项目根目录下执行 *python setup.py install* 安装,或将 *extensions* 目录添加到Python环境变量中.最通用的做法是创建一个软连接指向代码的目录,并将软连接添加到Python环境变量中.比如Python的site-packages目录 [3]_::
+下载源码后可以在项目根目录下执行 ``python setup.py install`` 安装,或将 *extensions* 目录添加到Python环境变量中.最通用的做法是创建一个软连接指向代码的目录,并将软连接添加到Python环境变量中.比如Python的site-packages目录 [3]_::
 
   ln -sf /full/path/to/django-extensions/django_extensions /usr/lib/python2.7/site-packages/django_extensions
 
-You can verify that the application is available on your PYTHONPATH by opening a Python interpreter and entering the following commands:
-
-检查django-extensions是否被正确安装,可以通过以下命令 [4]_::
+检查django-extensions是否被正确安装,在Python的shell中输入下面命令 [4]_::
 
   >>> import django_extensions
   >>> django_extensions.VERSION
   (1, 2, 5)
 
-注意:通过git克隆出来的代码与通过源包(pypi)安装的代码可能不同.通过源码安装可能会包含bug或兼容性问题,但也会包含一些新特性.
+注意:通过git克隆出来的代码比通过源包(pypi)安装的代码版本更新.通过源码安装虽然可能会包含bug或兼容性问题,但也会包含一些新特性.
 
 
 .. [1] vcard是电子名片的格式

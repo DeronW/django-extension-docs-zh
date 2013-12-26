@@ -1,4 +1,4 @@
-扩展测试服务
+runserver_plus
 =============
 
 :概要: ``runserver_plus`` 命令启动测试服务,并用 Werkzeug_ 作为调试后台

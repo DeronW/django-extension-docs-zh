@@ -1,4 +1,4 @@
-sqlcreate命令
+sqlcreate
 =============
 
 :概要: ``sqlcreate`` 命令可以更方便的创建数据库.

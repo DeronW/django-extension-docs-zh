@@ -63,9 +63,9 @@
 </table>
 <div class="section" id="id1">
 <h2>下载和安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pipeasy-install">
-<h3>通过pip和easy_install安装<a class="headerlink" href="#pipeasy-install" title="Permalink to this headline">¶</a></h3>
-<p>可以通过pip或easy_install安装django-extensions:</p>
+<div class="section" id="pip-easy-install">
+<h3>通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装<a class="headerlink" href="#pip-easy-install" title="Permalink to this headline">¶</a></h3>
+<p>可以通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装 <tt class="docutils literal"><span class="pre">django-extensions</span></tt></p>
 <div class="highlight-python"><pre>$ pip install django-extensions</pre>
 </div>
 <p>或:</p>
@@ -74,20 +74,20 @@
 </div>
 <div class="section" id="id2">
 <h3>下载源码安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>从 <a class="reference external" href="http://pypi.python.org/pypi/django-extensions/">http://pypi.python.org/pypi/django-extensions/</a> 下载最新的代码.解包后,目录下包含一个 <tt class="docutils literal"><span class="pre">setup.py</span></tt> 文件,在目录下执行安装命令:</p>
+<p>从 <a class="reference external" href="http://pypi.python.org/pypi/django-extensions/">http://pypi.python.org/pypi/django-extensions/</a> 下载最新的源码.解压缩后,在目录下执行Python安装命令:</p>
 <div class="highlight-python"><pre>python setup.py install</pre>
 </div>
-<p>...这样就可以自动安装了.</p>
+<p>...这样就可以自动安装了. 注: 这是Python默认的包安装方式.</p>
 </div>
 <div class="section" id="django">
 <h3>在Django中使用<a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h3>
-<p>在Django项目的配置文件中,把 <em>django_extensions</em> 添加到 <cite>INSTALLED_APPS</cite> 列表中:</p>
+<p>在Django项目的配置文件中,把 <em>django_extensions</em> 添加到 <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> 列表中:</p>
 <div class="highlight-python"><pre>INSTALLED_APPS = (
     ...
     'django_extensions',
 )</pre>
 </div>
-<p>这样就可以在Django的命令行中使用 <em>django-extensions</em> 提供的扩展命令了.</p>
+<p>这样就可以在Django的命令行中使用 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 提供的扩展命令了.</p>
 <p>再次运行 <em>./manage.py help</em> 命令时,就可以看到新的命令.</p>
 <p>有些新增的命令依赖其它程序或Python库,例如 <a class="footnote-reference" href="#id8" id="id3">[1]</a></p>
 <ul class="simple">
@@ -99,23 +99,21 @@
 </div>
 <div class="section" id="id4">
 <h2>版本控制<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>Django-extensions目前被托管在github上: <a class="reference external" href="https://github.com/django-extensions/django-extensions">https://github.com/django-extensions/django-extensions</a></p>
+<p><tt class="docutils literal"><span class="pre">django-extensions</span></tt> 目前被托管在github上: <a class="reference external" href="https://github.com/django-extensions/django-extensions">https://github.com/django-extensions/django-extensions</a></p>
 <p><em>django command extensions</em> 的dev版本在包含了新特性的同时还可以稳定运行,在正式环境下也推荐使用 <a class="footnote-reference" href="#id9" id="id5">[2]</a>.</p>
-<p>使用git命令克隆 <em>django-extensions</em> 源码到本地:</p>
-<p>Git克隆命令:</p>
+<p>使用git命令克隆 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 源码到本地:</p>
 <div class="highlight-python"><pre>git clone git://github.com/django-extensions/django-extensions.git</pre>
 </div>
-<p>下载源码后可以在项目根目录下执行 <em>python setup.py install</em> 安装,或将 <em>extensions</em> 目录添加到Python环境变量中.最通用的做法是创建一个软连接指向代码的目录,并将软连接添加到Python环境变量中.比如Python的site-packages目录 <a class="footnote-reference" href="#id10" id="id6">[3]</a>:</p>
+<p>下载源码后可以在项目根目录下执行 <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> 安装,或将 <em>extensions</em> 目录添加到Python环境变量中.最通用的做法是创建一个软连接指向代码的目录,并将软连接添加到Python环境变量中.比如Python的site-packages目录 <a class="footnote-reference" href="#id10" id="id6">[3]</a>:</p>
 <div class="highlight-python"><pre>ln -sf /full/path/to/django-extensions/django_extensions /usr/lib/python2.7/site-packages/django_extensions</pre>
 </div>
-<p>You can verify that the application is available on your PYTHONPATH by opening a Python interpreter and entering the following commands:</p>
-<p>检查django-extensions是否被正确安装,可以通过以下命令 <a class="footnote-reference" href="#id11" id="id7">[4]</a>:</p>
+<p>检查django-extensions是否被正确安装,在Python的shell中输入下面命令 <a class="footnote-reference" href="#id11" id="id7">[4]</a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">django_extensions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">django_extensions</span><span class="o">.</span><span class="n">VERSION</span>
 <span class="go">(1, 2, 5)</span>
 </pre></div>
 </div>
-<p>注意:通过git克隆出来的代码与通过源包(pypi)安装的代码可能不同.通过源码安装可能会包含bug或兼容性问题,但也会包含一些新特性.</p>
+<p>注意:通过git克隆出来的代码比通过源包(pypi)安装的代码版本更新.通过源码安装虽然可能会包含bug或兼容性问题,但也会包含一些新特性.</p>
 <table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -153,7 +151,7 @@
   <ul>
 <li><a class="reference internal" href="#">安装django-extensions</a><ul>
 <li><a class="reference internal" href="#id1">下载和安装</a><ul>
-<li><a class="reference internal" href="#pipeasy-install">通过pip和easy_install安装</a></li>
+<li><a class="reference internal" href="#pip-easy-install">通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装</a></li>
 <li><a class="reference internal" href="#id2">下载源码安装</a></li>
 <li><a class="reference internal" href="#django">在Django中使用</a></li>
 </ul>

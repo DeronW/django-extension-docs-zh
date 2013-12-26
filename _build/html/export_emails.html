@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>导出邮件列表 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>export_emails &mdash; django-extensions 1.2.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -51,8 +51,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="id1">
-<h1>导出邮件列表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="export-emails">
+<h1>export_emails<a class="headerlink" href="#export-emails" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -62,8 +62,8 @@
 </tbody>
 </table>
 <p>大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs邀请, 修改权限, LinkedLn用户组等等). <tt class="docutils literal"><span class="pre">export_emails</span></tt> 命令为此而设计.导出的用户信息的同时可以对其进行分组.</p>
-<div class="section" id="id2">
-<h2>用例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>用例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><pre># 将所有用户信息导出成 ``'"First Last" &lt;my@addr.com&gt;;'`` 格式.
 $ ./manage.py export_emails &gt; addresses.txt</pre>
 </div>
@@ -74,8 +74,8 @@ $ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv</pre>
 $ ./manage.py export_emails --format=google google.csv</pre>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>可选用的格式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>可选用的格式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="address">
 <h3>address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
 <p>默认的文本格式,每个实例占一行并保存成如下格式:</p>
@@ -112,9 +112,9 @@ $ ./manage.py export_emails --format=google google.csv</pre>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">导出邮件列表</a><ul>
-<li><a class="reference internal" href="#id2">用例</a></li>
-<li><a class="reference internal" href="#id3">可选用的格式</a><ul>
+<li><a class="reference internal" href="#">export_emails</a><ul>
+<li><a class="reference internal" href="#id1">用例</a></li>
+<li><a class="reference internal" href="#id2">可选用的格式</a><ul>
 <li><a class="reference internal" href="#address">address</a></li>
 <li><a class="reference internal" href="#google">google</a></li>
 <li><a class="reference internal" href="#outlook">outlook</a></li>

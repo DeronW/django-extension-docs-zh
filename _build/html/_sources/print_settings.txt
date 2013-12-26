@@ -1,4 +1,4 @@
-输出配置
+print_settings
 ==============
 
 :概要: ``print_settings`` 命令与Django的 ``diffsettings`` 命令相似,但是会输出当前项目中使用的全部配置(包括默认配置)

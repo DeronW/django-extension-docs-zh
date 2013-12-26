@@ -1,4 +1,4 @@
-Graph models
+graph_models
 ============
 
 :概要: 将整个项目或指定app的models结果渲染成图形 [1]_.

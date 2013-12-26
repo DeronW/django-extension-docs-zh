@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>执行脚本 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>runscript &mdash; django-extensions 1.2.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
-    <link rel="next" title="导出邮件列表" href="export_emails.html" />
+    <link rel="next" title="export_emails" href="export_emails.html" />
     <link rel="prev" title="dumpscript" href="dumpscript.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="export_emails.html" title="导出邮件列表"
+          <a href="export_emails.html" title="export_emails"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dumpscript.html" title="dumpscript"
@@ -51,8 +51,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="id1">
-<h1>执行脚本<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="runscript">
+<h1>runscript<a class="headerlink" href="#runscript" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -61,14 +61,14 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id2">
-<h2>介绍<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">runscript</span></tt> 命令允许在django项目的环境下执行任意脚本.就像在 <tt class="docutils literal"><span class="pre">shell</span></tt> 命令中执行脚本一样:</p>
 <div class="highlight-python"><pre>$ python manage.py shell</pre>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>开始使用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>开始使用<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>首先要在项目根目录下创建一个脚本的目录,名字是 <tt class="docutils literal"><span class="pre">scripts</span></tt></p>
 <div class="highlight-python"><pre>$ mkdir scripts
 $ touch scripts/__init__.py</pre>
@@ -91,8 +91,8 @@ $ touch scripts/__init__.py</pre>
 </div>
 <p>提示: <tt class="docutils literal"><span class="pre">runscript</span></tt> 命令可以找到任意app下 <em>scripts</em> 目录中的脚本文件.</p>
 </div>
-<div class="section" id="id4">
-<h2>用法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>用法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">runscript</span></tt> 命令可以在shell中调用 <em>scripts</em> 目录下的Python脚本.</p>
 <p>例如:</p>
 <div class="highlight-python"><pre>$ python manage.py runscript delete_all_polls</pre>
@@ -109,10 +109,10 @@ $ touch scripts/__init__.py</pre>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">执行脚本</a><ul>
-<li><a class="reference internal" href="#id2">介绍</a></li>
-<li><a class="reference internal" href="#id3">开始使用</a></li>
-<li><a class="reference internal" href="#id4">用法</a></li>
+<li><a class="reference internal" href="#">runscript</a><ul>
+<li><a class="reference internal" href="#id1">介绍</a></li>
+<li><a class="reference internal" href="#id2">开始使用</a></li>
+<li><a class="reference internal" href="#id3">用法</a></li>
 </ul>
 </li>
 </ul>
@@ -122,7 +122,7 @@ $ touch scripts/__init__.py</pre>
                         title="previous chapter">dumpscript</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="export_emails.html"
-                        title="next chapter">导出邮件列表</a></p>
+                        title="next chapter">export_emails</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/runscript.txt"
@@ -152,7 +152,7 @@ $ touch scripts/__init__.py</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="export_emails.html" title="导出邮件列表"
+          <a href="export_emails.html" title="export_emails"
              >next</a> |</li>
         <li class="right" >
           <a href="dumpscript.html" title="dumpscript"

@@ -62,52 +62,54 @@
 </tbody>
 </table>
 <ul class="simple">
-<li><a class="reference internal" href="shell_plus.html"><em>shell_plus</em></a> - Django shell的加强版.  自动载入所有app的models,可以方便的使用这些ORM.</li>
-<li><cite>create_app</cite> - 新建一个app的简便方法,可以通过 &#8211;template 参数指定一个app作为模板来创建一个新的app <a class="footnote-reference" href="#id5" id="id2">[1]</a>.</li>
-<li><em>create_command</em> - 在指定app内创建一个命令扩展目录,方便添加新的扩展命令(或者只能手动创建扩展命令的目录).</li>
-<li><em>create_jobs</em> - 在指定app内创建一个定时任务扩展目录,可以定期执行指定任务</li>
-<li><em>create_superuser</em> - 方便的创建一个超级管理员 <a class="footnote-reference" href="#id6" id="id3">[2]</a></li>
-<li><em>describe_form</em> - 显示针对一个model的form描述.复制输出的内容到forms.py中可以完整定义一个对应model的form.</li>
-<li><a class="reference internal" href="dumpscript.html"><em>dumpscript</em></a> - Generates a Python script that will
-repopulate the database using objects. The advantage of this approach is that
-it is easy to understand, and more flexible than directly populating the
-database, or using XML.</li>
-<li><a class="reference external" href="export_emails.html">export_emails</a> - 从用户表中导出联系人信息,支持多种导出格式: 地址,谷歌,Outlook,LinkedIn和VCard.</li>
-<li><em>generate_secret_key</em> - 重新生成一个项目密钥.</li>
-<li><a class="reference external" href="graph_models.html">graph_models</a> - 生成一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 文件.将输出内容写入一个文件.以图形化数据模型.传入多个app的名字作为参数,可以在一个文件中显示多个模型的图形化格式 <a class="footnote-reference" href="#id7" id="id4">[3]</a>.</li>
-<li><em>mail_debug</em> - 开启一个邮件服务,将发出的邮件从控制台输出,而不是真的发送出去.</li>
-<li><em>passwd</em> - 重新设定某个用户的密码.</li>
-<li><a class="reference external" href="print_settings.html">print_settings</a> - 与 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 功能类似,但会显示Django的全部配置.</li>
-<li><em>print_user_for_session</em> - 通过session key来查看当前用户信息,这个方法在查找哪个用户行为导致程序异常非常有帮助.</li>
-<li><em>reset_db</em> - 重置数据库 (目前支持 sqlite3, mysql, postgres).</li>
-<li><em>runjob</em> - 执行一个单独的任务, 是任务系统中的一个功能.</li>
-<li><em>runjobs</em> - 执行计划任务. 分为按小时执行,按天执行,按周执行,按月执行.是任务系统中的一部分功能.</li>
-<li><a class="reference internal" href="runprofileserver.html"><em>runprofileserver</em></a> - Starts <em>runserver</em> with hotshot/profiling tools enabled.
-I haven&#8217;t had a chance to check this one out, but it looks really cool.</li>
-<li><a class="reference external" href="runscript.html">runscript</a> - 在当前项目的环境下执行脚本.</li>
-<li><a class="reference external" href="runserver_plus.html">runserver_plus</a> - 在Werkzeug debugger模式下开启服务. 需要安装 <a class="reference external" href="http://werkzeug.pocoo.org/">Werkzeug</a>. 这是个杀手级应用.</li>
-<li><em>set_fake_passwords</em> -  将所有用户的密码设置为一个统一值 (默认密码). <em>一定在测试环境下使用</em>.</li>
-<li><em>show_urls</em> - 粗略的显示项目中包含的所有url.</li>
-<li><a class="reference internal" href="sqldiff.html"><em>sqldiff</em></a> - 显示app的models与数据库中的表的不同.这个功能非常好用,但还处于实验阶段,虽然不能捕获所有异常,但能很好的检查出不同的内容.</li>
-<li><a class="reference internal" href="sqlcreate.html"><em>sqlcreate命令</em></a> - 根据配置文件的内容,生成创建数据库表的SQL语句.</li>
-<li><a class="reference external" href="sync_s3.html">sync_s3</a> - 将settings.MEDIA_ROOT目录中文件复制到S3中.可以通过参数设置否是使用gzip压缩,文件编码,文件的缓存时间等.</li>
+<li><a class="reference internal" href="shell_plus.html"><em>shell_plus</em></a> - Django shell的加强版. 自动载入所有app的models,可以方便的使用这些ORM.</li>
+<li><a class="reference internal" href="create_app.html"><em>create_app</em></a> - 新建一个app的简便方法,可以通过 <tt class="docutils literal"><span class="pre">--template</span></tt> 参数指定一个app作为创建模板 <a class="footnote-reference" href="#id6" id="id2">[1]</a>.</li>
+<li><tt class="docutils literal"><span class="pre">create_command</span></tt> - 在指定app内创建一个命令扩展目录,方便添加新的扩展命令(或者只能手动创建扩展命令的目录).</li>
+<li><tt class="docutils literal"><span class="pre">create_jobs</span></tt> - 在指定app内创建一个定时任务扩展目录,可以定期执行指定任务.</li>
+<li><tt class="docutils literal"><span class="pre">create_superuser</span></tt> - 方便的创建一个超级管理员 <a class="footnote-reference" href="#id7" id="id3">[2]</a>.</li>
+<li><tt class="docutils literal"><span class="pre">describe_form</span></tt> - 显示针对一个model的form描述.复制输出的内容到forms.py中可以完整定义一个对应model的form.</li>
+<li><a class="reference internal" href="dumpscript.html"><em>dumpscript</em></a> - 生成一个Python脚本.包含指定app的所有数据对象.与Django的 <tt class="docutils literal"><span class="pre">dumpdata</span></tt> 命令不同的是 <tt class="docutils literal"><span class="pre">dumpscript</span></tt> 导出的是Python对象,而不是纯数据.这种导出数据的方式比直接导出数据或XML文件更容易理解,也更灵活.</li>
+<li><a class="reference internal" href="export_emails.html"><em>export_emails</em></a> - 从用户表中导出联系人信息,支持多种导出格式: 地址,谷歌,Outlook,LinkedIn和VCard.</li>
+<li><tt class="docutils literal"><span class="pre">generate_secret_key</span></tt> - 重新生成一个项目密钥, <tt class="docutils literal"><span class="pre">settigns.py</span></tt> 文件中的 <strong>SECRET_KEY</strong> 配置.</li>
+<li><a class="reference internal" href="graph_models.html"><em>graph_models</em></a> - 生成一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 文件.将输出内容写入一个文件.以图形化数据模型.传入多个app的名字作为参数,可以在一个文件中显示多个模型的图形化格式 <a class="footnote-reference" href="#id8" id="id4">[3]</a>.</li>
+<li><tt class="docutils literal"><span class="pre">mail_debug</span></tt> - 开启一个邮件服务,将Django项目发出的邮件从控制台输出,而不是真的发送出去.</li>
+<li><tt class="docutils literal"><span class="pre">passwd</span></tt> - 重新设定某个用户的密码,用法: <em>./manage.py passwd [用户名]</em> .</li>
+<li><a class="reference internal" href="print_settings.html"><em>print_settings</em></a> - 与 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 命令功能类似,但会显示Django的全部配置.</li>
+<li><tt class="docutils literal"><span class="pre">print_user_for_session</span></tt> - 通过 <tt class="docutils literal"><span class="pre">session</span> <span class="pre">key</span></tt> 来查看当前用户信息,这个方法在查找哪个用户行为导致程序异常非常有帮助.</li>
+<li><tt class="docutils literal"><span class="pre">reset_db</span></tt> - 重置数据库 (目前支持 sqlite3, mysql, postgres).</li>
+<li><tt class="docutils literal"><span class="pre">runjob</span></tt> - 执行一个单独的任务,是 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 任务系统中的一个功能.</li>
+<li><tt class="docutils literal"><span class="pre">runjobs</span></tt> - 执行计划任务. 分为按小时执行,按天执行,按周执行,按月执行.是 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 任务系统中的一部分功能.</li>
+<li><a class="reference internal" href="runprofileserver.html"><em>runprofileserver</em></a> - 在启动 <tt class="docutils literal"><span class="pre">runserver</span></tt> 测试服务的同时,其用 <tt class="docutils literal"><span class="pre">profile</span></tt> 功能,可以记录服务的详细日志,包含了对于Python方法的详细执行分析.在服务器性能分析时,这是最佳方法了.</li>
+<li><a class="reference internal" href="runscript.html"><em>runscript</em></a> - 在当前项目的环境下执行脚本.</li>
+<li><a class="reference internal" href="runserver_plus.html"><em>runserver_plus</em></a> - 在Werkzeug debugger模式下开启服务. 需要安装 <a class="reference external" href="http://werkzeug.pocoo.org/">Werkzeug</a>.这是个杀手级应用.</li>
+<li><tt class="docutils literal"><span class="pre">set_fake_passwords</span></tt> -  将所有用户的密码设置为一个统一值 (默认密码). <em>一定要在测试环境下使用</em>.</li>
+<li><tt class="docutils literal"><span class="pre">show_urls</span></tt> - 统一显示项目中包含的所有url.</li>
+<li><a class="reference internal" href="sqldiff.html"><em>sqldiff</em></a> - 显示app的models与数据库中的表的差别.这个功能非常好用,但还处于实验阶段,虽然不能捕获所有异常,但能很好的检查出不同的内容 <a class="footnote-reference" href="#id9" id="id5">[4]</a>.</li>
+<li><a class="reference internal" href="sqlcreate.html"><em>sqlcreate</em></a> - 根据配置文件的内容,生成创建数据库表的SQL语句.</li>
+<li><a class="reference internal" href="sync_s3.html"><em>sync_s3</em></a> - 将settings.MEDIA_ROOT目录中文件复制到S3中.可以通过参数设置否是使用gzip压缩,文件编码,文件的缓存时间等.</li>
 </ul>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Django1.6版本也开始支持通过模板创建app, 参考 <a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/django-admin/#startapp-appname-destination">https://docs.djangoproject.com/en/1.6/ref/django-admin/#startapp-appname-destination</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>没看到有这个命令哇 delong</td></tr>
-</tbody>
-</table>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>没看到命令列表里有这个命令哇!!!</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>类似MySQL的relationship map, 将models的关系以描述方式输出,虽然是文本描述,但是使用了GraphViz格式,可以打开成图形</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>目前Django项目中数据库表管理基本都使用Python的South库,跟Django可以很好的正好到一起,管理数据库也十分方便.</td></tr>
 </tbody>
 </table>
 </div>
