@@ -57,26 +57,26 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将项目的 <tt class="docutils literal"><span class="pre">MEDIA_ROOT</span></tt> 和 <tt class="docutils literal"><span class="pre">STATIC_ROOT</span></tt> 目录同步到S3 <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将项目的 <tt class="docutils literal"><span class="pre">MEDIA_ROOT</span></tt> 和 <tt class="docutils literal"><span class="pre">STATIC_ROOT</span></tt> 目录包含的文件同步到S3 <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</td>
 </tr>
 </tbody>
 </table>
 <p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令会检索配置中的 <tt class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span></tt> 目录和 <tt class="docutils literal"><span class="pre">settings.STATIC_ROOT</span></tt> 目录,然后把所有文件资源上传到S3的相同的目录结构下.</p>
-<p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令可以执行以下功能,通过传入参数启用对应功能,默认全部关闭:</p>
+<p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令可以启用以下功能,通过传入参数启用对应功能,默认全部关闭:</p>
 <div class="highlight-python"><pre>* gzip 压缩CSS和JS文件,并添加 ``Content-Encoding`` 头.
 * 设置文件缓存过期时间
 * 只上传 media 或 static 目录文件.</pre>
 </div>
 <div class="section" id="id2">
 <h2>用法举例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre># 上传到S3的 mybucket
-$ ./manage.py sync_s3 mybucket</pre>
+<p>上传到S3的 mybucket</p>
+<div class="highlight-python"><pre>$ ./manage.py sync_s3 mybucket</pre>
 </div>
-<div class="highlight-python"><pre># 上传到S3的 mybucket ,并对CSS/JS文件进行gzip压缩和添加缓存过期时间
-$ ./manage.py sync_s3 mybucket --gzip --expires</pre>
+<p>上传到S3的 mybucket ,并对CSS/JS文件进行gzip压缩和添加缓存过期时间:</p>
+<div class="highlight-python"><pre>$ ./manage.py sync_s3 mybucket --gzip --expires</pre>
 </div>
-<div class="highlight-python"><pre># 只上传 media 文件到S3的 mybucket 中
-$ ./manage.py sync_s3 mybucket  --media-only  # or --static-only</pre>
+<p>只上传 media 文件到S3的 mybucket 中:</p>
+<div class="highlight-python"><pre>$ ./manage.py sync_s3 mybucket  --media-only  # or --static-only</pre>
 </div>
 </div>
 <div class="section" id="id3">

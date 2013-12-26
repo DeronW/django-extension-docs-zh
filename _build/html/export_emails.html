@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
     <link rel="next" title="字段扩展" href="field_extensions.html" />
-    <link rel="prev" title="执行脚本" href="runscript.html" /> 
+    <link rel="prev" title="runscript" href="runscript.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="field_extensions.html" title="字段扩展"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="runscript.html" title="执行脚本"
+          <a href="runscript.html" title="runscript"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -57,21 +57,21 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">以不同的格式导出用户的邮件呢列表</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">以不同的格式导出用户的邮件列表</td>
 </tr>
 </tbody>
 </table>
-<p>大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs邀请, 修改权限, LinkedLn用户组等等). <tt class="docutils literal"><span class="pre">export_emails</span></tt> 命令为此而设计.导出的用户信息的同时可以对其进行分组.</p>
+<p>大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs, 修改权限, LinkedLn用户组等等). <tt class="docutils literal"><span class="pre">export_emails</span></tt> 命令为此而设计.导出的用户信息的同时可以对其进行分组.</p>
 <div class="section" id="id1">
-<h2>用例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre># 将所有用户信息导出成 ``'"First Last" &lt;my@addr.com&gt;;'`` 格式.
-$ ./manage.py export_emails &gt; addresses.txt</pre>
+<h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>将所有用户信息导出成 <tt class="docutils literal"><span class="pre">'&quot;First</span> <span class="pre">Last&quot;</span> <span class="pre">&lt;my&#64;addr.com&gt;;'</span></tt> 格式:</p>
+<div class="highlight-python"><pre>$ ./manage.py export_emails &gt; addresses.txt</pre>
 </div>
-<div class="highlight-python"><pre># 以LinkedIn pre-approve格式从 ``Attendees`` 组中导出用户信息
-$ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv</pre>
+<p>以LinkedIn pre-approve格式从 <tt class="docutils literal"><span class="pre">Attendees</span></tt> 组中导出用户信息:</p>
+<div class="highlight-python"><pre>$ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv</pre>
 </div>
-<div class="highlight-python"><pre># 以GMail(Google Docs)格式创建一个CSV文件
-$ ./manage.py export_emails --format=google google.csv</pre>
+<p>以GMail(Google Docs)格式创建一个CSV文件:</p>
+<div class="highlight-python"><pre>$ ./manage.py export_emails --format=google google.csv</pre>
 </div>
 </div>
 <div class="section" id="id2">
@@ -113,7 +113,7 @@ $ ./manage.py export_emails --format=google google.csv</pre>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">export_emails</a><ul>
-<li><a class="reference internal" href="#id1">用例</a></li>
+<li><a class="reference internal" href="#id1">用法举例</a></li>
 <li><a class="reference internal" href="#id2">可选用的格式</a><ul>
 <li><a class="reference internal" href="#address">address</a></li>
 <li><a class="reference internal" href="#google">google</a></li>
@@ -128,7 +128,7 @@ $ ./manage.py export_emails --format=google google.csv</pre>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="runscript.html"
-                        title="previous chapter">执行脚本</a></p>
+                        title="previous chapter">runscript</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="field_extensions.html"
                         title="next chapter">字段扩展</a></p>
@@ -164,7 +164,7 @@ $ ./manage.py export_emails --format=google google.csv</pre>
           <a href="field_extensions.html" title="字段扩展"
              >next</a> |</li>
         <li class="right" >
-          <a href="runscript.html" title="执行脚本"
+          <a href="runscript.html" title="runscript"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

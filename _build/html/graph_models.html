@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
     <link rel="next" title="定时任务" href="jobs_scheduling.html" />
-    <link rel="prev" title="字段扩展" href="field_extensions.html" /> 
+    <link rel="prev" title="model字段扩展" href="field_extensions.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="jobs_scheduling.html" title="定时任务"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="field_extensions.html" title="字段扩展"
+          <a href="field_extensions.html" title="model字段扩展"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -61,12 +61,9 @@
 </tr>
 </tbody>
 </table>
-<p>创建一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 格式文件,包含对于指定app的models的描述.可以传入多个app,这样就会把它们渲染到同一个文件中.输出结果通常是一个打算难度的 <tt class="docutils literal"><span class="pre">.dot</span></tt> 后缀文件.</p>
+<p>创建一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 格式文件,包含对于指定app的models的描述.可以传入多个app,这样就会把它们渲染到同一个文件中.输出结果通常是一个 <tt class="docutils literal"><span class="pre">.dot</span></tt> 后缀文件.</p>
 <p><tt class="docutils literal"><span class="pre">graph_model</span></tt> 命令可以通过些参数改变生成的图形,比如: 分组模型,包含继承,去除部分模型,改变模型中列的位置等.</p>
-<p>With the latest revisions it&#8217;s also possible to specify an output file if
-<a class="reference external" href="https://networkx.lanl.gov/wiki/pygraphviz">pygraphviz</a> is installed and render directly to an image or other supported
-file-type.</p>
-<p>新版的django-extensions</p>
+<p>新版本的 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 还可以直接渲染成一张图片,这个功能需要安装 <a class="reference external" href="https://networkx.lanl.gov/wiki/pygraphviz">pygraphviz</a> 库.</p>
 <div class="section" id="id2">
 <h2>选择生成图表的库<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">graph_model</span></tt> 命令可以指定使用哪个库来生成图片,使用参数 <tt class="docutils literal"><span class="pre">--pygraphviz</span></tt> 或 <tt class="docutils literal"><span class="pre">--pydot</span></tt> ,需要安装相应的依赖库.</p>
@@ -79,7 +76,7 @@ file-type.</p>
 <div class="highlight-python"><pre>$ pip install pyparsing==1.5.7
 $ pip install pydot</pre>
 </div>
-<p>安装过程会很快,注意要安装指定版本的 <tt class="docutils literal"><span class="pre">pyparsing</span></tt> .否则可能会出错:</p>
+<p>安装过程很快,注意要安装指定版本的 <tt class="docutils literal"><span class="pre">pyparsing</span></tt> .否则可能会出错:</p>
 <div class="highlight-python"><pre>Couldn't import dot_parser, loading of dot files will not be possible.</pre>
 </div>
 </div>
@@ -92,7 +89,7 @@ $ pip install pydot</pre>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的剪好换成下划线.</p>
+<p>配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的减号换成下划线.</p>
 </div>
 <div class="section" id="id4">
 <h2>用例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
@@ -137,7 +134,7 @@ $ ./manage.py graph_models foo bar &gt; my_project.dot</pre>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="field_extensions.html"
-                        title="previous chapter">字段扩展</a></p>
+                        title="previous chapter">model字段扩展</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="jobs_scheduling.html"
                         title="next chapter">定时任务</a></p>
@@ -173,7 +170,7 @@ $ ./manage.py graph_models foo bar &gt; my_project.dot</pre>
           <a href="jobs_scheduling.html" title="定时任务"
              >next</a> |</li>
         <li class="right" >
-          <a href="field_extensions.html" title="字段扩展"
+          <a href="field_extensions.html" title="model字段扩展"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

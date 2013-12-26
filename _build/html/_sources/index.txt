@@ -69,12 +69,6 @@ Django Extensions 是Django框架的扩展功能集合.
    sqlcreate
    validate_templates
 
-
-Indices and tables
-==================
-
-* :ref:`search`
-
 __ http://ericholscher.com/blog/2008/sep/12/screencast-django-command-extensions/
 
 .. [1] Django的某个版本指定了需要的Python版本,支持某个Django版本就代表同事支持相应的Python版本.

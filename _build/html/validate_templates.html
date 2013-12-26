@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>validate_templates命令 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>validate_templates &mdash; django-extensions 1.2.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
-    <link rel="prev" title="sqlcreate命令" href="sqlcreate.html" /> 
+    <link rel="prev" title="sqlcreate" href="sqlcreate.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,7 +36,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="sqlcreate.html" title="sqlcreate命令"
+          <a href="sqlcreate.html" title="sqlcreate"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -48,7 +48,7 @@
           <div class="body">
             
   <div class="section" id="validate-templates">
-<h1>validate_templates命令<a class="headerlink" href="#validate-templates" title="Permalink to this headline">¶</a></h1>
+<h1>validate_templates<a class="headerlink" href="#validate-templates" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -61,7 +61,7 @@
 <h2>参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="verbosity">
 <h3>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h3>
-<p>A higher verbosity level will print out all the files that are processed not just the onces that contain errors.</p>
+<p>该参数表示使用高级输出错误信息详细级别,会将所有检查过的模板的错误全部输出.否则只会输出最近的查找到错误的文件信息.</p>
 </div>
 <div class="section" id="break">
 <h3>break<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h3>
@@ -76,14 +76,14 @@
 <h2>配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="validate-templates-extra-template-dirs">
 <h3>VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS<a class="headerlink" href="#validate-templates-extra-template-dirs" title="Permalink to this headline">¶</a></h3>
-<p>通过 <tt class="docutils literal"><span class="pre">VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS</span></tt> 配置可以指定所有模板目录的前缀.这个配置主要针对 <tt class="docutils literal"><span class="pre">TEMPLATE_DIRS</span></tt> 是动态的或模板目录是通过中间件生成的情况.扩展app的模板,比如 <tt class="docutils literal"><span class="pre">celery</span></tt> 也可以通过指定该参数来进行模板语法检测.</p>
+<p>通过 <tt class="docutils literal"><span class="pre">VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS</span></tt> 配置可以指定所有模板目录的前缀.这个配置主要针对 <tt class="docutils literal"><span class="pre">TEMPLATE_DIRS</span></tt> 是动态的或模板目录是通过中间件生成的情况.扩展app的模板,比如Django项目中若是包含的 <tt class="docutils literal"><span class="pre">celery</span></tt> 模块也可以通过指定该参数来进行模板语法检测.</p>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>用法举例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><pre>./manage.py validate_templates</pre>
 </div>
-<p>译者注: <tt class="docutils literal"><span class="pre">validate_templates</span></tt> 命令适用与检测Django框架原生模板,如果使用了其它模板(jinja等),则该命令会失去最初效果.</p>
+<p>译者注: <tt class="docutils literal"><span class="pre">validate_templates</span></tt> 命令适用与检测Django框架原生模板,如果使用了其它模板(jinja等),则该命令会失去检测效果.</p>
 </div>
 </div>
 
@@ -95,7 +95,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">validate_templates命令</a><ul>
+<li><a class="reference internal" href="#">validate_templates</a><ul>
 <li><a class="reference internal" href="#id1">参数</a><ul>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
 <li><a class="reference internal" href="#break">break</a></li>
@@ -113,7 +113,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="sqlcreate.html"
-                        title="previous chapter">sqlcreate命令</a></p>
+                        title="previous chapter">sqlcreate</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/validate_templates.txt"
@@ -143,7 +143,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="sqlcreate.html" title="sqlcreate命令"
+          <a href="sqlcreate.html" title="sqlcreate"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

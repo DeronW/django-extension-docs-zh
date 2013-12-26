@@ -1,28 +1,24 @@
 export_emails
 =============
 
-:概要: 以不同的格式导出用户的邮件呢列表
+:概要: 以不同的格式导出用户的邮件列表
 
-大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs邀请, 修改权限, LinkedLn用户组等等). ``export_emails`` 命令为此而设计.导出的用户信息的同时可以对其进行分组.
+大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs, 修改权限, LinkedLn用户组等等). ``export_emails`` 命令为此而设计.导出的用户信息的同时可以对其进行分组.
 
-用例
+用法举例
 -------------
 
-::
+将所有用户信息导出成 ``'"First Last" <my@addr.com>;'`` 格式::
 
-  # 将所有用户信息导出成 ``'"First Last" <my@addr.com>;'`` 格式.
   $ ./manage.py export_emails > addresses.txt
 
-::
+以LinkedIn pre-approve格式从 ``Attendees`` 组中导出用户信息::
 
-  # 以LinkedIn pre-approve格式从 ``Attendees`` 组中导出用户信息
   $ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv
 
-::
+以GMail(Google Docs)格式创建一个CSV文件::
 
-	# 以GMail(Google Docs)格式创建一个CSV文件
  	$ ./manage.py export_emails --format=google google.csv
-
 
 可选用的格式
 -------------------------

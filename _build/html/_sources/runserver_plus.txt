@@ -1,14 +1,12 @@
 runserver_plus
-=============
+================
 
-:概要: ``runserver_plus`` 命令启动测试服务,并用 Werkzeug_ 作为调试后台
-
+:概要: ``runserver_plus`` 命令启动测试服务,并用 Werkzeug_ 作为调试后台,这个命令是对原生命令 ``runserver`` 的扩展,提供了更强的错误调试功能.
 
 简介
 ------------
 
-``runserver_plus`` 命令需要安装 `Werkzeug WSGI utilities` . ``Werkzeug`` 是Python的杀手级调试工具,还能调试基于ajax的请求(允许在出错的地方执行代码). 还提供了一个漂亮的错误展示页面.
-
+``runserver_plus`` 命令需要安装 `Werkzeug WSGI utilities` . ``Werkzeug`` 是Python作为web服务的杀手级调试工具,还能进行基于ajax的错误断点调试(允许在出错的地方执行代码). 当然还提供了一个漂亮的错误展示页面.
 
 开始使用
 ---------------
@@ -28,51 +26,51 @@ runserver_plus
   Using the Werkzeug debugger (http://werkzeug.pocoo.org/)
   Quit the server with CONTROL-C.
 
-提示: ``runserver_plus`` 命令接受原来的所有参数.也就是可以随意指定端口和host,跟原生的 ``runserver`` 命令一模一样.
+``runserver_plus`` 命令接受原来的所有参数.也就是可以随意指定端口和host,跟原生的 ``runserver`` 命令一模一样.
 
 深入使用
 ----------
 
-通过 ``runserver_plus`` 命令启动服务后,如果遇到服务代码抛出异常,我们会得到一个 Werkzeug_ 的错误显示页面,而不是默认的Django错误页面.
+``runserver_plus`` 启动的服务遇到代码抛出异常时,会得到一个 Werkzeug_ 的错误显示页面(不是默认的Django错误页面).
 
 .. image:: https://f.cloud.github.com/assets/202559/1261027/2637f826-2c22-11e3-83c6-646acc87808b.png
     :alt: werkzeug-traceback
 
-当鼠标划过特定错误堆栈时,还能显示出扩展功能,注意图片右边出现的2个按钮:
+当鼠标划过特定错误行(堆栈)时,就会显示出当前位置的调试扩展功能,注意图片右边出现的2个按钮:
 
 .. image:: https://f.cloud.github.com/assets/202559/1261035/558ad0ee-2c22-11e3-8ddd-6678d84d77e7.png
     :alt: werkzeug-options
 
-这几个选项是:
+这2个选项是:
 
 查看源码
 ^^^^^^^^^^^
 
-这是点击 *显示源码* 后的效果:
+这是点击 **显示源码** 后的效果:
 
 .. image:: https://f.cloud.github.com/assets/202559/1261036/583c8c42-2c22-11e3-9eb9-5c16b8732512.png
     :alt: werkzeug-source
 
 产看错误产生的源码有助于快速定位错误原因.抛出异常的部分被高亮显示,这样更方便查看.
 
-有一个不够人性化的地方是,点击 *查看源码* 后,页面没有自动滚动到底部(源码显示的地方),这容易让人觉得什么都没有发生,其实是没有看到.
+有一个不够人性化的地方是,点击 **查看源码** 后,页面没有自动滚动到底部(源码显示的地方),这容易让人觉得什么都没有发生,其实是没有看到.
 
 命令行调试
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 在错误页面上点击命令行调试按钮后,会显示出一个命令行调试工具(网页里面的输入框),是不是屌爆了:
 
 .. image:: https://f.cloud.github.com/assets/202559/1261037/5d12eda6-2c22-11e3-802a-2639ff8813fa.png
     :alt: werkzeug-debugger
 
-这样就回出现一个ajax的命令行调试工具,然后就可以任意发挥了.截图中,在调试框里输入了 ``print environ`` 命令来查看当前环境中给方法传入了哪些参数.
+这样就会出现一个基于ajax的命令行调试工具,输入的命令通过ajax方式发送到后台,再把返回的结果输出,然后就可以任意发挥了.截图中,在调试框里输入了 ``print environ`` 命令来查看当前环境中给方法传入了哪些参数.
 
-*警告* : 改方法不能被用在人和正式环境中,即使是在正式环境中检测问题时也不行.命令行调试工具允许在服务器端执行Python命令,这是非常危险的.
+**注意** : 该方法不能被用在任何正式环境中,即使是在正式环境中检测问题时也不行.命令行调试工具允许在服务器端执行Python命令,这是非常危险的.
 
 SSL
 ^^^
 
-``runserver_plus`` 还支持SSL,这样就可以方便的调试 ``https`` 请求了.使用SSL时需要提供证书的名字,然后 ``runserver_plus`` 会自动生成一个证书::
+``runserver_plus`` 还支持SSL,这样就可以方便的调试 ``https`` 请求了.使用SSL时需要提供证书的名字, ``runserver_plus`` 会自动生成一个证书::
 
   $ python manage.py runserver_plus --cert cert
   Validating models...

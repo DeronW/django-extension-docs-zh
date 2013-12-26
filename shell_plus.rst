@@ -1,22 +1,20 @@
 shell_plus
 ==========
 
-:概要: 运行Django shell的同时自动加载所有app的models
+:概要: shell命令的扩展命令,运行Django shell的同时自动加载所有app的models,并选择使用Python shell的版本.
 
 交互式的 Python Shells
 -------------------------
 
-shell_plus支持3中交互的Python shells.
-
-IPython::
-
-  $ ./manage.py shell_plus --use-ipython
-
+shell_plus支持3种交互的Python shell.
 
 BPython::
 
   $ ./manage.py shell_plus --use-bpython
 
+IPython::
+
+  $ ./manage.py shell_plus --use-ipython
 
 Python::
 
@@ -25,7 +23,7 @@ Python::
 
 默认shell优先顺序是: bpython, ipython, python.
 
-也可以在配置中指定优先选择的shell工具.::
+也可以在 ``settings.py`` 配置中指定优先选择的shell工具::
 
   # 在shell_plus中使用ipython作为交互工具
   SHELL_PLUS = "ipython"
@@ -33,14 +31,9 @@ Python::
 配置
 -------------
 
-Sometimes, models from your own apps and other peoples apps have colliding names,
-or you may want to completly skip loading an apps models. Here are some examples of how to do that.
-
 如果遇到apps中包含的的models名字出现冲突,或不想载入特定apps的models的情况,可以通过配置别名的方法解决:
 
-提示: 下列配置仅在shell_plus中生效,不会影响当前环境变量.
-
-::
+提示: 下列配置仅在shell_plus中生效,不会影响当前项目运行的环境变量::
 
   # 将自动载入的Messages模块重命名为blog_messages
   
@@ -52,9 +45,7 @@ or you may want to completly skip loading an apps models. Here are some examples
   
   SHELL_PLUS_DONT_LOAD = ['sites', 'blog.pictures']
 
-设置别名和声明不加载的配置可以同时使用.
-
-也可以通过命令行参数谁知不加载的模块::
+设置别名和声明不加载的配置可以同时使用.也可以通过命令行参数谁知不加载的模块::
 
   $ ./manage.py shell_plus --dont-load app1 --dont-load app2.module1
 
@@ -64,13 +55,13 @@ shell_plus还能使用 `IPython Notebook`_ .将浏览器作为交互的shell::
 
     $ ./manage.py shell_plus --notebook
 
-IPython Notebook中也会将所有模块和models加载到全局变量中.
+``IPython Notebook`` 中也会将所有模块和models加载到全局变量中.
 
-IPython NoteBook中自动加载模块功能是通过参数配置的,默认为启用状态.::
+``IPython NoteBook`` 中自动加载模块功能是通过参数配置的,默认为启用状态.::
 
   --ext django_extensions.management.notebook_extension
 
-自定义IPython Notebook配置需要覆盖Django项目的 ``IPYTHON_ARGUMENTS`` 配置::
+自定义 ``IPython Notebook`` 配置需要覆盖Django项目的 ``IPYTHON_ARGUMENTS`` 配置::
 
     IPYTHON_ARGUMENTS = [
         '--ext', 'django_extensions.management.notebook_extension',
@@ -78,12 +69,9 @@ IPython NoteBook中自动加载模块功能是通过参数配置的,默认为启
         '--debug',
     ]
 
-想在IPython Notebook中启用自动加载功能,要么包含django-extensions默认的notebook扩展配置,要么把自动加载的代码拷贝到自定义的扩展中.
+想在 ``IPython Notebook`` 中启用自动加载功能,要么包含django-extensions默认的notebook扩展配置,要么把自动加载的代码拷贝到自定义的扩展中.
 
-提示: IPython Notebook的特性中不能识别 ``--dont-load`` 参数.
-
-.. _`IPython Notebook`: http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html
-
+提示: ``IPython Notebook`` 的特性中不能识别 ``--dont-load`` 参数.
 
 附加的引入模块 
 ------------------
@@ -97,7 +85,7 @@ IPython NoteBook中自动加载模块功能是通过参数配置的,默认为启
         'module.submodule4'
     )
 
-上面的配置被转换为Python的引入代码如下所示::
+上面的配置被转换为Python的引入代码结果,如下所示::
 
     from module.submodule1 import class1, function2
     from module.submodule2 import function3
@@ -105,3 +93,6 @@ IPython NoteBook中自动加载模块功能是通过参数配置的,默认为启
     import module.submodule4
 
 这些引入的变量在shell执行时就可以使用了.
+
+
+.. _`IPython Notebook`: http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html

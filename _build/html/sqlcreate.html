@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
-    <link rel="next" title="validate_templates命令" href="validate_templates.html" />
+    <link rel="next" title="validate_templates" href="validate_templates.html" />
     <link rel="prev" title="sqldiff" href="sqldiff.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="validate_templates.html" title="validate_templates命令"
+          <a href="validate_templates.html" title="validate_templates"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="sqldiff.html" title="sqldiff"
@@ -73,7 +73,7 @@
 <p>如果有合适的方法证明当前用户有修改数据库的权限,那就可以把输出结果直接导入到数据库中.但是因为项目的配置方式,这种直接修改数据库的方式是不能接受的.</p>
 </div>
 <div class="section" id="id3">
-<h2>例子<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>用法举例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="postgresql">
 <h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><pre>$ ./manage.py sqlcreate [--router=&lt;routername&gt;] | psql -U &lt;db_administrator&gt; -W</pre>
@@ -89,7 +89,7 @@
 <h2>存在的问题<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>CREATE DATABASE 不是SQL标准语句,所以可能不能支持所有数据库 <a class="footnote-reference" href="#id7" id="id5">[1]</a>.</li>
-<li>回滚数据库时没有创建用户名及密码,但缺尝试分配一个数据库用户 <a class="footnote-reference" href="#id8" id="id6">[2]</a> .</li>
+<li>回滚数据库时没有创建用户名及密码,但会尝试将数据库权限分配一个用户 <a class="footnote-reference" href="#id8" id="id6">[2]</a> .</li>
 <li>缺少表空间的设置,等等.</li>
 </ul>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
@@ -118,7 +118,7 @@
 <li><a class="reference internal" href="#">sqlcreate</a><ul>
 <li><a class="reference internal" href="#id1">简介</a></li>
 <li><a class="reference internal" href="#id2">用法</a></li>
-<li><a class="reference internal" href="#id3">例子</a><ul>
+<li><a class="reference internal" href="#id3">用法举例</a><ul>
 <li><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
 <li><a class="reference internal" href="#mysql">MySQL</a></li>
 </ul>
@@ -133,7 +133,7 @@
                         title="previous chapter">sqldiff</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="validate_templates.html"
-                        title="next chapter">validate_templates命令</a></p>
+                        title="next chapter">validate_templates</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/sqlcreate.txt"
@@ -163,7 +163,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="validate_templates.html" title="validate_templates命令"
+          <a href="validate_templates.html" title="validate_templates"
              >next</a> |</li>
         <li class="right" >
           <a href="sqldiff.html" title="sqldiff"

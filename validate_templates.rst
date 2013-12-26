@@ -1,4 +1,4 @@
-validate_templates命令
+validate_templates
 =======================
 
 :概要: 检查模板的语法错误或编译错误.
@@ -8,9 +8,8 @@ validate_templates命令
 
 verbosity
 ~~~~~~~~~
-A higher verbosity level will print out all the files that are processed not just the onces that contain errors.
 
-
+该参数表示使用高级输出错误信息详细级别,会将所有检查过的模板的错误全部输出.否则只会输出最近的查找到错误的文件信息.
 
 break
 ~~~~~
@@ -28,7 +27,7 @@ includes
 VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-通过 ``VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS`` 配置可以指定所有模板目录的前缀.这个配置主要针对 ``TEMPLATE_DIRS`` 是动态的或模板目录是通过中间件生成的情况.扩展app的模板,比如 ``celery`` 也可以通过指定该参数来进行模板语法检测.
+通过 ``VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS`` 配置可以指定所有模板目录的前缀.这个配置主要针对 ``TEMPLATE_DIRS`` 是动态的或模板目录是通过中间件生成的情况.扩展app的模板,比如Django项目中若是包含的 ``celery`` 模块也可以通过指定该参数来进行模板语法检测.
 
 用法举例
 -------------
@@ -37,4 +36,4 @@ VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS
 
 	./manage.py validate_templates
 
-译者注: ``validate_templates`` 命令适用与检测Django框架原生模板,如果使用了其它模板(jinja等),则该命令会失去最初效果.
+译者注: ``validate_templates`` 命令适用与检测Django框架原生模板,如果使用了其它模板(jinja等),则该命令会失去检测效果.

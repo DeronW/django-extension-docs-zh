@@ -1,7 +1,7 @@
-扩展命令
+management命令扩展
 ==========================
 
-:概要: 扩展命令列表
+:概要: management扩展命令列表
 
 * :doc:`shell_plus` - Django shell的加强版. 自动载入所有app的models,可以方便的使用这些ORM.
 

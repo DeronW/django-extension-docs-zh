@@ -7,4 +7,4 @@
 数据库字段的扩展
 ---------------------------------
 
-* *TimeStampedModel* - 抽象类,包含了由自己管理的 ``created`` 和 ``字段`` .
+* ``TimeStampedModel`` - 抽象类,包含了由自己管理的 ``created`` 和 ``modified`` 字段.

@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
     <link rel="next" title="数据库字段扩展" href="model_extensions.html" />
-    <link rel="prev" title="Graph models" href="graph_models.html" /> 
+    <link rel="prev" title="graph_models" href="graph_models.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="model_extensions.html" title="数据库字段扩展"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="graph_models.html" title="Graph models"
+          <a href="graph_models.html" title="graph_models"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -57,17 +57,17 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">在Django-extensions中使用定时任务的文档.</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">在Django-extensions中使用定时任务.</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="id2">
 <h2>定时的计划任务<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="this-page-is-very-much-work-in-progress">
-<h3>This page is very much; Work in Progress<a class="headerlink" href="#this-page-is-very-much-work-in-progress" title="Permalink to this headline">¶</a></h3>
-<p>新建一个与Django的命令执行方式类似的任务 <a class="footnote-reference" href="#id4" id="id3">[1]</a>.使用 <tt class="docutils literal"><span class="pre">create_jobs</span></tt> 命令在一个app内创建一个 &#8216;jobs&#8217; 目录,然后可以创建不同的Python脚本执行不同的任务.</p>
-<p><tt class="docutils literal"><span class="pre">django_extensions.jobs</span></tt> 包中包含了一些简单的例子.</p>
-<p>Python的任务脚本继承定时任务后就会被定义为任务,可以按小时,按天,按周或按月执行.继承的脚本必须实现 <tt class="docutils literal"><span class="pre">execute</span></tt> 方法,该方法在任务触发时会被自动执行.</p>
+<div class="section" id="id3">
+<h3>本页介绍的功能正在努力改进中<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>新建一个与Django的命令执行方式类似的任务 <a class="footnote-reference" href="#id5" id="id4">[1]</a>.使用 <tt class="docutils literal"><span class="pre">create_jobs</span></tt> 命令在一个app内创建一个 &#8216;jobs&#8217; 目录,然后可以创建不同的Python脚本执行不同的任务.</p>
+<p><tt class="docutils literal"><span class="pre">django_extensions.jobs</span></tt> 目录中包含了一些简单的例子.</p>
+<p>Python的任务脚本继承定时任务类后就会被定义为任务,可以按小时,按天,按周或按月执行.继承的脚本必须实现 <tt class="docutils literal"><span class="pre">execute</span></tt> 方法,该方法在任务触发时会被自动执行.</p>
 <p>与任务相关的命令还包括:</p>
 <ul class="simple">
 <li>create_jobs: 创建包含任务的目录</li>
@@ -88,10 +88,10 @@
 
 @monthly /path/to/my/project/manage.py runjobs monthly</pre>
 </div>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>意味着可以想Django的shell命令那样引入项目中的app相关类和方法</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>意味着可以想Django的shell命令那样引入项目中的app相关类和方法</td></tr>
 </tbody>
 </table>
 </div>
@@ -108,7 +108,7 @@
   <ul>
 <li><a class="reference internal" href="#">定时任务</a><ul>
 <li><a class="reference internal" href="#id2">定时的计划任务</a><ul>
-<li><a class="reference internal" href="#this-page-is-very-much-work-in-progress">This page is very much; Work in Progress</a></li>
+<li><a class="reference internal" href="#id3">本页介绍的功能正在努力改进中</a></li>
 </ul>
 </li>
 </ul>
@@ -117,7 +117,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="graph_models.html"
-                        title="previous chapter">Graph models</a></p>
+                        title="previous chapter">graph_models</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="model_extensions.html"
                         title="next chapter">数据库字段扩展</a></p>
@@ -153,7 +153,7 @@
           <a href="model_extensions.html" title="数据库字段扩展"
              >next</a> |</li>
         <li class="right" >
-          <a href="graph_models.html" title="Graph models"
+          <a href="graph_models.html" title="graph_models"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

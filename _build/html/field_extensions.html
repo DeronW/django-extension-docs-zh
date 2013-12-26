@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>字段扩展 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>model字段扩展 &mdash; django-extensions 1.2.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
-    <link rel="next" title="Graph models" href="graph_models.html" />
-    <link rel="prev" title="导出邮件列表" href="export_emails.html" /> 
+    <link rel="next" title="graph_models" href="graph_models.html" />
+    <link rel="prev" title="export_emails" href="export_emails.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,10 +37,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="graph_models.html" title="Graph models"
+          <a href="graph_models.html" title="graph_models"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="export_emails.html" title="导出邮件列表"
+          <a href="export_emails.html" title="export_emails"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -51,27 +51,25 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="id1">
-<h1>字段扩展<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="model">
+<h1>model字段扩展<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">model的字段扩展</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">数据模型model的字段扩展</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="id2">
-<h2>当前数据模型的字段的扩展<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>当前数据模型的字段的扩展<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><em>AutoSlugField</em> - 自动生成一个唯一的slug,生成方式是以迭代方式给当前字段后面添加一个随机字符,知道不重复为止.slug生成方式的灵感来自于 SmileyChris 的唯一码生成代码片段.</li>
-<li><em>CreationDateTimeField</em> - DateTimeField类型字段,会自动保存数据第一次被保存到数据库的时间戳.工作方式与添加了 <tt class="docutils literal"><span class="pre">auto_now_add=True</span></tt> 参数相同,而 <tt class="docutils literal"><span class="pre">auto_now_add</span></tt> 参数已经不推荐使用.</li>
-<li><em>ModificationDateTimeField</em> - DateTimeField类型字段,当数据出现修改是会自动保存被修改的时间戳.工作方式与添加了 <tt class="docutils literal"><span class="pre">auto_now=True</span></tt> 参数相同,而 <tt class="docutils literal"><span class="pre">auto_now</span></tt> 参数已经不推荐使用.</li>
-<li><em>UUIDField</em> - UUIDField for Django, supports all uuid versions which are
-natively supported by the uuid python module.</li>
-<li><em>UUIDField</em> - 唯一标识码字段,通过本地Python模块生成的唯一标识码,支持所有版本的uuid.</li>
-<li><em>EncryptedCharField</em> - 字符串类型字段,会将数据以加密的方式保存和现实,加密方法使用 <a class="reference external" href="http://www.keyczar.org/">Keyczar</a>.使用这个扩展字段时需要安装Keyczar,通过Keyczar库生成加密的密钥,还要在django项目的settings中添加 <tt class="docutils literal"><span class="pre">settings.ENCRYPTED_FIELD_KEYS_DIR</span></tt> 配置,指向密钥的完整目录.</li>
-<li><em>EncryptedTextField</em> - 字符串类型字段,与 <em>EncryptedCharField</em> 字段类似,但是继承自 <tt class="docutils literal"><span class="pre">TextField</span></tt> 字段.</li>
+<li><tt class="docutils literal"><span class="pre">AutoSlugField</span></tt> - 自动生成一个唯一的slug,生成方式是以迭代方式给当前字段后面添加一个随机字符,知道不重复为止.slug生成方式的灵感来自于 SmileyChris 的唯一码生成代码片段.</li>
+<li><tt class="docutils literal"><span class="pre">CreationDateTimeField</span></tt> - DateTimeField类型字段,会自动保存数据第一次被保存到数据库的时间戳.工作方式与添加了 <tt class="docutils literal"><span class="pre">auto_now_add=True</span></tt> 参数相同,而 <tt class="docutils literal"><span class="pre">auto_now_add</span></tt> 参数已经不推荐使用.</li>
+<li><tt class="docutils literal"><span class="pre">ModificationDateTimeField</span></tt> - DateTimeField类型字段,当数据出现修改是会自动保存被修改的时间戳.工作方式与添加了 <tt class="docutils literal"><span class="pre">auto_now=True</span></tt> 参数相同,而 <tt class="docutils literal"><span class="pre">auto_now</span></tt> 参数已经不推荐使用.</li>
+<li><tt class="docutils literal"><span class="pre">UUIDField</span></tt> - 唯一标识码字段,通过本地Python模块生成的唯一标识码,支持所有版本的uuid.</li>
+<li><tt class="docutils literal"><span class="pre">EncryptedCharField</span></tt> - 字符串类型字段,会将数据以加密的方式保存和现实,加密方法使用 <a class="reference external" href="http://www.keyczar.org/">Keyczar</a>.使用这个扩展字段时需要安装Keyczar,通过Keyczar库生成加密的密钥,还要在django项目的 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 中添加 <tt class="docutils literal"><span class="pre">settings.ENCRYPTED_FIELD_KEYS_DIR</span></tt> 配置,指向密钥的完整目录.</li>
+<li><tt class="docutils literal"><span class="pre">EncryptedTextField</span></tt> - 字符串类型字段,与 <tt class="docutils literal"><span class="pre">EncryptedCharField</span></tt> 字段类似,但是继承自 <tt class="docutils literal"><span class="pre">TextField</span></tt> 字段.</li>
 </ul>
 </div>
 </div>
@@ -84,18 +82,18 @@ natively supported by the uuid python module.</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">字段扩展</a><ul>
-<li><a class="reference internal" href="#id2">当前数据模型的字段的扩展</a></li>
+<li><a class="reference internal" href="#">model字段扩展</a><ul>
+<li><a class="reference internal" href="#id1">当前数据模型的字段的扩展</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="export_emails.html"
-                        title="previous chapter">导出邮件列表</a></p>
+                        title="previous chapter">export_emails</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="graph_models.html"
-                        title="next chapter">Graph models</a></p>
+                        title="next chapter">graph_models</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/field_extensions.txt"
@@ -125,10 +123,10 @@ natively supported by the uuid python module.</li>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="graph_models.html" title="Graph models"
+          <a href="graph_models.html" title="graph_models"
              >next</a> |</li>
         <li class="right" >
-          <a href="export_emails.html" title="导出邮件列表"
+          <a href="export_emails.html" title="export_emails"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

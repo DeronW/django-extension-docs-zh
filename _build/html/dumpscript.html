@@ -26,8 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
-    <link rel="next" title="执行脚本" href="runscript.html" />
-    <link rel="prev" title="创建app" href="create_app.html" /> 
+    <link rel="next" title="runscript" href="runscript.html" />
+    <link rel="prev" title="create_app" href="create_app.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,10 +37,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="runscript.html" title="执行脚本"
+          <a href="runscript.html" title="runscript"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="create_app.html" title="创建app"
+          <a href="create_app.html" title="create_app"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
@@ -57,11 +57,11 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">生成单独的Python脚本,可以用来将数据表导入数据库.</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">生成单独的Python脚本,包含指定app对应的数据库数据对象.可以用来将数据表导入数据库.</td>
 </tr>
 </tbody>
 </table>
-<p><tt class="docutils literal"><span class="pre">dumpscript</span></tt> 命令生成单独的Python脚本,可以把Python对象转换成数据库的表结构.这种方法比直接创建数据库或通过XML创建数据库更容易理解,扩展性也更好.</p>
+<p><tt class="docutils literal"><span class="pre">dumpscript</span></tt> 命令生成单独的Python脚本,包含了转换成Python对象的数据库数据.这种方法比直接创建数据库或通过XML创建数据库更容易理解,扩展性也更好.</p>
 <div class="section" id="id1">
 <h2>为什么有这个功能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>这样做的有几点好处:</p>
@@ -105,10 +105,10 @@
 <p>从指定的app中导出所有models的建表语句:</p>
 <div class="highlight-python"><pre>$ ./manage.py dumpscript appname &gt; scripts/testdata.py</pre>
 </div>
-<p>导出指定模型的数据,添加参数 <tt class="docutils literal"><span class="pre">`appname.ModelName</span></tt></p>
+<p>导出指定模型的数据,添加参数 <tt class="docutils literal"><span class="pre">appname.ModelName</span></tt></p>
 <div class="highlight-python"><pre>$ ./manage.py dumpscript appname.ModelName &gt; scripts/testdata.py</pre>
 </div>
-<p>重置指定app,然后重新加载数据:</p>
+<p>清空指定app对应数据库数据,然后重新加载数据:</p>
 <div class="highlight-python"><pre>$ ./manage.py reset appname
 $ ./manage.py runscript testdata</pre>
 </div>
@@ -162,10 +162,10 @@ $ ./manage.py dumpscript appname.Somemodel &gt; dumps/appname_somemodel.py</pre>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="create_app.html"
-                        title="previous chapter">创建app</a></p>
+                        title="previous chapter">create_app</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="runscript.html"
-                        title="next chapter">执行脚本</a></p>
+                        title="next chapter">runscript</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/dumpscript.txt"
@@ -195,10 +195,10 @@ $ ./manage.py dumpscript appname.Somemodel &gt; dumps/appname_somemodel.py</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="runscript.html" title="执行脚本"
+          <a href="runscript.html" title="runscript"
              >next</a> |</li>
         <li class="right" >
-          <a href="create_app.html" title="创建app"
+          <a href="create_app.html" title="create_app"
              >previous</a> |</li>
         <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>

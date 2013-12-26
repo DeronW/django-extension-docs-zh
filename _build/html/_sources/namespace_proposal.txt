@@ -7,8 +7,6 @@
 简介
 ------------
 
-Please change / write your proposal for splitting django_extensions into
-namespaces here.
 请使用 ``django_extensions`` 的命名空间,而不是绝对路径
 
 
@@ -17,9 +15,9 @@ namespaces here.
 
 一些简单的建议:
 
-* django_extensions.commands (20% 的人在正式环境中使用路径)
+* django_extensions.commands (20% 的人在正式环境中使用的绝对路径)
 
-* django_extensions.commands.development (所有在开发中用到的功能)
+* django_extensions.commands.development (所有在开发中都会用到的功能)
 
 * django_extensions.commands.extra
 

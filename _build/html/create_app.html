@@ -61,15 +61,15 @@
 </tr>
 </tbody>
 </table>
-<p><tt class="docutils literal"><span class="pre">create_app</span></tt> 命令的 <tt class="docutils literal"><span class="pre">--template</span></tt> 参数指定使用一个模板来创建新的app.</p>
-<p><tt class="docutils literal"><span class="pre">--diagram</span></tt> 参数同构 .dia 文件生成models.py和admin.py.</p>
+<p><tt class="docutils literal"><span class="pre">--template</span></tt> 参数指定使用一个模板来创建新的app.</p>
+<p><tt class="docutils literal"><span class="pre">--diagram</span></tt> 参数能够从 <tt class="docutils literal"><span class="pre">.dia</span></tt> 文件生成 <tt class="docutils literal"><span class="pre">models.py</span></tt> 和 <tt class="docutils literal"><span class="pre">admin.py</span></tt>.</p>
 <div class="section" id="id1">
 <h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>例子需要在项目的根目录下执行,该目录下要包含settings.py文件 <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
+<p>例子需要在项目的根目录下执行,该目录下要包含 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件 <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
 <div class="highlight-python"><pre># 获取命令行的帮助
 ./manage.py create_app --help</pre>
 </div>
-<div class="highlight-python"><pre># 从 [APP_NAME].dia 文件中生成models.py和admin.py,这个文件应该在settings.py文件的目录下
+<div class="highlight-python"><pre># 从 [APP_NAME].dia 文件中生成 ``models.py`` 和 ``admin.py`` ,这个文件应该放在与 ``settings.py`` 相同的文件目录下
 ./manage.py create_app -d APP_NAME</pre>
 </div>
 </div>
@@ -78,6 +78,7 @@
 <div class="highlight-python"><pre>./manage.py create_app --diagram=sample.dia webdata</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">-d</span></tt> 参数或 <tt class="docutils literal"><span class="pre">--diagram</span></tt> 参数通过 <a class="reference external" href="https://svn.devnull.li/main/pythonware/dia2django/trunk/doc/">dia2django</a> 生成models.py, 详细文档查看 <a class="reference external" href="http://code.djangoproject.com/wiki/Dia2Django">django wiki</a>.</p>
+<p>译者注: 新版本Django原生命令 <tt class="docutils literal"><span class="pre">startapp</span></tt> 也提供了通过 <tt class="docutils literal"><span class="pre">--template</span></tt> 指定模板来创建app的功能</p>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">

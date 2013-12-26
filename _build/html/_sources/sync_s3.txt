@@ -1,11 +1,11 @@
 sync_s3
 ==============
 
-:概要: 将项目的 ``MEDIA_ROOT`` 和 ``STATIC_ROOT`` 目录同步到S3 [1]_.
+:概要: 将项目的 ``MEDIA_ROOT`` 和 ``STATIC_ROOT`` 目录包含的文件同步到S3 [1]_.
 
 ``sync_s3`` 命令会检索配置中的 ``settings.MEDIA_ROOT`` 目录和 ``settings.STATIC_ROOT`` 目录,然后把所有文件资源上传到S3的相同的目录结构下.
 
-``sync_s3`` 命令可以执行以下功能,通过传入参数启用对应功能,默认全部关闭::
+``sync_s3`` 命令可以启用以下功能,通过传入参数启用对应功能,默认全部关闭::
 
   * gzip 压缩CSS和JS文件,并添加 ``Content-Encoding`` 头.
   * 设置文件缓存过期时间
@@ -14,21 +14,17 @@ sync_s3
 用法举例
 -------------
 
-::
+上传到S3的 mybucket ::
 
-  # 上传到S3的 mybucket 
   $ ./manage.py sync_s3 mybucket
 
-::
+上传到S3的 mybucket ,并对CSS/JS文件进行gzip压缩和添加缓存过期时间::
 
-  # 上传到S3的 mybucket ,并对CSS/JS文件进行gzip压缩和添加缓存过期时间
   $ ./manage.py sync_s3 mybucket --gzip --expires
 
-::
+只上传 media 文件到S3的 mybucket 中::
 
-  # 只上传 media 文件到S3的 mybucket 中
   $ ./manage.py sync_s3 mybucket  --media-only  # or --static-only
-
 
 依赖的库和配置
 -------------------------------

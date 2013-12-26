@@ -3,15 +3,11 @@ graph_models
 
 :概要: 将整个项目或指定app的models结果渲染成图形 [1]_.
 
-创建一个 GraphViz_ 格式文件,包含对于指定app的models的描述.可以传入多个app,这样就会把它们渲染到同一个文件中.输出结果通常是一个打算难度的 ``.dot`` 后缀文件.
+创建一个 GraphViz_ 格式文件,包含对于指定app的models的描述.可以传入多个app,这样就会把它们渲染到同一个文件中.输出结果通常是一个 ``.dot`` 后缀文件.
 
 ``graph_model`` 命令可以通过些参数改变生成的图形,比如: 分组模型,包含继承,去除部分模型,改变模型中列的位置等.
 
-With the latest revisions it's also possible to specify an output file if
-pygraphviz_ is installed and render directly to an image or other supported
-file-type.
-
-新版的django-extensions
+新版本的 ``django-extensions`` 还可以直接渲染成一张图片,这个功能需要安装 pygraphviz_ 库.
 
 选择生成图表的库
 -------------------
@@ -31,7 +27,7 @@ file-type.
   $ pip install pyparsing==1.5.7
   $ pip install pydot
 
-安装过程会很快,注意要安装指定版本的 ``pyparsing`` .否则可能会出错::
+安装过程很快,注意要安装指定版本的 ``pyparsing`` .否则可能会出错::
 
     Couldn't import dot_parser, loading of dot files will not be possible.
 
@@ -45,7 +41,7 @@ file-type.
     'group_models': True,
   }
 
-配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的剪好换成下划线.
+配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的减号换成下划线.
 
 用例
 -------------

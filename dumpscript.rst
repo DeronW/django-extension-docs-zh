@@ -1,9 +1,9 @@
 dumpscript
 ==========
 
-:概要: 生成单独的Python脚本,可以用来将数据表导入数据库.
+:概要: 生成单独的Python脚本,包含指定app对应的数据库数据对象.可以用来将数据表导入数据库.
 
-``dumpscript`` 命令生成单独的Python脚本,可以把Python对象转换成数据库的表结构.这种方法比直接创建数据库或通过XML创建数据库更容易理解,扩展性也更好.
+``dumpscript`` 命令生成单独的Python脚本,包含了转换成Python对象的数据库数据.这种方法比直接创建数据库或通过XML创建数据库更容易理解,扩展性也更好.
 
 为什么有这个功能
 ----------------
@@ -50,11 +50,11 @@ dumpscript
 
   $ ./manage.py dumpscript appname > scripts/testdata.py
 
-导出指定模型的数据,添加参数 ```appname.ModelName`` ::
+导出指定模型的数据,添加参数 ``appname.ModelName`` ::
 
   $ ./manage.py dumpscript appname.ModelName > scripts/testdata.py
 
-重置指定app,然后重新加载数据::
+清空指定app对应数据库数据,然后重新加载数据::
 
   $ ./manage.py reset appname
   $ ./manage.py runscript testdata
