@@ -36,16 +36,16 @@ Python::
 提示: 下列配置仅在shell_plus中生效,不会影响当前项目运行的环境变量::
 
   # 将自动载入的Messages模块重命名为blog_messages
-  
+
   SHELL_PLUS_MODEL_ALIASES = {'blog': {'Messages': 'blog_messages'},}
 
 ::
 
   # 不加载sites app和pictures的blog模型
-  
+
   SHELL_PLUS_DONT_LOAD = ['sites', 'blog.pictures']
 
-设置别名和声明不加载的配置可以同时使用.也可以通过命令行参数谁知不加载的模块::
+设置别名和声明不加载的配置可以同时使用.也可以通过命令行参数设置不加载的模块::
 
   $ ./manage.py shell_plus --dont-load app1 --dont-load app2.module1
 
@@ -73,7 +73,7 @@ shell_plus还能使用 `IPython Notebook`_ .将浏览器作为交互的shell::
 
 提示: ``IPython Notebook`` 的特性中不能识别 ``--dont-load`` 参数.
 
-附加的引入模块 
+附加的引入模块
 ------------------
 
 在配置文件中设置 ``SHELL_PLUS_PRE_IMPORTS`` 和 ``SHELL_PLUS_POST_IMPORTS`` 可以指定附加的引入模块.第一个配置中添加的模块会先于所有模块加载,第二个配置中添加的模块会后于所有模块加载.这两个配置的格式相同,在settings.py文件中添加::

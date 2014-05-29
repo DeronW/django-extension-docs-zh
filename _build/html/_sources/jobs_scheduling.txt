@@ -29,13 +29,21 @@ Python的任务脚本继承定时任务类后就会被定义为任务,可以按�
 
 未触发时,任务不会自己执行.
 
-任务需要手动执行,或指定时间执行,或在 ``cron`` 中配置定期执行::
+任务需要手动执行,或指定时间执行,或在 ``cron`` 中配置定期执行
+
+::
 
 	@hourly /path/to/my/project/manage.py runjobs hourly
 
+::
+
 	@daily /path/to/my/project/manage.py runjobs daily
 
+::
+
 	@weekly /path/to/my/project/manage.py runjobs weekly
+
+::
 
 	@monthly /path/to/my/project/manage.py runjobs monthly
 

@@ -9,6 +9,8 @@ management命令扩展
 
 * ``create_command`` - 在指定app内创建一个命令扩展目录,方便添加新的扩展命令(或者只能手动创建扩展命令的目录).
 
+* ``create_template_tags`` - 在制定的app内创建模板标签目录
+
 * ``create_jobs`` - 在指定app内创建一个定时任务扩展目录,可以定期执行指定任务.
 
 * ``create_superuser`` - 方便的创建一个超级管理员 [2]_.
@@ -27,11 +29,11 @@ management命令扩展
 
 * ``passwd`` - 重新设定某个用户的密码,用法: *./manage.py passwd [用户名]* .
 
-* :doc:`print_settings` - 与 ``diffsettings`` 命令功能类似,但会显示Django的全部配置.
+* :doc:`print_settings` - 与 ``diffsettings`` 命令功能类似,但会根据参数显示指定的配置，如果不传参数默认显示的全部配置.
 
 * ``print_user_for_session`` - 通过 ``session key`` 来查看当前用户信息,这个方法在查找哪个用户行为导致程序异常非常有帮助.
 
-* ``reset_db`` - 重置数据库 (目前支持 sqlite3, mysql, postgres).
+* ``reset_db`` - 重置数据库 (目前支持 sqlite3, mysql, postgres)，可以用来删除或创建数据库.
 
 * ``runjob`` - 执行一个单独的任务,是 ``django-extensions`` 任务系统中的一个功能.
 

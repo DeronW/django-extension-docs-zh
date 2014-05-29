@@ -43,6 +43,27 @@ graph_models
 
 配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的减号换成下划线.
 
+
+模板
+----
+
+Django的模板可以用来生成dot格式文件，通过 *pygraphviz* 或 *pydot* 可以把dot文件内容生成图片，这些模板文件是可以扩展和复写的。
+
+使用的模板：
+
+- django_extensions/graph_models/digraph.dot
+- django_extensions/graph_models/label.dot
+- django_extensions/graph_models/relation.dot
+
+关于如何生成dot文件，可以参考：  http://www.graphviz.org/Documentation.php
+
+.. 警告：
+
+    修改Django模板的默认属性可能会破换 *graph_models*
+    任何改能够变模板渲染方式的 *template_loaders* 或扩展的使用都会导致 *graph_models* 文件生成的失败。
+    例如：
+    Django的app *django-template-minifier* 会自动去除模板标签导致的换行。但这会导致生成 *graph_models* 文的异常。
+
 用例
 -------------
 

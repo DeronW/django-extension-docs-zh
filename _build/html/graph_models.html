@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -57,7 +55,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将整个项目或指定app的models结果渲染成图形 <a class="footnote-reference" href="#id5" id="id1">[1]</a>.</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将整个项目或指定app的models结果渲染成图形 <a class="footnote-reference" href="#id6" id="id1">[1]</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -69,15 +67,18 @@
 <p><tt class="docutils literal"><span class="pre">graph_model</span></tt> 命令可以指定使用哪个库来生成图片,使用参数 <tt class="docutils literal"><span class="pre">--pygraphviz</span></tt> 或 <tt class="docutils literal"><span class="pre">--pydot</span></tt> ,需要安装相应的依赖库.</p>
 <p>默认选择 <tt class="docutils literal"><span class="pre">pygraphviz</span></tt> 库生成图表,如果没有指定参数,也没有安装 <tt class="docutils literal"><span class="pre">pygraphviz</span></tt> 库,则会抛出异常.</p>
 <p>安装 <tt class="docutils literal"><span class="pre">pygraphviz</span></tt> 库:</p>
-<div class="highlight-python"><pre>$ pip install pygraphviz</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install pygraphviz
+</pre></div>
 </div>
 <p>安装是可能因为无法编译需要的C扩展而安装失败.那么可能需要尝试其它安装方法,或使用 <tt class="docutils literal"><span class="pre">PyDot</span></tt>.</p>
 <p>安装 <tt class="docutils literal"><span class="pre">pydot</span></tt> 库:</p>
-<div class="highlight-python"><pre>$ pip install pyparsing==1.5.7
-$ pip install pydot</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install pyparsing==1.5.7
+$ pip install pydot
+</pre></div>
 </div>
 <p>安装过程很快,注意要安装指定版本的 <tt class="docutils literal"><span class="pre">pyparsing</span></tt> .否则可能会出错:</p>
-<div class="highlight-python"><pre>Couldn't import dot_parser, loading of dot files will not be possible.</pre>
+<div class="highlight-python"><div class="highlight"><pre>Couldn&#39;t import dot_parser, loading of dot files will not be possible.
+</pre></div>
 </div>
 </div>
 <div class="section" id="id3">
@@ -92,22 +93,36 @@ $ pip install pydot</pre>
 <p>配置的参数名与在命令行中的参数名是一样的,只要去掉作为参数的两个建号,并把参数中的减号换成下划线.</p>
 </div>
 <div class="section" id="id4">
-<h2>用例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>安装 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 后,就可以创建 <tt class="docutils literal"><span class="pre">.dot</span></tt> 文件.或通过 <tt class="docutils literal"><span class="pre">graph_models</span></tt> 命令生成图表,看下面的例子:</p>
-<div class="highlight-python"><pre># 创建一个 .dot 文件
-$ ./manage.py graph_models -a &gt; my_project.dot</pre>
+<h2>模板<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Django的模板可以用来生成dot格式文件，通过 <em>pygraphviz</em> 或 <em>pydot</em> 可以把dot文件内容生成图片，这些模板文件是可以扩展和复写的。</p>
+<p>使用的模板：</p>
+<ul class="simple">
+<li>django_extensions/graph_models/digraph.dot</li>
+<li>django_extensions/graph_models/label.dot</li>
+<li>django_extensions/graph_models/relation.dot</li>
+</ul>
+<p>关于如何生成dot文件，可以参考：  <a class="reference external" href="http://www.graphviz.org/Documentation.php">http://www.graphviz.org/Documentation.php</a></p>
 </div>
-<div class="highlight-python"><pre># 创建一个PNG图片,包含应用的结构,把图片命名为my_project_visualized.png
+<div class="section" id="id5">
+<h2>用例<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>安装 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 后,就可以创建 <tt class="docutils literal"><span class="pre">.dot</span></tt> 文件.或通过 <tt class="docutils literal"><span class="pre">graph_models</span></tt> 命令生成图表,看下面的例子:</p>
+<div class="highlight-python"><div class="highlight"><pre># 创建一个 .dot 文件
+$ ./manage.py graph_models -a &gt; my_project.dot
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre># 创建一个PNG图片,包含应用的结构,把图片命名为my_project_visualized.png
 $ ./manage.py graph_models -a -g -o my_project_visualized.png
 
 # 这个例子中指明了使用哪个Python的图表库
 $ ./manage.py graph_models --pygraphviz -a -g -o my_project_visualized.png
-$ ./manage.py graph_models --pydot -a -g -o my_project_visualized.png</pre>
+$ ./manage.py graph_models --pydot -a -g -o my_project_visualized.png
+</pre></div>
 </div>
-<div class="highlight-python"><pre># 创建一个只包含 'foo' 和 'bar' 应用的 dot 文件
-$ ./manage.py graph_models foo bar &gt; my_project.dot</pre>
+<div class="highlight-python"><div class="highlight"><pre># 创建一个只包含 &#39;foo&#39; 和 &#39;bar&#39; 应用的 dot 文件
+$ ./manage.py graph_models foo bar &gt; my_project.dot
+</pre></div>
 </div>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>渲染出的是图形的描述语言,需要用特定软件才能看到图形,如果用文本编辑器打开则会看到描述字符</td></tr>
@@ -127,7 +142,8 @@ $ ./manage.py graph_models foo bar &gt; my_project.dot</pre>
 <li><a class="reference internal" href="#">graph_models</a><ul>
 <li><a class="reference internal" href="#id2">选择生成图表的库</a></li>
 <li><a class="reference internal" href="#id3">默认配置</a></li>
-<li><a class="reference internal" href="#id4">用例</a></li>
+<li><a class="reference internal" href="#id4">模板</a></li>
+<li><a class="reference internal" href="#id5">用例</a></li>
 </ul>
 </li>
 </ul>
@@ -177,7 +193,7 @@ $ ./manage.py graph_models foo bar &gt; my_project.dot</pre>
     </div>
     <div class="footer">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

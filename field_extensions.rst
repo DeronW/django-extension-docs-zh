@@ -17,3 +17,5 @@ model字段扩展
 * ``EncryptedCharField`` - 字符串类型字段,会将数据以加密的方式保存和现实,加密方法使用 `Keyczar <http://www.keyczar.org/>`_.使用这个扩展字段时需要安装Keyczar,通过Keyczar库生成加密的密钥,还要在django项目的 ``settings.py`` 中添加 ``settings.ENCRYPTED_FIELD_KEYS_DIR`` 配置,指向密钥的完整目录.
 
 * ``EncryptedTextField`` - 字符串类型字段,与 ``EncryptedCharField`` 字段类似,但是继承自 ``TextField`` 字段.
+
+* ``ShortUUIDField`` - 字符串类型字段，将生成的uuid转换成较短的字符串（好像是57进制）。生成字符串结果的长度小于22位，通过参数可以生成更短的字符长度，短长度字符虽然不能保证绝对的唯一性，但重复的概率极低

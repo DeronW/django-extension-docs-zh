@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -65,6 +63,7 @@
 <li><a class="reference internal" href="shell_plus.html"><em>shell_plus</em></a> - Django shell的加强版. 自动载入所有app的models,可以方便的使用这些ORM.</li>
 <li><a class="reference internal" href="create_app.html"><em>create_app</em></a> - 新建一个app的简便方法,可以通过 <tt class="docutils literal"><span class="pre">--template</span></tt> 参数指定一个app作为创建模板 <a class="footnote-reference" href="#id5" id="id1">[1]</a>.</li>
 <li><tt class="docutils literal"><span class="pre">create_command</span></tt> - 在指定app内创建一个命令扩展目录,方便添加新的扩展命令(或者只能手动创建扩展命令的目录).</li>
+<li><tt class="docutils literal"><span class="pre">create_template_tags</span></tt> - 在制定的app内创建模板标签目录</li>
 <li><tt class="docutils literal"><span class="pre">create_jobs</span></tt> - 在指定app内创建一个定时任务扩展目录,可以定期执行指定任务.</li>
 <li><tt class="docutils literal"><span class="pre">create_superuser</span></tt> - 方便的创建一个超级管理员 <a class="footnote-reference" href="#id6" id="id2">[2]</a>.</li>
 <li><tt class="docutils literal"><span class="pre">describe_form</span></tt> - 显示针对一个model的form描述.复制输出的内容到forms.py中可以完整定义一个对应model的form.</li>
@@ -74,9 +73,9 @@
 <li><a class="reference internal" href="graph_models.html"><em>graph_models</em></a> - 生成一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 文件.将输出内容写入一个文件.以图形化数据模型.传入多个app的名字作为参数,可以在一个文件中显示多个模型的图形化格式 <a class="footnote-reference" href="#id7" id="id3">[3]</a>.</li>
 <li><tt class="docutils literal"><span class="pre">mail_debug</span></tt> - 开启一个邮件服务,将Django项目发出的邮件从控制台输出,而不是真的发送出去.</li>
 <li><tt class="docutils literal"><span class="pre">passwd</span></tt> - 重新设定某个用户的密码,用法: <em>./manage.py passwd [用户名]</em> .</li>
-<li><a class="reference internal" href="print_settings.html"><em>print_settings</em></a> - 与 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 命令功能类似,但会显示Django的全部配置.</li>
+<li><a class="reference internal" href="print_settings.html"><em>print_settings</em></a> - 与 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 命令功能类似,但会根据参数显示指定的配置，如果不传参数默认显示的全部配置.</li>
 <li><tt class="docutils literal"><span class="pre">print_user_for_session</span></tt> - 通过 <tt class="docutils literal"><span class="pre">session</span> <span class="pre">key</span></tt> 来查看当前用户信息,这个方法在查找哪个用户行为导致程序异常非常有帮助.</li>
-<li><tt class="docutils literal"><span class="pre">reset_db</span></tt> - 重置数据库 (目前支持 sqlite3, mysql, postgres).</li>
+<li><tt class="docutils literal"><span class="pre">reset_db</span></tt> - 重置数据库 (目前支持 sqlite3, mysql, postgres)，可以用来删除或创建数据库.</li>
 <li><tt class="docutils literal"><span class="pre">runjob</span></tt> - 执行一个单独的任务,是 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 任务系统中的一个功能.</li>
 <li><tt class="docutils literal"><span class="pre">runjobs</span></tt> - 执行计划任务. 分为按小时执行,按天执行,按周执行,按月执行.是 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 任务系统中的一部分功能.</li>
 <li><a class="reference internal" href="runprofileserver.html"><em>runprofileserver</em></a> - 在启动 <tt class="docutils literal"><span class="pre">runserver</span></tt> 测试服务的同时,其用 <tt class="docutils literal"><span class="pre">profile</span></tt> 功能,可以记录服务的详细日志,包含了对于Python方法的详细执行分析.在服务器性能分析时,这是最佳方法了.</li>
@@ -165,7 +164,7 @@
     </div>
     <div class="footer">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

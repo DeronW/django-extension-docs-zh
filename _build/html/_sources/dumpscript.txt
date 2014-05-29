@@ -27,7 +27,7 @@ dumpscript
 特性支持
 --------
 
-* 外键和多对多关系(通过Python变量,而不是ID) 
+* 外键和多对多关系(通过Python变量,而不是ID)
 * 外键或多对多中对自己的引用
 * models子类
 * *ContentType* 字段类型,并生成关联关系(查看 issue 43)
@@ -73,10 +73,10 @@ dumpscript
 
   # 错误用法
   $ ./manage.py dumpscript appname > dumps/appname.py
-  
+
   # 正确用法
   $ ./manage.py dumpscript appname > dumps/appname_all.py
-  
+
   # 正确用法
   $ ./manage.py dumpscript appname.Somemodel > dumps/appname_somemodel.py
 

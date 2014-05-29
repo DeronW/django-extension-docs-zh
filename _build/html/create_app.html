@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -66,16 +64,19 @@
 <div class="section" id="id1">
 <h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>例子需要在项目的根目录下执行,该目录下要包含 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件 <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
-<div class="highlight-python"><pre># 获取命令行的帮助
-./manage.py create_app --help</pre>
+<div class="highlight-python"><div class="highlight"><pre># 获取命令行的帮助
+./manage.py create_app --help
+</pre></div>
 </div>
-<div class="highlight-python"><pre># 从 [APP_NAME].dia 文件中生成 ``models.py`` 和 ``admin.py`` ,这个文件应该放在与 ``settings.py`` 相同的文件目录下
-./manage.py create_app -d APP_NAME</pre>
+<div class="highlight-python"><div class="highlight"><pre># 从 [APP_NAME].dia 文件中生成 ``models.py`` 和 ``admin.py`` ,这个文件应该放在与 ``settings.py`` 相同的文件目录下
+./manage.py create_app -d APP_NAME
+</pre></div>
 </div>
 </div>
 <div class="section" id="sample-diaapp">
 <h2>从sample.dia文件生成app<a class="headerlink" href="#sample-diaapp" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>./manage.py create_app --diagram=sample.dia webdata</pre>
+<div class="highlight-python"><div class="highlight"><pre>./manage.py create_app --diagram=sample.dia webdata
+</pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">-d</span></tt> 参数或 <tt class="docutils literal"><span class="pre">--diagram</span></tt> 参数通过 <a class="reference external" href="https://svn.devnull.li/main/pythonware/dia2django/trunk/doc/">dia2django</a> 生成models.py, 详细文档查看 <a class="reference external" href="http://code.djangoproject.com/wiki/Dia2Django">django wiki</a>.</p>
 <p>译者注: 新版本Django原生命令 <tt class="docutils literal"><span class="pre">startapp</span></tt> 也提供了通过 <tt class="docutils literal"><span class="pre">--template</span></tt> 指定模板来创建app的功能</p>
@@ -148,7 +149,7 @@
     </div>
     <div class="footer">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

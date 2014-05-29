@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -65,13 +63,16 @@
 <h2>交互式的 Python Shells<a class="headerlink" href="#python-shells" title="Permalink to this headline">¶</a></h2>
 <p>shell_plus支持3种交互的Python shell.</p>
 <p>BPython:</p>
-<div class="highlight-python"><pre>$ ./manage.py shell_plus --use-bpython</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell_plus --use-bpython
+</pre></div>
 </div>
 <p>IPython:</p>
-<div class="highlight-python"><pre>$ ./manage.py shell_plus --use-ipython</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell_plus --use-ipython
+</pre></div>
 </div>
 <p>Python:</p>
-<div class="highlight-python"><pre>$ ./manage.py shell_plus --use-plain</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell_plus --use-plain
+</pre></div>
 </div>
 <p>默认shell优先顺序是: bpython, ipython, python.</p>
 <p>也可以在 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 配置中指定优先选择的shell工具:</p>
@@ -94,16 +95,19 @@
 <span class="n">SHELL_PLUS_DONT_LOAD</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;sites&#39;</span><span class="p">,</span> <span class="s">&#39;blog.pictures&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>设置别名和声明不加载的配置可以同时使用.也可以通过命令行参数谁知不加载的模块:</p>
-<div class="highlight-python"><pre>$ ./manage.py shell_plus --dont-load app1 --dont-load app2.module1</pre>
+<p>设置别名和声明不加载的配置可以同时使用.也可以通过命令行参数设置不加载的模块:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell_plus --dont-load app1 --dont-load app2.module1
+</pre></div>
 </div>
 <p>命令行的参数和配置文件中的设置是可以同时使用的,所以一次性的参数完全可以通过命令行运行,省去频繁修改配置文件的麻烦.</p>
 <p>shell_plus还能使用 <a class="reference external" href="http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html">IPython Notebook</a> .将浏览器作为交互的shell:</p>
-<div class="highlight-python"><pre>$ ./manage.py shell_plus --notebook</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell_plus --notebook
+</pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">IPython</span> <span class="pre">Notebook</span></tt> 中也会将所有模块和models加载到全局变量中.</p>
 <p><tt class="docutils literal"><span class="pre">IPython</span> <span class="pre">NoteBook</span></tt> 中自动加载模块功能是通过参数配置的,默认为启用状态.:</p>
-<div class="highlight-python"><pre>--ext django_extensions.management.notebook_extension</pre>
+<div class="highlight-python"><div class="highlight"><pre>--ext django_extensions.management.notebook_extension
+</pre></div>
 </div>
 <p>自定义 <tt class="docutils literal"><span class="pre">IPython</span> <span class="pre">Notebook</span></tt> 配置需要覆盖Django项目的 <tt class="docutils literal"><span class="pre">IPYTHON_ARGUMENTS</span></tt> 配置:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">IPYTHON_ARGUMENTS</span> <span class="o">=</span> <span class="p">[</span>
@@ -199,7 +203,7 @@
     </div>
     <div class="footer">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

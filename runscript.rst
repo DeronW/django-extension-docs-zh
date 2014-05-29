@@ -48,3 +48,29 @@ runscript
   $ python manage.py runscript delete_all_polls
 
 提示: ``runscript`` 命令会首先检查每个app下的 *scripts* 目录,如果找到对应名字的脚本就会执行.然后检查 *project_root/scripts* 目录下是否包含符合名字的脚本,如果找到也会执行.也就是说,我们可以在不同的app中创建相同名字的脚本,并且都会被执行.
+
+参数
+----
+
+``--script-args`` 参数可以接收逗号分隔的值，并将其作为参数传递到方法内，例如
+
+::
+
+    $ python manage.py runscript delete_all_polls --script-args=staleonly
+
+例子中 ``--script-args`` 参数值作为执行脚本的 *run()* 方法的参数传入，使用举例
+
+::
+
+    # scripts/delete_all_polls.py
+
+    from Polls.models import Poll
+
+    def run(*args):
+        # Get all polls
+        all_polls = Poll.object.all()
+        if 'staleonly' in args:
+            all_polls = all_polls.filter(active=False)
+        # Delete polls
+        all_polls.delete()
+

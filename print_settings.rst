@@ -17,10 +17,19 @@ Django使用 ``diffsettings`` 命令输出当前项目配置与默认配置的�
 
     $ python manage.py print_settings
 
-以不同格式输出::
+以不同格式输出
+
+::
 
     $ python manage.py print_settings --format=json
     $ python manage.py print_settings --format=yaml    # 需要安装 PyYAML
+
+只显示指定参数
+
+::
+
+    $ python manage.py print_settings DEBUG INSTALLED_APPS
+    $ python manage.py print_settings DEBUG INSTALLED_APPS --format=pprint
 
 通过 ``--help`` 参数可以获取更多帮助::
 

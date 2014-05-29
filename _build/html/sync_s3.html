@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -57,26 +55,36 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将项目的 <tt class="docutils literal"><span class="pre">MEDIA_ROOT</span></tt> 和 <tt class="docutils literal"><span class="pre">STATIC_ROOT</span></tt> 目录包含的文件同步到S3 <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将项目的 <tt class="docutils literal"><span class="pre">MEDIA_ROOT</span></tt> 和 <tt class="docutils literal"><span class="pre">STATIC_ROOT</span></tt> 目录包含的文件同步到S3 <a class="footnote-reference" href="#id5" id="id1">[1]</a>.</td>
 </tr>
 </tbody>
 </table>
 <p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令会检索配置中的 <tt class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span></tt> 目录和 <tt class="docutils literal"><span class="pre">settings.STATIC_ROOT</span></tt> 目录,然后把所有文件资源上传到S3的相同的目录结构下.</p>
 <p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令可以启用以下功能,通过传入参数启用对应功能,默认全部关闭:</p>
-<div class="highlight-python"><pre>* gzip 压缩CSS和JS文件,并添加 ``Content-Encoding`` 头.
+<div class="highlight-python"><div class="highlight"><pre>* gzip 压缩CSS和JS文件,并添加 ``Content-Encoding`` 头.
 * 设置文件缓存过期时间
-* 只上传 media 或 static 目录文件.</pre>
+* 只上传 media 或 static 目录文件.
+* 使用其它的S3同步工具
+* 设置public文件的访问控制列表
+</pre></div>
 </div>
 <div class="section" id="id2">
 <h2>用法举例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>上传到S3的 mybucket</p>
-<div class="highlight-python"><pre>$ ./manage.py sync_s3 mybucket</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py sync_s3 mybucket
+</pre></div>
 </div>
 <p>上传到S3的 mybucket ,并对CSS/JS文件进行gzip压缩和添加缓存过期时间:</p>
-<div class="highlight-python"><pre>$ ./manage.py sync_s3 mybucket --gzip --expires</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py sync_s3 mybucket --gzip --expires
+</pre></div>
 </div>
-<p>只上传 media 文件到S3的 mybucket 中:</p>
-<div class="highlight-python"><pre>$ ./manage.py sync_s3 mybucket  --media-only  # or --static-only</pre>
+<p>只上传 media 文件到S3的 mybucket 中</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py sync_s3 mybucket  --media-only  # or --static-only
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre># Upload only media files to a S3 compatible provider into the bucket &#39;mybucket&#39; and set private file ACLs
+$ ./manage.py sync_s3 mybucket  --media-only  --s3host=cs.example.com --acl=private
+</pre></div>
 </div>
 </div>
 <div class="section" id="id3">
@@ -84,13 +92,27 @@
 <p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令需要安装 <tt class="docutils literal"><span class="pre">boto</span></tt> 库,改命令在1.4c版本下测试通过:</p>
 <blockquote>
 <div><a class="reference external" href="http://code.google.com/p/boto/">http://code.google.com/p/boto/</a></div></blockquote>
-<p>当然还要添加AWS账户的S3密钥,在项目配置文件 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件中增加配置:</p>
+<p>当然还要添加AWS账户的S3密钥和bucket名称,在项目配置文件 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件中增加配置:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># settings.py</span>
 <span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
 <span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="n">AWS_BUCKET_NAME</span> <span class="o">=</span> <span class="s">&#39;bucket&#39;</span>
 </pre></div>
 </div>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+</div>
+<div class="section" id="id4">
+<h2>可选配置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>可以在 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件种设置好全部的 <tt class="docutils literal"><span class="pre">sync_s3</span></tt> 的参数，实现自动上传</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># settings.py</span>
+<span class="n">AWS_S3_HOST</span> <span class="o">=</span> <span class="s">&#39;cs.example.com&#39;</span>
+<span class="n">AWS_DEFAULT_ACL</span> <span class="o">=</span> <span class="s">&#39;private&#39;</span>
+<span class="n">SYNC_S3_PREFIX</span> <span class="o">=</span> <span class="s">&#39;some_prefix&#39;</span>
+<span class="n">FILTER_LIST</span> <span class="o">=</span> <span class="s">&#39;dir1, dir2&#39;</span>
+<span class="n">AWS_CLOUDFRONT_DISTRIBUTION</span> <span class="o">=</span> <span class="s">&#39;E27LVI50CSW06W&#39;</span>
+<span class="n">SYNC_S3_RENAME_GZIP_EXT</span> <span class="o">=</span> <span class="s">&#39;.gz&#39;</span>
+</pre></div>
+</div>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>S3是亚马逊提供的云存储服务,也是目前行业中使用最广泛的云存储服务.2013年底亚马逊云服务才宣布正式入化,估计2014年中旬才能用上.</td></tr>
@@ -110,6 +132,7 @@
 <li><a class="reference internal" href="#">sync_s3</a><ul>
 <li><a class="reference internal" href="#id2">用法举例</a></li>
 <li><a class="reference internal" href="#id3">依赖的库和配置</a></li>
+<li><a class="reference internal" href="#id4">可选配置</a></li>
 </ul>
 </li>
 </ul>
@@ -159,7 +182,7 @@
     </div>
     <div class="footer">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
