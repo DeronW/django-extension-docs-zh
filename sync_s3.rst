@@ -40,7 +40,7 @@ sync_s3
 
 ``sync_s3`` 命令需要安装 ``boto`` 库,改命令在1.4c版本下测试通过:
 
-  http://code.google.com/p/boto/
+  https://github.com/boto/boto
 
 当然还要添加AWS账户的S3密钥和bucket名称,在项目配置文件 ``settings.py`` 文件中增加配置::
 

@@ -8,7 +8,7 @@
     
     <title>安装django-extensions &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="management命令扩展" href="command_extensions.html" />
     <link rel="prev" title="django-extensions 文档" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="index.html" title="django-extensions 文档"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="django-extensions">
 <h1>安装django-extensions<a class="headerlink" href="#django-extensions" title="Permalink to this headline">¶</a></h1>
@@ -62,34 +62,34 @@
 <div class="section" id="id1">
 <h2>下载和安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pip-easy-install">
-<h3>通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装<a class="headerlink" href="#pip-easy-install" title="Permalink to this headline">¶</a></h3>
-<p>可以通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装 <tt class="docutils literal"><span class="pre">django-extensions</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install django-extensions
+<h3>通过 <code class="docutils literal"><span class="pre">pip</span></code> 或 <code class="docutils literal"><span class="pre">easy_install</span></code> 安装<a class="headerlink" href="#pip-easy-install" title="Permalink to this headline">¶</a></h3>
+<p>可以通过 <code class="docutils literal"><span class="pre">pip</span></code> 或 <code class="docutils literal"><span class="pre">easy_install</span></code> 安装 <code class="docutils literal"><span class="pre">django-extensions</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install django-extensions
 </pre></div>
 </div>
 <p>或:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ easy_install django-extensions
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ easy_install django-extensions
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h3>下载源码安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>从 <a class="reference external" href="http://pypi.python.org/pypi/django-extensions/">http://pypi.python.org/pypi/django-extensions/</a> 下载最新的源码.解压缩后,在目录下执行Python安装命令:</p>
-<div class="highlight-python"><div class="highlight"><pre>python setup.py install
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>...这样就可以自动安装了. 注: 这是Python默认的包安装方式.</p>
 </div>
 <div class="section" id="django">
 <h3>在Django中使用<a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h3>
-<p>在Django项目的配置文件中,把 <em>django_extensions</em> 添加到 <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> 列表中:</p>
-<div class="highlight-python"><div class="highlight"><pre>INSTALLED_APPS = (
-    ...
-    &#39;django_extensions&#39;,
-)
+<p>在Django项目的配置文件中,把 <em>django_extensions</em> 添加到 <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code> 列表中:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;django_extensions&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-<p>这样就可以在Django的命令行中使用 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 提供的扩展命令了.</p>
+<p>这样就可以在Django的命令行中使用 <code class="docutils literal"><span class="pre">django-extensions</span></code> 提供的扩展命令了.</p>
 <p>再次运行 <em>./manage.py help</em> 命令时,就可以看到新的命令.</p>
 <p>有些新增的命令依赖其它程序或Python库,例如 <a class="footnote-reference" href="#id8" id="id3">[1]</a></p>
 <ul class="simple">
@@ -101,18 +101,18 @@
 </div>
 <div class="section" id="id4">
 <h2>版本控制<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">django-extensions</span></tt> 目前被托管在github上: <a class="reference external" href="https://github.com/django-extensions/django-extensions">https://github.com/django-extensions/django-extensions</a></p>
+<p><code class="docutils literal"><span class="pre">django-extensions</span></code> 目前被托管在github上: <a class="reference external" href="https://github.com/django-extensions/django-extensions">https://github.com/django-extensions/django-extensions</a></p>
 <p><em>django command extensions</em> 的dev版本在包含了新特性的同时还可以稳定运行,在正式环境下也推荐使用 <a class="footnote-reference" href="#id9" id="id5">[2]</a>.</p>
-<p>使用git命令克隆 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 源码到本地:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone git://github.com/django-extensions/django-extensions.git
+<p>使用git命令克隆 <code class="docutils literal"><span class="pre">django-extensions</span></code> 源码到本地:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">django</span><span class="o">-</span><span class="n">extensions</span><span class="o">/</span><span class="n">django</span><span class="o">-</span><span class="n">extensions</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>下载源码后可以在项目根目录下执行 <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> 安装,或将 <em>extensions</em> 目录添加到Python环境变量中.最通用的做法是创建一个软连接指向代码的目录,并将软连接添加到Python环境变量中.比如Python的site-packages目录 <a class="footnote-reference" href="#id10" id="id6">[3]</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre>ln -sf /full/path/to/django-extensions/django_extensions /usr/lib/python2.7/site-packages/django_extensions
+<p>下载源码后可以在项目根目录下执行 <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code> 安装,或将 <em>extensions</em> 目录添加到Python环境变量中.最通用的做法是创建一个软连接指向代码的目录,并将软连接添加到Python环境变量中.比如Python的site-packages目录 <a class="footnote-reference" href="#id10" id="id6">[3]</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">django</span><span class="o">-</span><span class="n">extensions</span><span class="o">/</span><span class="n">django_extensions</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">django_extensions</span>
 </pre></div>
 </div>
 <p>检查django-extensions是否被正确安装,在Python的shell中输入下面命令 <a class="footnote-reference" href="#id11" id="id7">[4]</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">django_extensions</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">django_extensions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">django_extensions</span><span class="o">.</span><span class="n">VERSION</span>
 <span class="go">(1, 2, 5)</span>
 </pre></div>
@@ -149,13 +149,13 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">安装django-extensions</a><ul>
 <li><a class="reference internal" href="#id1">下载和安装</a><ul>
-<li><a class="reference internal" href="#pip-easy-install">通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装</a></li>
+<li><a class="reference internal" href="#pip-easy-install">通过 <code class="docutils literal"><span class="pre">pip</span></code> 或 <code class="docutils literal"><span class="pre">easy_install</span></code> 安装</a></li>
 <li><a class="reference internal" href="#id2">下载源码安装</a></li>
 <li><a class="reference internal" href="#django">在Django中使用</a></li>
 </ul>
@@ -171,29 +171,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="command_extensions.html"
                         title="next chapter">management命令扩展</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/installation_instructions.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation_instructions.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -205,12 +204,12 @@
         <li class="right" >
           <a href="index.html" title="django-extensions 文档"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

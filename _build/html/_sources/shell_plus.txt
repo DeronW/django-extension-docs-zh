@@ -10,15 +10,15 @@ shell_plus支持3种交互的Python shell.
 
 BPython::
 
-  $ ./manage.py shell_plus --use-bpython
+  $ ./manage.py shell_plus --bpython
 
 IPython::
 
-  $ ./manage.py shell_plus --use-ipython
+  $ ./manage.py shell_plus --ipython
 
 Python::
 
-  $ ./manage.py shell_plus --use-plain
+  $ ./manage.py shell_plus --plain
 
 
 默认shell优先顺序是: bpython, ipython, python.
@@ -33,11 +33,18 @@ Python::
 
 如果遇到apps中包含的的models名字出现冲突,或不想载入特定apps的models的情况,可以通过配置别名的方法解决:
 
-提示: 下列配置仅在shell_plus中生效,不会影响当前项目运行的环境变量::
+提示: 下列配置仅在shell_plus中生效,不会影响当前项目运行的环境变量
+
+::
 
   # 将自动载入的Messages模块重命名为blog_messages
 
   SHELL_PLUS_MODEL_ALIASES = {'blog': {'Messages': 'blog_messages'},}
+
+::
+
+  # 自动载入的 myblog 模型添加前缀
+  SHELL_PLUS_APP_PREFIXES = {'blog': 'myblog',}
 
 ::
 
@@ -54,6 +61,23 @@ Python::
 shell_plus还能使用 `IPython Notebook`_ .将浏览器作为交互的shell::
 
     $ ./manage.py shell_plus --notebook
+
+通过修改2个参数可以自定义 IPython 的行为.
+
+第一个是 ``NOTEBOOK_ARGUMENTS`` , 可以追加自定义参数, 需要通过下面方式启动::
+
+    $ ipython notebook -h
+
+例如::
+
+    NOTEBOOK_ARGUMENTS = [
+        '--ip=x.x.x.x',
+        '--port=xx',
+    ]
+
+另一个参数是  ``IPYTHON_ARGUMENTS`` ,通过下面方式启动::
+
+    $ ipython -h
 
 ``IPython Notebook`` 中也会将所有模块和models加载到全局变量中.
 
@@ -93,6 +117,11 @@ shell_plus还能使用 `IPython Notebook`_ .将浏览器作为交互的shell::
     import module.submodule4
 
 这些引入的变量在shell执行时就可以使用了.
+
+数据库应用签名
+-------------
+
+使用PostgreSQL ``application_name`` 默认被设置为 ``django_shell`` , 这样能够区分 shell_plus 下的查询语句.
 
 
 .. _`IPython Notebook`: http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html

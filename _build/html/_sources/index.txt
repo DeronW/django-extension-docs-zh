@@ -1,5 +1,5 @@
 
-django-extensions 文档
+Django-Extensions 文档
 =============================================
 
 Django Extensions 是Django框架的扩展功能集合.
@@ -32,14 +32,14 @@ Django Extensions 是Django框架的扩展功能集合.
 
 更多安装细节,查看 :doc:`installation_instructions`.
 
-兼容性
-=======
+Python以及Django的兼容性
+=======================
 
 ``django-extensions`` 尽量根据Django版本发布计划支持相应的Django和Python版本 参考Django版本支持说明_ [1]_ .
 
 新版本的 ``django-extensions`` 可能在旧版本的Django或Python中也会正常运行,但是我们已经放弃修复与旧版本Django或Python的兼容性bug.
 
-目前支持的Python版本是 2.6, 2.7 和 3.3， 支持的Django版本是1.4, 1.5, 1.6 [2]_.
+目前支持的Python版本是 2.7, 3.4, 3.5, pypy, pypy3. 支持的Django版本是1.8, 1.9 [2]_.
 
 目录
 ========
@@ -67,10 +67,10 @@ Django Extensions 是Django框架的扩展功能集合.
    sync_s3
    sqldiff
    sqlcreate
+   sqldsn
    validate_templates
 
 __ http://ericholscher.com/blog/2008/sep/12/screencast-django-command-extensions/
 .. _参考Django版本支持说明: https://docs.djangoproject.com/en/dev/internals/release-process/#supported-versions
 
 .. [1] Django的单个版本指定了需要的Python版本,支持某个Django版本就代表同时支持相应的Python版本.
-.. [2] 目前最新的Django1.6版本后要求不能使用Python2.6以前的版本,这也是未来Django对Python的最低要求.应及时升级Django到最新的稳定版,以免欠下技术债.

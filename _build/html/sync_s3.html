@@ -8,7 +8,7 @@
     
     <title>sync_s3 &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="sqldiff" href="sqldiff.html" />
     <link rel="prev" title="runserver_plus" href="runserver_plus.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="runserver_plus.html" title="runserver_plus"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="sync-s3">
 <h1>sync_s3<a class="headerlink" href="#sync-s3" title="Permalink to this headline">¶</a></h1>
@@ -55,13 +55,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将项目的 <tt class="docutils literal"><span class="pre">MEDIA_ROOT</span></tt> 和 <tt class="docutils literal"><span class="pre">STATIC_ROOT</span></tt> 目录包含的文件同步到S3 <a class="footnote-reference" href="#id5" id="id1">[1]</a>.</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">将项目的 <code class="docutils literal"><span class="pre">MEDIA_ROOT</span></code> 和 <code class="docutils literal"><span class="pre">STATIC_ROOT</span></code> 目录包含的文件同步到S3 <a class="footnote-reference" href="#id5" id="id1">[1]</a>.</td>
 </tr>
 </tbody>
 </table>
-<p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令会检索配置中的 <tt class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span></tt> 目录和 <tt class="docutils literal"><span class="pre">settings.STATIC_ROOT</span></tt> 目录,然后把所有文件资源上传到S3的相同的目录结构下.</p>
-<p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令可以启用以下功能,通过传入参数启用对应功能,默认全部关闭:</p>
-<div class="highlight-python"><div class="highlight"><pre>* gzip 压缩CSS和JS文件,并添加 ``Content-Encoding`` 头.
+<p><code class="docutils literal"><span class="pre">sync_s3</span></code> 命令会检索配置中的 <code class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span></code> 目录和 <code class="docutils literal"><span class="pre">settings.STATIC_ROOT</span></code> 目录,然后把所有文件资源上传到S3的相同的目录结构下.</p>
+<p><code class="docutils literal"><span class="pre">sync_s3</span></code> 命令可以启用以下功能,通过传入参数启用对应功能,默认全部关闭:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>* gzip 压缩CSS和JS文件,并添加 ``Content-Encoding`` 头.
 * 设置文件缓存过期时间
 * 只上传 media 或 static 目录文件.
 * 使用其它的S3同步工具
@@ -71,51 +71,51 @@
 <div class="section" id="id2">
 <h2>用法举例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>上传到S3的 mybucket</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py sync_s3 mybucket
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py sync_s3 mybucket
 </pre></div>
 </div>
 <p>上传到S3的 mybucket ,并对CSS/JS文件进行gzip压缩和添加缓存过期时间:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py sync_s3 mybucket --gzip --expires
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py sync_s3 mybucket --gzip --expires
 </pre></div>
 </div>
 <p>只上传 media 文件到S3的 mybucket 中</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py sync_s3 mybucket  --media-only  # or --static-only
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py sync_s3 mybucket  --media-only  # or --static-only
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre># Upload only media files to a S3 compatible provider into the bucket &#39;mybucket&#39; and set private file ACLs
+<div class="highlight-default"><div class="highlight"><pre><span></span># Upload only media files to a S3 compatible provider into the bucket &#39;mybucket&#39; and set private file ACLs
 $ ./manage.py sync_s3 mybucket  --media-only  --s3host=cs.example.com --acl=private
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>依赖的库和配置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">sync_s3</span></tt> 命令需要安装 <tt class="docutils literal"><span class="pre">boto</span></tt> 库,改命令在1.4c版本下测试通过:</p>
+<p><code class="docutils literal"><span class="pre">sync_s3</span></code> 命令需要安装 <code class="docutils literal"><span class="pre">boto</span></code> 库,改命令在1.4c版本下测试通过:</p>
 <blockquote>
-<div><a class="reference external" href="http://code.google.com/p/boto/">http://code.google.com/p/boto/</a></div></blockquote>
-<p>当然还要添加AWS账户的S3密钥和bucket名称,在项目配置文件 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件中增加配置:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># settings.py</span>
-<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">AWS_BUCKET_NAME</span> <span class="o">=</span> <span class="s">&#39;bucket&#39;</span>
+<div><a class="reference external" href="https://github.com/boto/boto">https://github.com/boto/boto</a></div></blockquote>
+<p>当然还要添加AWS账户的S3密钥和bucket名称,在项目配置文件 <code class="docutils literal"><span class="pre">settings.py</span></code> 文件中增加配置:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># settings.py</span>
+<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">AWS_BUCKET_NAME</span> <span class="o">=</span> <span class="s1">&#39;bucket&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h2>可选配置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>可以在 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件种设置好全部的 <tt class="docutils literal"><span class="pre">sync_s3</span></tt> 的参数，实现自动上传</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># settings.py</span>
-<span class="n">AWS_S3_HOST</span> <span class="o">=</span> <span class="s">&#39;cs.example.com&#39;</span>
-<span class="n">AWS_DEFAULT_ACL</span> <span class="o">=</span> <span class="s">&#39;private&#39;</span>
-<span class="n">SYNC_S3_PREFIX</span> <span class="o">=</span> <span class="s">&#39;some_prefix&#39;</span>
-<span class="n">FILTER_LIST</span> <span class="o">=</span> <span class="s">&#39;dir1, dir2&#39;</span>
-<span class="n">AWS_CLOUDFRONT_DISTRIBUTION</span> <span class="o">=</span> <span class="s">&#39;E27LVI50CSW06W&#39;</span>
-<span class="n">SYNC_S3_RENAME_GZIP_EXT</span> <span class="o">=</span> <span class="s">&#39;.gz&#39;</span>
+<p>可以在 <code class="docutils literal"><span class="pre">settings.py</span></code> 文件种设置好全部的 <code class="docutils literal"><span class="pre">sync_s3</span></code> 的参数，实现自动上传</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># settings.py</span>
+<span class="n">AWS_S3_HOST</span> <span class="o">=</span> <span class="s1">&#39;cs.example.com&#39;</span>
+<span class="n">AWS_DEFAULT_ACL</span> <span class="o">=</span> <span class="s1">&#39;private&#39;</span>
+<span class="n">SYNC_S3_PREFIX</span> <span class="o">=</span> <span class="s1">&#39;some_prefix&#39;</span>
+<span class="n">FILTER_LIST</span> <span class="o">=</span> <span class="s1">&#39;dir1, dir2&#39;</span>
+<span class="n">AWS_CLOUDFRONT_DISTRIBUTION</span> <span class="o">=</span> <span class="s1">&#39;E27LVI50CSW06W&#39;</span>
+<span class="n">SYNC_S3_RENAME_GZIP_EXT</span> <span class="o">=</span> <span class="s1">&#39;.gz&#39;</span>
 </pre></div>
 </div>
 <table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>S3是亚马逊提供的云存储服务,也是目前行业中使用最广泛的云存储服务.2013年底亚马逊云服务才宣布正式入化,估计2014年中旬才能用上.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>S3是亚马逊提供的云存储服务,也是目前行业中使用最广泛的云存储服务.2013年底亚马逊云服务才宣布正式入华,估计2014年中旬才能用上.</td></tr>
 </tbody>
 </table>
 </div>
@@ -125,7 +125,7 @@ $ ./manage.py sync_s3 mybucket  --media-only  --s3host=cs.example.com --acl=priv
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -143,29 +143,28 @@ $ ./manage.py sync_s3 mybucket  --media-only  --s3host=cs.example.com --acl=priv
   <h4>Next topic</h4>
   <p class="topless"><a href="sqldiff.html"
                         title="next chapter">sqldiff</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/sync_s3.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sync_s3.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -177,12 +176,12 @@ $ ./manage.py sync_s3 mybucket  --media-only  --s3host=cs.example.com --acl=priv
         <li class="right" >
           <a href="runserver_plus.html" title="runserver_plus"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

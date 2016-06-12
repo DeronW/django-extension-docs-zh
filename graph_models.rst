@@ -87,7 +87,7 @@ Django的模板可以用来生成dot格式文件，通过 *pygraphviz* 或 *pydo
   $ ./manage.py graph_models foo bar > my_project.dot
 
 .. _GraphViz: http://www.graphviz.org/
-.. _pygraphviz: https://networkx.lanl.gov/wiki/pygraphviz
+.. _pygraphviz: https://pygraphviz.github.io/
 .. _pydot: https://pypi.python.org/pypi/pydot
 
 .. [1] 渲染出的是图形的描述语言,需要用特定软件才能看到图形,如果用文本编辑器打开则会看到描述字符

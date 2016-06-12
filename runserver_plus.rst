@@ -56,7 +56,7 @@ runserver_plus
 有一个不够人性化的地方是,点击 **查看源码** 后,页面没有自动滚动到底部(源码显示的地方),这容易让人觉得什么都没有发生,其实是没有看到.
 
 命令行调试
-^^^^^^^^^^^^^^^^
+----------
 
 在错误页面上点击命令行调试按钮后,会显示出一个命令行调试工具(网页里面的输入框),是不是屌爆了:
 
@@ -89,14 +89,89 @@ SSL
   Development server is running at http://127.0.0.1:8000/
   Using the Werkzeug debugger (http://werkzeug.pocoo.org/)
   Quit the server with CONTROL-C.
-  
+
 执行上面的命令后就可以通过 ``https://127.0.0.1:8000`` 在安全模式下访问服务了.在项目目录下会创建2个新的文件,分别是密钥文件和证书文件.重启测试服务时,这2个文件会被保留下来,这样浏览器就不用反复处理证书授权了.如果想使用指定证书文件,可以使用路径参数指向该证书文件::
 
-  $ python manage.py runserver_plus --cert /tmp/cert 
-  
+  $ python manage.py runserver_plus --cert /tmp/cert
+
 使用SSL时需要安装 ``OpenSSL`` 库. ``Werkzeug`` 0.9版本后才允许重用证书文件.通过以下命令安装 ``OpenSSL`` 库::
 
   $ pip install pyOpenSSL
 
+配置
+-----
+
+设置 `RUNSERVERPLUS_SERVER_ADDRESS_PORT` 来跳转开发环境中使用的地址和端口
+
+如果可以通过以下命令启动服务::
+
+  $ python manage.py runserver_plus 0.0.0.0:8000
+
+那么就可以设置开发时使用的默认地址和端口::
+
+  RUNSERVERPLUS_SERVER_ADDRESS_PORT = '0.0.0.0:8000'
+
+添加设置, 使Werkzeug在console中输出log::
+
+  LOGGING = {
+      ...
+      'handlers': {
+          ...
+          'console': {
+              'level': 'DEBUG',
+              'class': 'logging.StreamHandler',
+          },
+      },
+      'loggers': {
+          ...
+          'werkzeug': {
+              'handlers': ['console'],
+              'level': 'DEBUG',
+              'propagate': True,
+          },
+      },
+  }
+
+CPU及IO的用量
+---------------
+
+这个问题 gh625_ 导致 `runserver_plus` 在系统空闲时会占用很多系统资源.
+这是因为 Werkzeug_ 包含了一个自动重新加载的功能. 通过 `stat polling` 和 `file system events` 两种方式来实现自动重新加载.
+
+`stat polling`这种自动重新加载的方式十分简单粗暴. 导致的问题是系统资源占用率高.
+
+安装 Watchdog_ 包后, 它会不断尝试使用 `file system events` 方式, 能使用就自动使用.
+
+更多内容参考 `Werkzeug 文档 <http://werkzeug.pocoo.org/docs/0.10/serving/#reloader>`_
+
+通过两种方式来设置自动重新加载的参数, Django配置文件:
+
+    RUNSERVERPLUS_POLLER_RELOADER_INTERVAL = 5
+
+或者通过命令行参数"
+
+    $ python manage.py runserver_plus --reloader-interval 5
+
+调试 (Debugger PIN)
+--------------------
+
+.. 摘要::
+
+  下面有关调试的说明来自 Werkzeug_ 的文档
+
+   -- http://werkzeug.pocoo.org/docs/0.11/debug/#debugger-pin
+
+Werkzeug 0.11 开始调试工具受到PIN的保护. 这种方式能模拟生产环境, 真实的用户使用的情景下调试. PIN默认开启认证功能.
+
+调试器启动时, 首先会在命令行里输出PIN, 这个PIN是通过安全方式生成的并针对当前项目的.
+由环境变量 WERKZEUG_DEBUG_PIN 生成的PIN, 遇到服务重启的时候很难达到安全模式.
+This can be set to a number and will become the PIN. This variable can also be set
+to the value off to disable the PIN check entirely.
+
+如果执行了多次错误的PIN的插入方式, 那么就需要重启当前服务了.
+
+这个功能不是为了鼓励线上调试的. 而是为了避免攻击者利用线上调试功能. 在生产环境中, 永远不要开启调试功能.
+
 .. _`Werkzeug WSGI utilities`: http://werkzeug.pocoo.org/
 .. _Werkzeug: http://werkzeug.pocoo.org/
+.. _gh625: https://github.com/django-extensions/django-extensions/issues/625

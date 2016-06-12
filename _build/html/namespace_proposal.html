@@ -8,7 +8,7 @@
     
     <title>命名空间的建议 &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="print_settings" href="print_settings.html" />
     <link rel="prev" title="数据库字段扩展" href="model_extensions.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="model_extensions.html" title="数据库字段扩展"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="id1">
 <h1>命名空间的建议<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
@@ -61,7 +61,7 @@
 </table>
 <div class="section" id="id2">
 <h2>简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>请使用 <tt class="docutils literal"><span class="pre">django_extensions</span></tt> 的命名空间,而不是绝对路径</p>
+<p>请使用 <code class="docutils literal"><span class="pre">django_extensions</span></code> 的命名空间,而不是绝对路径</p>
 </div>
 <div class="section" id="id3">
 <h2>命名空间的建议<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -75,7 +75,7 @@
 <li>django_extensions.jobs</li>
 </ul>
 <p>数据库部分使用方式都是正确的,因为目前只有一种引用方式:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django_extensions.db.models</span> <span class="kn">import</span> <span class="n">something</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django_extensions.db.models</span> <span class="k">import</span> <span class="n">something</span>
 </pre></div>
 </div>
 </div>
@@ -85,7 +85,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -102,29 +102,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="print_settings.html"
                         title="next chapter">print_settings</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/namespace_proposal.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/namespace_proposal.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -136,12 +135,12 @@
         <li class="right" >
           <a href="model_extensions.html" title="数据库字段扩展"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

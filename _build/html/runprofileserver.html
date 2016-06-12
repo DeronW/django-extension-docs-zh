@@ -8,7 +8,7 @@
     
     <title>runprofileserver &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="runserver_plus" href="runserver_plus.html" />
     <link rel="prev" title="print_settings" href="print_settings.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="print_settings.html" title="print_settings"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="runprofileserver">
 <h1>runprofileserver<a class="headerlink" href="#runprofileserver" title="Permalink to this headline">¶</a></h1>
@@ -55,13 +55,13 @@
 <p><em>这部分功能正在持续改进中,如果你有好的办法能够跟踪,分析Django框架,请给我们留言</em></p>
 <div class="section" id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">runprofileserver</span></tt> 命令在启动django服务的同时其用了跟踪分析工具,会将服务的分析信息保存到 <tt class="docutils literal"><span class="pre">.prof</span></tt> 后缀文件中.使用 <tt class="docutils literal"><span class="pre">--prof-path</span></tt> 参数指定保存分析文件到指定目录.每一个请求的分析数据都会被保存成一个profile文件.</p>
-<p>如果没有指定 <tt class="docutils literal"><span class="pre">--prof-path</span></tt> 参数,分析数据的 <tt class="docutils literal"><span class="pre">.prof</span></tt> 文件会被保存到 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录下.建议使用特定目录保存分析文件,这样方便我们随时查看分析数据,也不会弄乱 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录,使用windows系统时一定要指定``&#8211;prof-path`` 参数,因为windows系统没有 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录.</p>
+<p><code class="docutils literal"><span class="pre">runprofileserver</span></code> 命令在启动django服务的同时其用了跟踪分析工具,会将服务的分析信息保存到 <code class="docutils literal"><span class="pre">.prof</span></code> 后缀文件中.使用 <code class="docutils literal"><span class="pre">--prof-path</span></code> 参数指定保存分析文件到指定目录.每一个请求的分析数据都会被保存成一个profile文件.</p>
+<p>如果没有指定 <code class="docutils literal"><span class="pre">--prof-path</span></code> 参数,分析数据的 <code class="docutils literal"><span class="pre">.prof</span></code> 文件会被保存到 <code class="docutils literal"><span class="pre">/tmp</span></code> 目录下.建议使用特定目录保存分析文件,这样方便我们随时查看分析数据,也不会弄乱 <code class="docutils literal"><span class="pre">/tmp</span></code> 目录,使用windows系统时一定要指定``&#8211;prof-path`` 参数,因为windows系统没有 <code class="docutils literal"><span class="pre">/tmp</span></code> 目录.</p>
 <p>分析文件的名字默认名字是:</p>
-<div class="highlight-python"><div class="highlight"><pre>{path}.{duration:06d}ms.{time}
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">path</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">duration</span><span class="p">:</span><span class="mi">06</span><span class="n">d</span><span class="p">}</span><span class="n">ms</span><span class="o">.</span><span class="p">{</span><span class="n">time</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>也可以通过 <tt class="docutils literal"><span class="pre">--prof-file</span></tt> 参数指定生成的服务分析文件名字.文件名格式规则参考: <a class="reference external" href="http://docs.python.org/3/library/string.html#formatspec">Format Specification</a>.</p>
+<p>也可以通过 <code class="docutils literal"><span class="pre">--prof-file</span></code> 参数指定生成的服务分析文件名字.文件名格式规则参考: <a class="reference external" href="http://docs.python.org/3/library/string.html#formatspec">Format Specification</a>.</p>
 <p>例如:</p>
 <blockquote>
 <div><ul class="simple">
@@ -72,13 +72,25 @@
 </div>
 <div class="section" id="profile">
 <h2>聚合profile<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h2>
-<p>Django提供了一个profile文件聚合的工具 <tt class="docutils literal"><span class="pre">gather_profile_stats.py</span></tt> ,在Django安装目录的 <tt class="docutils literal"><span class="pre">bin</span></tt> 目录下可以找到.</p>
+<p>Django提供了一个profile文件聚合的工具 <code class="docutils literal"><span class="pre">gather_profile_stats.py</span></code> ,在Django安装目录的 <code class="docutils literal"><span class="pre">bin</span></code> 目录下可以找到.</p>
+</div>
+<div class="section" id="profiler">
+<h2>Profiler选择<a class="headerlink" href="#profiler" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">runprofileserver</span></code> 支持两种 profilers : <em>hotshot</em> 和 <em>cProfile</em>. 两个都是Python标准库. <em>cProfile</em> 比较新, 而且可能不支持所有系统. 所以默认的 profiler 是*hotshot*.</p>
+<p>但是 <em>hotshot</em> 已经不再维护了. &lt;<a class="reference external" href="https://docs.python.org/2/library/profile.html#introduction-to-the-profilers">https://docs.python.org/2/library/profile.html#introduction-to-the-profilers</a>&gt;`_
+<em>cProfile</em> 通常是一个更好的选择. 通过 <code class="docutils literal"><span class="pre">--use-cprofile</span></code> 参数来检测当前系统是否支持 <em>cProfile</em>;</p>
+<p>例子:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir /tmp/my-profile-data
+$ ./manage.py runprofileserver --use-cprofile --prof-path=/tmp/my-profile-data
+</pre></div>
+</div>
+<p>如果使用默认profiler后, <code class="docutils literal"><span class="pre">pstats</span></code> 模块和 GUI 工具都打不开记录, 并且提示 &#8220;<em>ValueError: bad marshal data (unknown type code)</em>&#8221;. 尝试使用*cProfile*作为profiler来解决问题.</p>
 </div>
 <div class="section" id="kcachegrind">
 <h2>KCacheGrind<a class="headerlink" href="#kcachegrind" title="Permalink to this headline">¶</a></h2>
-<p>新版本的 <tt class="docutils literal"><span class="pre">runprofileserver</span></tt> 命令可以把分析的结果文件保存成 <a class="reference external" href="http://kcachegrind.sourceforge.net/html/Documentation.html">KCacheGrind</a> 格式文件,这样就可以通过 KCacheGrind 的分析工具来查看分析数据.</p>
+<p>新版本的 <code class="docutils literal"><span class="pre">runprofileserver</span></code> 命令可以把分析的结果文件保存成 <a class="reference external" href="http://kcachegrind.sourceforge.net/html/Documentation.html">KCacheGrind</a> 格式文件,这样就可以通过 KCacheGrind 的分析工具来查看分析数据.</p>
 <p>例子:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ mkdir /tmp/my-profile-data
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir /tmp/my-profile-data
 $ ./manage.py runprofileserver --kcachegrind --prof-path=/tmp/my-profile-data
 Validating models...
 0 errors found
@@ -113,13 +125,14 @@ $ kcachegrind /tmp/my-profile-data/root.12574391.592.prof
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">runprofileserver</a><ul>
 <li><a class="reference internal" href="#id1">简介</a></li>
 <li><a class="reference internal" href="#profile">聚合profile</a></li>
+<li><a class="reference internal" href="#profiler">Profiler选择</a></li>
 <li><a class="reference internal" href="#kcachegrind">KCacheGrind</a></li>
 <li><a class="reference internal" href="#id2">相关知识链接</a></li>
 </ul>
@@ -132,29 +145,28 @@ $ kcachegrind /tmp/my-profile-data/root.12574391.592.prof
   <h4>Next topic</h4>
   <p class="topless"><a href="runserver_plus.html"
                         title="next chapter">runserver_plus</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/runprofileserver.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/runprofileserver.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -166,12 +178,12 @@ $ kcachegrind /tmp/my-profile-data/root.12574391.592.prof
         <li class="right" >
           <a href="print_settings.html" title="print_settings"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

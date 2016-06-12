@@ -8,7 +8,7 @@
     
     <title>dumpscript &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="runscript" href="runscript.html" />
     <link rel="prev" title="create_app" href="create_app.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="create_app.html" title="create_app"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="dumpscript">
 <h1>dumpscript<a class="headerlink" href="#dumpscript" title="Permalink to this headline">¶</a></h1>
@@ -59,7 +59,7 @@
 </tr>
 </tbody>
 </table>
-<p><tt class="docutils literal"><span class="pre">dumpscript</span></tt> 命令生成单独的Python脚本,包含了转换成Python对象的数据库数据.这种方法比直接创建数据库或通过XML创建数据库更容易理解,扩展性也更好.</p>
+<p><code class="docutils literal"><span class="pre">dumpscript</span></code> 命令生成单独的Python脚本,包含了转换成Python对象的数据库数据.这种方法比直接创建数据库或通过XML创建数据库更容易理解,扩展性也更好.</p>
 <div class="section" id="id1">
 <h2>为什么有这个功能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>这样做的有几点好处:</p>
@@ -68,10 +68,10 @@
 <li>编辑脚本后可以自动生成很多的实例数据</li>
 </ul>
 <p>例如,编辑一个脚本,生成一些测试的初始数据到数据库中:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
     <span class="n">poll</span> <span class="o">=</span> <span class="n">Poll</span><span class="p">()</span>
-    <span class="n">poll</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="s">&quot;Question #</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">i</span>
-    <span class="n">poll</span><span class="o">.</span><span class="n">pub_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="mo">01</span><span class="p">,</span><span class="mo">01</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">poll</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Question #</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span>
+    <span class="n">poll</span><span class="o">.</span><span class="n">pub_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="mi">01</span><span class="p">,</span><span class="mi">01</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
     <span class="n">poll</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -101,19 +101,19 @@
 <div class="section" id="id5">
 <h2>如何使用<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>从指定的app中导出所有models的建表语句:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py dumpscript appname &gt; scripts/testdata.py
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py dumpscript appname &gt; scripts/testdata.py
 </pre></div>
 </div>
-<p>导出指定模型的数据,添加参数 <tt class="docutils literal"><span class="pre">appname.ModelName</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py dumpscript appname.ModelName &gt; scripts/testdata.py
+<p>导出指定模型的数据,添加参数 <code class="docutils literal"><span class="pre">appname.ModelName</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py dumpscript appname.ModelName &gt; scripts/testdata.py
 </pre></div>
 </div>
 <p>清空指定app对应数据库数据,然后重新加载数据:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py reset appname
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py reset appname
 $ ./manage.py runscript testdata
 </pre></div>
 </div>
-<p>提示: <tt class="docutils literal"><span class="pre">runscript</span></tt> 命令只能执行在 <tt class="docutils literal"><span class="pre">scripts</span></tt> 模块下的脚本,所以要在 <tt class="docutils literal"><span class="pre">scripts</span></tt> 目录下创建 <em>__init__.py</em> 文件.</p>
+<p>提示: <code class="docutils literal"><span class="pre">runscript</span></code> 命令只能执行在 <code class="docutils literal"><span class="pre">scripts</span></code> 模块下的脚本,所以要在 <code class="docutils literal"><span class="pre">scripts</span></code> 目录下创建 <em>__init__.py</em> 文件.</p>
 </div>
 <div class="section" id="id6">
 <h2>警告<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
@@ -121,7 +121,7 @@ $ ./manage.py runscript testdata
 <h3>命名冲突<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>在命名输出文件时不要与当前环境路径下的文件重名,否则会引起import异常.比如输出到的目标文件与app目录重名时,脚本会尝试加载输出文件而不是app,这是不正确的.</p>
 <p>例子:</p>
-<div class="highlight-python"><div class="highlight"><pre># 错误用法
+<div class="highlight-default"><div class="highlight"><pre><span></span># 错误用法
 $ ./manage.py dumpscript appname &gt; dumps/appname.py
 
 # 正确用法
@@ -145,7 +145,7 @@ $ ./manage.py dumpscript appname.Somemodel &gt; dumps/appname_somemodel.py
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -168,29 +168,28 @@ $ ./manage.py dumpscript appname.Somemodel &gt; dumps/appname_somemodel.py
   <h4>Next topic</h4>
   <p class="topless"><a href="runscript.html"
                         title="next chapter">runscript</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/dumpscript.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dumpscript.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -202,12 +201,12 @@ $ ./manage.py dumpscript appname.Somemodel &gt; dumps/appname_somemodel.py
         <li class="right" >
           <a href="create_app.html" title="create_app"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

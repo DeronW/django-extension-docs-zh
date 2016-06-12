@@ -8,7 +8,7 @@
     
     <title>validate_templates &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,8 +26,8 @@
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
     <link rel="prev" title="sqlcreate" href="sqlcreate.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,14 +36,14 @@
         <li class="right" >
           <a href="sqlcreate.html" title="sqlcreate"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="validate-templates">
 <h1>validate_templates<a class="headerlink" href="#validate-templates" title="Permalink to this headline">¶</a></h1>
@@ -67,22 +67,22 @@
 </div>
 <div class="section" id="includes">
 <h3>includes<a class="headerlink" href="#includes" title="Permalink to this headline">¶</a></h3>
-<p>通过参数 <tt class="docutils literal"><span class="pre">-i</span></tt> (可以重复使用)来添加自定义的模板目录</p>
+<p>通过参数 <code class="docutils literal"><span class="pre">-i</span></code> (可以重复使用)来添加自定义的模板目录</p>
 </div>
 </div>
 <div class="section" id="id2">
 <h2>配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="validate-templates-extra-template-dirs">
 <h3>VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS<a class="headerlink" href="#validate-templates-extra-template-dirs" title="Permalink to this headline">¶</a></h3>
-<p>通过 <tt class="docutils literal"><span class="pre">VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS</span></tt> 配置可以指定所有模板目录的前缀.这个配置主要针对 <tt class="docutils literal"><span class="pre">TEMPLATE_DIRS</span></tt> 是动态的或模板目录是通过中间件生成的情况.扩展app的模板,比如Django项目中若是包含的 <tt class="docutils literal"><span class="pre">celery</span></tt> 模块也可以通过指定该参数来进行模板语法检测.</p>
+<p>通过 <code class="docutils literal"><span class="pre">VALIDATE_TEMPLATES_EXTRA_TEMPLATE_DIRS</span></code> 配置可以指定所有模板目录的前缀.这个配置主要针对 <code class="docutils literal"><span class="pre">TEMPLATE_DIRS</span></code> 是动态的或模板目录是通过中间件生成的情况.扩展app的模板,比如Django项目中若是包含的 <code class="docutils literal"><span class="pre">celery</span></code> 模块也可以通过指定该参数来进行模板语法检测.</p>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>用法举例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>./manage.py validate_templates
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">validate_templates</span>
 </pre></div>
 </div>
-<p>译者注: <tt class="docutils literal"><span class="pre">validate_templates</span></tt> 命令适用与检测Django框架原生模板,如果使用了其它模板(jinja等),则该命令会失去检测效果.</p>
+<p>译者注: <code class="docutils literal"><span class="pre">validate_templates</span></code> 命令适用与检测Django框架原生模板,如果使用了其它模板(jinja等),则该命令会失去检测效果.</p>
 </div>
 </div>
 
@@ -90,7 +90,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -113,29 +113,28 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="sqlcreate.html"
                         title="previous chapter">sqlcreate</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/validate_templates.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/validate_templates.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -144,12 +143,12 @@
         <li class="right" >
           <a href="sqlcreate.html" title="sqlcreate"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>django-extensions 文档 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>Django-Extensions 文档 &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,8 +26,8 @@
     <link rel="top" title="django-extensions 1.2.5 documentation" href="#" />
     <link rel="next" title="安装django-extensions" href="installation_instructions.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,17 +36,17 @@
         <li class="right" >
           <a href="installation_instructions.html" title="安装django-extensions"
              accesskey="N">next</a> |</li>
-        <li><a href="#">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="django-extensions">
-<h1>django-extensions 文档<a class="headerlink" href="#django-extensions" title="Permalink to this headline">¶</a></h1>
+<h1>Django-Extensions 文档<a class="headerlink" href="#django-extensions" title="Permalink to this headline">¶</a></h1>
 <p>Django Extensions 是Django框架的扩展功能集合.</p>
 <p>包括management命令扩展,数据库字段扩展,admin后台扩展等.</p>
 <p>译者注: 文档中包含了部分 <a class="reference external" href="http://git-scm.com">git</a> , <a class="reference external" href="https://github.com/">github</a> , <a class="reference external" href="http://docs.python.org/2/library/os.html#os.environ">Python env</a> 相关内容, 阅读时遇到相关只是请参考相应文档.</p>
@@ -57,35 +57,35 @@
 </div>
 <div class="section" id="id2">
 <h1>安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
-<p>通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装 <tt class="docutils literal"><span class="pre">django-extensions</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install django-extensions
+<p>通过 <code class="docutils literal"><span class="pre">pip</span></code> 或 <code class="docutils literal"><span class="pre">easy_install</span></code> 安装 <code class="docutils literal"><span class="pre">django-extensions</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install django-extensions
 </pre></div>
 </div>
 <p>或:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ easy_install django-extensions
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ easy_install django-extensions
 </pre></div>
 </div>
 <p>还可以从github上下载源码安装:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ git clone git://github.com/django-extensions/django-extensions.git
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone git://github.com/django-extensions/django-extensions.git
 $ cd django-extensions
 $ python setup.py install
 </pre></div>
 </div>
-<p>更多安装细节,查看 <a class="reference internal" href="installation_instructions.html"><em>安装django-extensions</em></a>.</p>
+<p>更多安装细节,查看 <a class="reference internal" href="installation_instructions.html"><span class="doc">安装django-extensions</span></a>.</p>
 </div>
-<div class="section" id="id3">
-<h1>兼容性<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">django-extensions</span></tt> 尽量根据Django版本发布计划支持相应的Django和Python版本 <a class="reference external" href="https://docs.djangoproject.com/en/dev/internals/release-process/#supported-versions">参考Django版本支持说明</a> <a class="footnote-reference" href="#id8" id="id4">[1]</a> .</p>
-<p>新版本的 <tt class="docutils literal"><span class="pre">django-extensions</span></tt> 可能在旧版本的Django或Python中也会正常运行,但是我们已经放弃修复与旧版本Django或Python的兼容性bug.</p>
-<p>目前支持的Python版本是 2.6, 2.7 和 3.3， 支持的Django版本是1.4, 1.5, 1.6 <a class="footnote-reference" href="#id9" id="id5">[2]</a>.</p>
+<div class="section" id="pythondjango">
+<h1>Python以及Django的兼容性<a class="headerlink" href="#pythondjango" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">django-extensions</span></code> 尽量根据Django版本发布计划支持相应的Django和Python版本 <a class="reference external" href="https://docs.djangoproject.com/en/dev/internals/release-process/#supported-versions">参考Django版本支持说明</a> <a class="footnote-reference" href="#id7" id="id3">[1]</a> .</p>
+<p>新版本的 <code class="docutils literal"><span class="pre">django-extensions</span></code> 可能在旧版本的Django或Python中也会正常运行,但是我们已经放弃修复与旧版本Django或Python的兼容性bug.</p>
+<p>目前支持的Python版本是 2.7, 3.4, 3.5, pypy, pypy3. 支持的Django版本是1.8, 1.9 <a href="#id8"><span class="problematic" id="id9"><span id="id4"></span>[2]_</span></a>.</p>
 </div>
-<div class="section" id="id6">
-<h1>目录<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h1>目录<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation_instructions.html">安装django-extensions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation_instructions.html#id1">下载和安装</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#pip-easy-install">通过 <tt class="docutils literal"><span class="pre">pip</span></tt> 或 <tt class="docutils literal"><span class="pre">easy_install</span></tt> 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#pip-easy-install">通过 <code class="docutils literal"><span class="pre">pip</span></code> 或 <code class="docutils literal"><span class="pre">easy_install</span></code> 安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#id2">下载源码安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation_instructions.html#django">在Django中使用</a></li>
 </ul>
@@ -93,9 +93,9 @@ $ python setup.py install
 <li class="toctree-l2"><a class="reference internal" href="installation_instructions.html#id4">版本控制</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="command_extensions.html">management命令扩展</a></li>
-<li class="toctree-l1"><a class="reference internal" href="command_extension_ideas.html">management命令计划功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="admin_extensions.html">admin后台管理扩展</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="command_extensions.html">management 命令扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_extension_ideas.html">management 命令计划功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin_extensions.html">Admin 后台管理扩展</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="admin_extensions.html#id1">用法举例</a></li>
 </ul>
 </li>
@@ -103,6 +103,7 @@ $ python setup.py install
 <li class="toctree-l2"><a class="reference internal" href="shell_plus.html#python-shells">交互式的 Python Shells</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shell_plus.html#id1">配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shell_plus.html#id2">附加的引入模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell_plus.html#id3">数据库应用签名</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="create_app.html">create_app</a><ul>
@@ -140,7 +141,7 @@ $ python setup.py install
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="field_extensions.html">model字段扩展</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="field_extensions.html">Model 字段扩展</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="field_extensions.html#id1">当前数据模型的字段的扩展</a></li>
 </ul>
 </li>
@@ -175,6 +176,7 @@ $ python setup.py install
 <li class="toctree-l1"><a class="reference internal" href="runprofileserver.html">runprofileserver</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#id1">简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#profile">聚合profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#profiler">Profiler选择</a></li>
 <li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#kcachegrind">KCacheGrind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="runprofileserver.html#id2">相关知识链接</a></li>
 </ul>
@@ -184,10 +186,15 @@ $ python setup.py install
 <li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id2">开始使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id3">深入使用</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="runserver_plus.html#id4">查看源码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="runserver_plus.html#id5">命令行调试</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id5">命令行调试</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="runserver_plus.html#ssl">SSL</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#id6">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#cpuio">CPU及IO的用量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runserver_plus.html#debugger-pin">调试 (Debugger PIN)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sync_s3.html">sync_s3</a><ul>
@@ -198,7 +205,8 @@ $ python setup.py install
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sqldiff.html">sqldiff</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sqldiff.html#id1">支持的数据库</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sqldiff.html#id2">用法举例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqldiff.html#id2">退出时的状态码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqldiff.html#id3">用法举例</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sqlcreate.html">sqlcreate</a><ul>
@@ -210,6 +218,12 @@ $ python setup.py install
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sqlcreate.html#id4">存在的问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sqldsn.html">sqldsn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sqldsn.html#id1">支持的数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqldsn.html#id2">退出状态码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqldsn.html#id3">用法举例</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="validate_templates.html">validate_templates</a><ul>
@@ -228,16 +242,10 @@ $ python setup.py install
 </li>
 </ul>
 </div>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>Django的单个版本指定了需要的Python版本,支持某个Django版本就代表同时支持相应的Python版本.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>目前最新的Django1.6版本后要求不能使用Python2.6以前的版本,这也是未来Django对Python的最低要求.应及时升级Django到最新的稳定版,以免欠下技术债.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Django的单个版本指定了需要的Python版本,支持某个Django版本就代表同时支持相应的Python版本.</td></tr>
 </tbody>
 </table>
 </div>
@@ -246,43 +254,42 @@ $ python setup.py install
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">django-extensions 文档</a></li>
+<li><a class="reference internal" href="#">Django-Extensions 文档</a></li>
 <li><a class="reference internal" href="#id1">开始</a></li>
 <li><a class="reference internal" href="#id2">安装</a></li>
-<li><a class="reference internal" href="#id3">兼容性</a></li>
-<li><a class="reference internal" href="#id6">目录</a></li>
+<li><a class="reference internal" href="#pythondjango">Python以及Django的兼容性</a></li>
+<li><a class="reference internal" href="#id5">目录</a></li>
 </ul>
 
   <h4>Next topic</h4>
   <p class="topless"><a href="installation_instructions.html"
                         title="next chapter">安装django-extensions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -291,12 +298,12 @@ $ python setup.py install
         <li class="right" >
           <a href="installation_instructions.html" title="安装django-extensions"
              >next</a> |</li>
-        <li><a href="#">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@
     
     <title>print_settings &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="runprofileserver" href="runprofileserver.html" />
     <link rel="prev" title="命名空间的建议" href="namespace_proposal.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="namespace_proposal.html" title="命名空间的建议"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="print-settings">
 <h1>print_settings<a class="headerlink" href="#print-settings" title="Permalink to this headline">¶</a></h1>
@@ -55,33 +55,37 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body"><tt class="docutils literal"><span class="pre">print_settings</span></tt> 命令与Django的 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 命令相似,但是会输出当前项目中使用的全部配置(包括默认配置)</td>
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body"><code class="docutils literal"><span class="pre">print_settings</span></code> 命令与Django的 <code class="docutils literal"><span class="pre">diffsettings</span></code> 命令相似,但是会输出当前项目中使用的全部配置(包括默认配置)</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Django使用 <tt class="docutils literal"><span class="pre">diffsettings</span></tt> 命令输出当前项目配置与默认配置的区别.有时也需要直接查看当前项目的所有配置,尤其是配置十分复杂的时候,比如都包含好几个配置文件 <a class="footnote-reference" href="#id4" id="id2">[1]</a>.例如,在测试和开发环境中使用不同的配置文件,并且都包含了默认的 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件,这样就不能直观的查看配置文件了.</p>
-<p><tt class="docutils literal"><span class="pre">print_settings</span></tt> 命令支持从不同的格式文件中输出数据.</p>
+<p>Django使用 <code class="docutils literal"><span class="pre">diffsettings</span></code> 命令输出当前项目配置与默认配置的区别.有时也需要直接查看当前项目的所有配置,尤其是配置十分复杂的时候,比如都包含好几个配置文件 <a class="footnote-reference" href="#id4" id="id2">[1]</a>.例如,在测试和开发环境中使用不同的配置文件,并且都包含了默认的 <code class="docutils literal"><span class="pre">settings.py</span></code> 文件,这样就不能直观的查看配置文件了.</p>
+<p><code class="docutils literal"><span class="pre">print_settings</span></code> 命令支持从不同的格式文件中输出数据.</p>
 </div>
 <div class="section" id="id3">
 <h2>详情<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>最简单的输出配置命令如下,不需要添加参数:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python manage.py print_settings
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python manage.py print_settings
 </pre></div>
 </div>
 <p>以不同格式输出</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python manage.py print_settings --format=json
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python manage.py print_settings --format=json
 $ python manage.py print_settings --format=yaml    # 需要安装 PyYAML
+$ python manage.py print_settings --format=pprint
+$ python manage.py print_settings --format=text
+$ python manage.py print_settings --format=value
 </pre></div>
 </div>
 <p>只显示指定参数</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python manage.py print_settings DEBUG INSTALLED_APPS
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python manage.py print_settings DEBUG INSTALLED_APPS
 $ python manage.py print_settings DEBUG INSTALLED_APPS --format=pprint
+$ python manage.py print_settings INSTALLED_APPS --format=value
 </pre></div>
 </div>
-<p>通过 <tt class="docutils literal"><span class="pre">--help</span></tt> 参数可以获取更多帮助:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python manage.py print_settings --help
+<p>通过 <code class="docutils literal"><span class="pre">--help</span></code> 参数可以获取更多帮助:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python manage.py print_settings --help
 Usage: manage.py print_settings [options]
 
 Print the active Django settings.
@@ -117,7 +121,7 @@ Options:
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -134,29 +138,28 @@ Options:
   <h4>Next topic</h4>
   <p class="topless"><a href="runprofileserver.html"
                         title="next chapter">runprofileserver</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/print_settings.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/print_settings.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -168,12 +171,12 @@ Options:
         <li class="right" >
           <a href="namespace_proposal.html" title="命名空间的建议"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

@@ -23,6 +23,9 @@ Django使用 ``diffsettings`` 命令输出当前项目配置与默认配置的�
 
     $ python manage.py print_settings --format=json
     $ python manage.py print_settings --format=yaml    # 需要安装 PyYAML
+    $ python manage.py print_settings --format=pprint
+    $ python manage.py print_settings --format=text
+    $ python manage.py print_settings --format=value
 
 只显示指定参数
 
@@ -30,6 +33,7 @@ Django使用 ``diffsettings`` 命令输出当前项目配置与默认配置的�
 
     $ python manage.py print_settings DEBUG INSTALLED_APPS
     $ python manage.py print_settings DEBUG INSTALLED_APPS --format=pprint
+    $ python manage.py print_settings INSTALLED_APPS --format=value
 
 通过 ``--help`` 参数可以获取更多帮助::
 

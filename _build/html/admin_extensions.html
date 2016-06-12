@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>admin后台管理扩展 &mdash; django-extensions 1.2.5 documentation</title>
+    <title>Admin 后台管理扩展 &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="shell_plus" href="shell_plus.html" />
     <link rel="prev" title="management命令计划功能" href="command_extension_ideas.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,17 +40,17 @@
         <li class="right" >
           <a href="command_extension_ideas.html" title="management命令计划功能"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="admin">
-<h1>admin后台管理扩展<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h1>
+<h1>Admin 后台管理扩展<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -62,20 +62,20 @@
 <p><em>ForeignKeyAutocompleteAdmin</em> - 该扩展字段在Admin后台中显示为一个搜索输入框.前端显示的内容由 ForeignKeySearchInput form的weight渲染,通过jQuery的autocompletion功能实现搜索效果.</p>
 <div class="section" id="id1">
 <h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>启用后台管理的自动补全功能，根据示例编辑 <tt class="docutils literal"><span class="pre">admin.py</span></tt> 文件：</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">foo.models</span> <span class="kn">import</span> <span class="n">Permission</span>
-<span class="kn">from</span> <span class="nn">django_extensions.admin</span> <span class="kn">import</span> <span class="n">ForeignKeyAutocompleteAdmin</span>
+<p>启用后台管理的自动补全功能，根据示例编辑 <code class="docutils literal"><span class="pre">admin.py</span></code> 文件：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">foo.models</span> <span class="k">import</span> <span class="n">Permission</span>
+<span class="kn">from</span> <span class="nn">django_extensions.admin</span> <span class="k">import</span> <span class="n">ForeignKeyAutocompleteAdmin</span>
 
 
 <span class="k">class</span> <span class="nc">PermissionAdmin</span><span class="p">(</span><span class="n">ForeignKeyAutocompleteAdmin</span><span class="p">):</span>
-    <span class="c"># User is your FK attribute in your model</span>
-    <span class="c"># first_name and email are attributes to search for in the FK model</span>
+    <span class="c1"># User is your FK attribute in your model</span>
+    <span class="c1"># first_name and email are attributes to search for in the FK model</span>
     <span class="n">related_search_fields</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;user&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;first_name&#39;</span><span class="p">,</span> <span class="s">&#39;email&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">),</span>
     <span class="p">}</span>
 
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;user&#39;</span><span class="p">,</span> <span class="s">&#39;avatar&#39;</span><span class="p">,</span> <span class="s">&#39;is_active&#39;</span><span class="p">)</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="s1">&#39;is_active&#39;</span><span class="p">)</span>
 
     <span class="o">...</span>
 
@@ -83,10 +83,10 @@
 </pre></div>
 </div>
 <p>如果使用了 <a class="reference external" href="https://github.com/etianen/django-reversion">django-reversion</a> ，参考下面的例子：</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">foo.models</span> <span class="kn">import</span> <span class="n">MyVersionModel</span>
-<span class="kn">from</span> <span class="nn">reversion.admin</span> <span class="kn">import</span> <span class="n">VersionAdmin</span>
-<span class="kn">from</span> <span class="nn">django_extensions.admin</span> <span class="kn">import</span> <span class="n">ForeignKeyAutocompleteAdmin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">foo.models</span> <span class="k">import</span> <span class="n">MyVersionModel</span>
+<span class="kn">from</span> <span class="nn">reversion.admin</span> <span class="k">import</span> <span class="n">VersionAdmin</span>
+<span class="kn">from</span> <span class="nn">django_extensions.admin</span> <span class="k">import</span> <span class="n">ForeignKeyAutocompleteAdmin</span>
 
 <span class="k">class</span> <span class="nc">MyVersionModelAdmin</span><span class="p">(</span><span class="n">VersionAdmin</span><span class="p">,</span> <span class="n">ForeignKeyAutocompleteAdmin</span><span class="p">):</span>
     <span class="o">...</span>
@@ -94,6 +94,22 @@
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">MyVersionModel</span><span class="p">,</span> <span class="n">MyVersionModelAdmin</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>如果想要限制搜索功能中的自动匹配, 覆写admin的 <code class="docutils literal"><span class="pre">get_related_filter</span></code> 方法.
+例如, 添加一条限制给非管理员用户: 仅能向自己创建的文章中添加附件</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AttachmentAdmin</span><span class="p">(</span><span class="n">ForeignKeyAutocompleteAdmin</span><span class="p">):</span>
+
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">get_related_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">Article</span><span class="p">)</span> <span class="ow">or</span> <span class="n">user</span><span class="o">.</span><span class="n">is_superuser</span><span class="p">():</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AttachmentAdmin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_related_filter</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span> <span class="n">request</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Q</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>注意, 某些恶意操作可以绕过这种使用限制(例如一个经过精心构造的伪装请求)</p>
 </div>
 </div>
 
@@ -101,11 +117,11 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">admin后台管理扩展</a><ul>
+<li><a class="reference internal" href="#">Admin 后台管理扩展</a><ul>
 <li><a class="reference internal" href="#id1">用法举例</a></li>
 </ul>
 </li>
@@ -117,29 +133,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="shell_plus.html"
                         title="next chapter">shell_plus</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/admin_extensions.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/admin_extensions.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -151,12 +166,12 @@
         <li class="right" >
           <a href="command_extension_ideas.html" title="management命令计划功能"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

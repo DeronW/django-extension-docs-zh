@@ -8,7 +8,7 @@
     
     <title>export_emails &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,30 +24,30 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="django-extensions 1.2.5 documentation" href="index.html" />
-    <link rel="next" title="model字段扩展" href="field_extensions.html" />
+    <link rel="next" title="Model 字段扩展" href="field_extensions.html" />
     <link rel="prev" title="runscript" href="runscript.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="field_extensions.html" title="model字段扩展"
+          <a href="field_extensions.html" title="Model 字段扩展"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="runscript.html" title="runscript"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="export-emails">
 <h1>export_emails<a class="headerlink" href="#export-emails" title="Permalink to this headline">¶</a></h1>
@@ -59,19 +59,19 @@
 </tr>
 </tbody>
 </table>
-<p>大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, GMail, google docs, 修改权限, LinkedLn用户组等等). <tt class="docutils literal"><span class="pre">export_emails</span></tt> 命令为此而设计.导出的用户信息的同时可以对其进行分组.</p>
+<p>大部分Django站点包含注册用户的信息.有时我们需要将用户邮箱信息导入到其它系统中(生成邮件, Gmail, Google Docs, 修改权限, LinkedLn用户组等等). <code class="docutils literal"><span class="pre">export_emails</span></code> 命令为此而设计.导出的用户信息的同时可以对其进行分组.</p>
 <div class="section" id="id1">
 <h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>将所有用户信息导出成 <tt class="docutils literal"><span class="pre">'&quot;First</span> <span class="pre">Last&quot;</span> <span class="pre">&lt;my&#64;addr.com&gt;;'</span></tt> 格式:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py export_emails &gt; addresses.txt
+<p>将所有用户信息导出成 <code class="docutils literal"><span class="pre">'&quot;First</span> <span class="pre">Last&quot;</span> <span class="pre">&lt;my&#64;addr.com&gt;;'</span></code> 格式:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py export_emails &gt; addresses.txt
 </pre></div>
 </div>
-<p>以LinkedIn pre-approve格式从 <tt class="docutils literal"><span class="pre">Attendees</span></tt> 组中导出用户信息:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv
+<p>以LinkedIn pre-approve格式从 <code class="docutils literal"><span class="pre">Attendees</span></code> 组中导出用户信息:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py export_emails -g Attendees -f linkedin pycon08.csv
 </pre></div>
 </div>
 <p>以GMail(Google Docs)格式创建一个CSV文件:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py export_emails --format=google google.csv
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py export_emails --format=google google.csv
 </pre></div>
 </div>
 </div>
@@ -80,7 +80,7 @@
 <div class="section" id="address">
 <h3>address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
 <p>默认的文本格式,每个实例占一行并保存成如下格式:</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;First Last&quot; &lt;user@host.com&gt;;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;First Last&quot;</span> <span class="o">&lt;</span><span class="n">user</span><span class="nd">@host</span><span class="o">.</span><span class="n">com</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>这可以被用在任意的邮件服务中.</p>
@@ -97,7 +97,7 @@
 <div class="section" id="linkedin">
 <h3>linkedin<a class="headerlink" href="#linkedin" title="Permalink to this headline">¶</a></h3>
 <p>CSV格式文件,可以被导入到 <a class="reference external" href="http://www.linkedin.com/static?key=groups_info">LinkedIn Groups</a> ,邀请列表中的用户加入该组.</p>
-<p>包含3列数据: <tt class="docutils literal"><span class="pre">名</span></tt> <tt class="docutils literal"><span class="pre">姓</span></tt> <tt class="docutils literal"><span class="pre">邮箱</span></tt> .这也是最适合电子表格的格式.</p>
+<p>包含3列数据: <code class="docutils literal"><span class="pre">名</span></code> <code class="docutils literal"><span class="pre">姓</span></code> <code class="docutils literal"><span class="pre">邮箱</span></code> .这也是最适合电子表格的格式.</p>
 </div>
 <div class="section" id="vcard">
 <h3>vcard<a class="headerlink" href="#vcard" title="Permalink to this headline">¶</a></h3>
@@ -110,7 +110,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -133,47 +133,46 @@
                         title="previous chapter">runscript</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="field_extensions.html"
-                        title="next chapter">model字段扩展</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/export_emails.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">Model 字段扩展</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/export_emails.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="field_extensions.html" title="model字段扩展"
+          <a href="field_extensions.html" title="Model 字段扩展"
              >next</a> |</li>
         <li class="right" >
           <a href="runscript.html" title="runscript"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

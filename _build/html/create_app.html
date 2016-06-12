@@ -8,7 +8,7 @@
     
     <title>create_app &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="dumpscript" href="dumpscript.html" />
     <link rel="prev" title="shell_plus" href="shell_plus.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="shell_plus.html" title="shell_plus"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="create-app">
 <h1>create_app<a class="headerlink" href="#create-app" title="Permalink to this headline">¶</a></h1>
@@ -59,27 +59,27 @@
 </tr>
 </tbody>
 </table>
-<p><tt class="docutils literal"><span class="pre">--template</span></tt> 参数指定使用一个模板来创建新的app.</p>
-<p><tt class="docutils literal"><span class="pre">--diagram</span></tt> 参数能够从 <tt class="docutils literal"><span class="pre">.dia</span></tt> 文件生成 <tt class="docutils literal"><span class="pre">models.py</span></tt> 和 <tt class="docutils literal"><span class="pre">admin.py</span></tt>.</p>
+<p><code class="docutils literal"><span class="pre">--template</span></code> 参数指定使用一个模板来创建新的app.</p>
+<p><code class="docutils literal"><span class="pre">--diagram</span></code> 参数能够从 <code class="docutils literal"><span class="pre">.dia</span></code> 文件生成 <code class="docutils literal"><span class="pre">models.py</span></code> 和 <code class="docutils literal"><span class="pre">admin.py</span></code>.</p>
 <div class="section" id="id1">
 <h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>例子需要在项目的根目录下执行,该目录下要包含 <tt class="docutils literal"><span class="pre">settings.py</span></tt> 文件 <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
-<div class="highlight-python"><div class="highlight"><pre># 获取命令行的帮助
-./manage.py create_app --help
+<p>例子需要在项目的根目录下执行,该目录下要包含 <code class="docutils literal"><span class="pre">settings.py</span></code> 文件 <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 获取命令行的帮助</span>
+<span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">create_app</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre># 从 [APP_NAME].dia 文件中生成 ``models.py`` 和 ``admin.py`` ,这个文件应该放在与 ``settings.py`` 相同的文件目录下
-./manage.py create_app -d APP_NAME
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 从 [APP_NAME].dia 文件中生成 ``models.py`` 和 ``admin.py`` ,这个文件应该放在与 ``settings.py`` 相同的文件目录下</span>
+<span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">create_app</span> <span class="o">-</span><span class="n">d</span> <span class="n">APP_NAME</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sample-diaapp">
 <h2>从sample.dia文件生成app<a class="headerlink" href="#sample-diaapp" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>./manage.py create_app --diagram=sample.dia webdata
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">create_app</span> <span class="o">--</span><span class="n">diagram</span><span class="o">=</span><span class="n">sample</span><span class="o">.</span><span class="n">dia</span> <span class="n">webdata</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">-d</span></tt> 参数或 <tt class="docutils literal"><span class="pre">--diagram</span></tt> 参数通过 <a class="reference external" href="https://svn.devnull.li/main/pythonware/dia2django/trunk/doc/">dia2django</a> 生成models.py, 详细文档查看 <a class="reference external" href="http://code.djangoproject.com/wiki/Dia2Django">django wiki</a>.</p>
-<p>译者注: 新版本Django原生命令 <tt class="docutils literal"><span class="pre">startapp</span></tt> 也提供了通过 <tt class="docutils literal"><span class="pre">--template</span></tt> 指定模板来创建app的功能</p>
+<p><code class="docutils literal"><span class="pre">-d</span></code> 参数或 <code class="docutils literal"><span class="pre">--diagram</span></code> 参数通过 <a class="reference external" href="https://svn.devnull.li/main/pythonware/dia2django/trunk/doc/">dia2django</a> 生成models.py, 详细文档查看 <a class="reference external" href="http://code.djangoproject.com/wiki/Dia2Django">django wiki</a>.</p>
+<p>译者注: 新版本Django原生命令 <code class="docutils literal"><span class="pre">startapp</span></code> 也提供了通过 <code class="docutils literal"><span class="pre">--template</span></code> 指定模板来创建app的功能</p>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -93,7 +93,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -110,29 +110,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="dumpscript.html"
                         title="next chapter">dumpscript</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/create_app.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/create_app.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -144,12 +143,12 @@
         <li class="right" >
           <a href="shell_plus.html" title="shell_plus"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

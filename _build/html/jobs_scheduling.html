@@ -8,7 +8,7 @@
     
     <title>定时任务 &mdash; django-extensions 1.2.5 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,8 +27,8 @@
     <link rel="next" title="数据库字段扩展" href="model_extensions.html" />
     <link rel="prev" title="graph_models" href="graph_models.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="graph_models.html" title="graph_models"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="id1">
 <h1>定时任务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
@@ -63,9 +63,9 @@
 <h2>定时的计划任务<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3>本页介绍的功能正在努力改进中<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>新建一个与Django的命令执行方式类似的任务 <a class="footnote-reference" href="#id5" id="id4">[1]</a>.使用 <tt class="docutils literal"><span class="pre">create_jobs</span></tt> 命令在一个app内创建一个 &#8216;jobs&#8217; 目录,然后可以创建不同的Python脚本执行不同的任务.</p>
-<p><tt class="docutils literal"><span class="pre">django_extensions.jobs</span></tt> 目录中包含了一些简单的例子.</p>
-<p>Python的任务脚本继承定时任务类后就会被定义为任务,可以按小时,按天,按周或按月执行.继承的脚本必须实现 <tt class="docutils literal"><span class="pre">execute</span></tt> 方法,该方法在任务触发时会被自动执行.</p>
+<p>新建一个与Django的命令执行方式类似的任务 <a class="footnote-reference" href="#id5" id="id4">[1]</a>.使用 <code class="docutils literal"><span class="pre">create_jobs</span></code> 命令在一个app内创建一个 &#8216;jobs&#8217; 目录,然后可以创建不同的Python脚本执行不同的任务.</p>
+<p><code class="docutils literal"><span class="pre">django_extensions.jobs</span></code> 目录中包含了一些简单的例子.</p>
+<p>Python的任务脚本继承定时任务类后就会被定义为任务,可以按小时,按天,按周或按月执行.继承的脚本必须实现 <code class="docutils literal"><span class="pre">execute</span></code> 方法,该方法在任务触发时会被自动执行.</p>
 <p>与任务相关的命令还包括:</p>
 <ul class="simple">
 <li>create_jobs: 创建包含任务的目录</li>
@@ -73,21 +73,21 @@
 <li>runjobs: 执行所有任务</li>
 </ul>
 <p>列出所有任务:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">runjob</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">-</span><span class="n">l</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">runjob</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">-</span><span class="n">l</span>
 </pre></div>
 </div>
 <p>未触发时,任务不会自己执行.</p>
-<p>任务需要手动执行,或指定时间执行,或在 <tt class="docutils literal"><span class="pre">cron</span></tt> 中配置定期执行</p>
-<div class="highlight-python"><div class="highlight"><pre>@hourly /path/to/my/project/manage.py runjobs hourly
+<p>任务需要手动执行,或指定时间执行,或在 <code class="docutils literal"><span class="pre">cron</span></code> 中配置定期执行</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@hourly</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">my</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runjobs</span> <span class="n">hourly</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>@daily /path/to/my/project/manage.py runjobs daily
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@daily</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">my</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runjobs</span> <span class="n">daily</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>@weekly /path/to/my/project/manage.py runjobs weekly
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@weekly</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">my</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runjobs</span> <span class="n">weekly</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>@monthly /path/to/my/project/manage.py runjobs monthly
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@monthly</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">my</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runjobs</span> <span class="n">monthly</span>
 </pre></div>
 </div>
 <table class="docutils footnote" frame="void" id="id5" rules="none">
@@ -104,7 +104,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -123,29 +123,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="model_extensions.html"
                         title="next chapter">数据库字段扩展</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/jobs_scheduling.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/jobs_scheduling.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -157,12 +156,12 @@
         <li class="right" >
           <a href="graph_models.html" title="graph_models"
              >previous</a> |</li>
-        <li><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

@@ -29,6 +29,21 @@ runprofileserver
 
 Django提供了一个profile文件聚合的工具 ``gather_profile_stats.py`` ,在Django安装目录的 ``bin`` 目录下可以找到.
 
+Profiler选择
+-------------
+
+``runprofileserver`` 支持两种 profilers : *hotshot* 和 *cProfile*. 两个都是Python标准库. *cProfile* 比较新, 而且可能不支持所有系统. 所以默认的 profiler 是*hotshot*.
+
+但是 *hotshot* 已经不再维护了. <https://docs.python.org/2/library/profile.html#introduction-to-the-profilers>`_
+*cProfile* 通常是一个更好的选择. 通过 ``--use-cprofile`` 参数来检测当前系统是否支持 *cProfile*;
+
+例子::
+
+  $ mkdir /tmp/my-profile-data
+  $ ./manage.py runprofileserver --use-cprofile --prof-path=/tmp/my-profile-data
+
+如果使用默认profiler后, ``pstats`` 模块和 GUI 工具都打不开记录, 并且提示 "*ValueError: bad marshal data (unknown type code)*". 尝试使用*cProfile*作为profiler来解决问题.
+
 KCacheGrind
 -----------
 
