@@ -1,0 +1,173 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>management 命令扩展 &#8212; django-extensions 1.2.5 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="management 下一步计划的功能" href="command_extension_ideas.html" />
+    <link rel="prev" title="安装django-extensions" href="installation_instructions.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="command_extension_ideas.html" title="management 下一步计划的功能"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation_instructions.html" title="安装django-extensions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="management">
+<h1>management 命令扩展<a class="headerlink" href="#management" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">management扩展命令列表</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><a class="reference internal" href="shell_plus.html"><span class="doc">shell_plus</span></a> - Django shell的加强版. 自动载入所有app的models,可以方便的使用这些ORM.</li>
+<li><code class="docutils literal"><span class="pre">admin_generator</span></code> - 提供app名字后, 自动生成Admin类. 生成的代码会输出到标准输出中(STDOUT).</li>
+<li><code class="docutils literal"><span class="pre">clean_pyc</span></code> - 清除项目编译后产生的全部python的二进制文件</li>
+<li><a class="reference internal" href="create_app.html"><span class="doc">create_app</span></a> - 新建一个app的简便方法,可以通过 <code class="docutils literal"><span class="pre">--template</span></code> 参数指定一个app作为创建模板 <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</li>
+<li><code class="docutils literal"><span class="pre">create_command</span></code> - 在指定app内创建一个命令扩展目录,方便添加新的扩展命令(或者只能手动创建扩展命令的目录).</li>
+<li><code class="docutils literal"><span class="pre">create_template_tags</span></code> - 在制定的app内创建模板标签目录</li>
+<li><code class="docutils literal"><span class="pre">create_jobs</span></code> - 在指定app内创建一个定时任务扩展目录,可以定期执行指定任务.</li>
+<li><code class="docutils literal"><span class="pre">clear_cache</span></code> - 清除缓存, 在测试和部署过程中十分有用.</li>
+<li><code class="docutils literal"><span class="pre">compile_pyc</span></code> - 编译项目, 并生成python二进制文件.</li>
+<li><code class="docutils literal"><span class="pre">describe_form</span></code> - 显示针对一个model的form描述.复制输出的内容到forms.py中可以完整定义一个对应model的form.</li>
+<li><a class="reference internal" href="delete_squashed_migrations.html"><span class="doc">删除优化后多余的migrations</span></a> - 删除冗余的migration文件. migrstion文件在合并优化之后遗留下来的冗余文件是没有用的, 直接删除.</li>
+<li><a class="reference internal" href="dumpscript.html"><span class="doc">dumpscript</span></a> - 生成一个Python脚本.包含指定app的所有数据对象.与Django的 <code class="docutils literal"><span class="pre">dumpdata</span></code> 命令不同的是 <code class="docutils literal"><span class="pre">dumpscript</span></code> 导出的是Python对象,而不是纯数据.这种导出数据的方式比直接导出数据或XML文件更容易理解,也更灵活.</li>
+<li><a class="reference internal" href="export_emails.html"><span class="doc">export_emails</span></a> - 从用户表中导出联系人信息,支持多种导出格式: Address, Google, Outlook, LinkedIn和 VCard.</li>
+<li><code class="docutils literal"><span class="pre">find_template</span></code> - 根据给定的模板名称, 查找他的文件路径</li>
+<li><code class="docutils literal"><span class="pre">generate_secret_key</span></code> - 重新生成一个项目密钥, <code class="docutils literal"><span class="pre">settigns.py</span></code> 文件中的 <strong>SECRET_KEY</strong> 配置.</li>
+<li><a class="reference internal" href="graph_models.html"><span class="doc">graph_models</span></a> - 生成一个 <a class="reference external" href="http://www.graphviz.org/">GraphViz</a> 文件.将输出内容写入一个文件.以图形化数据模型.传入多个app的名字作为参数,可以在一个文件中显示多个模型的图形化格式 <a class="footnote-reference" href="#id5" id="id2">[3]</a>.</li>
+<li><code class="docutils literal"><span class="pre">mail_debug</span></code> - 开启一个邮件服务, 将Django项目发出的邮件从控制台输出, 而不是真的发送出去.</li>
+<li><code class="docutils literal"><span class="pre">notes</span></code> - 显示python文件和HTML文件中的全部重要备注 比如 TODO, FIXME, BUG, HACK, WARNING, NOTE 和 XXX</li>
+<li><code class="docutils literal"><span class="pre">passwd</span></code> - 重新设定某个用户的密码,用法: <em>./manage.py passwd [用户名]</em> .</li>
+<li><code class="docutils literal"><span class="pre">pipchecker</span></code> - 扫描pip依赖文件 <a class="footnote-reference" href="#id5" id="id3">[3]</a> 并找出需要更新的包. 类似于 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">list</span> <span class="pre">-o</span></code> 命令安装依赖包的过程(在虚拟环境中 virtualenv), 只不过它是通过pip依赖文件实现的.</li>
+<li><a class="reference internal" href="print_settings.html"><span class="doc">print_settings</span></a> - 与 <code class="docutils literal"><span class="pre">diffsettings</span></code> 命令功能类似,但会根据参数显示指定的配置，如果不传参数默认显示的全部配置.</li>
+<li><code class="docutils literal"><span class="pre">print_user_for_session</span></code> - 通过 <code class="docutils literal"><span class="pre">session</span> <span class="pre">key</span></code> 来查看当前用户信息,这个方法在查找哪个用户行为导致程序异常非常有帮助. 仅在 <code class="docutils literal"><span class="pre">SESSION_ENGINE</span></code> 设置为 <code class="docutils literal"><span class="pre">'django.contrib.sessions.backends.db'</span></code> (默认值)的时候才能正常工作</li>
+<li><code class="docutils literal"><span class="pre">drop_test_database</span></code> - 删除测试数据库. 在自动化测试/部署系统(BuildBot, Jenkins, 等等)中十分有用. 确保测试数据库最终会被清除掉.</li>
+<li><code class="docutils literal"><span class="pre">reset_db</span></code> - 重置数据库 (目前支持 sqlite3, mysql, postgres)，可以用来删除或创建数据库.</li>
+<li><code class="docutils literal"><span class="pre">runjob</span></code> - 执行一个单独的任务,是 <code class="docutils literal"><span class="pre">django-extensions</span></code> 任务系统中的一个功能.</li>
+<li><code class="docutils literal"><span class="pre">runjobs</span></code> - 按计划定期执行任务. 按 小时,天,周,月执行. 时间计划功能是系统任务的一部分.</li>
+<li><code class="docutils literal"><span class="pre">runjobs</span></code> - 执行计划任务. 分为按小时执行,按天执行,按周执行,按月执行.是 <code class="docutils literal"><span class="pre">django-extensions</span></code> 任务系统中的一部分功能.</li>
+<li><a class="reference internal" href="runprofileserver.html"><span class="doc">runprofileserver</span></a> - 在启动 <code class="docutils literal"><span class="pre">runserver</span></code> 测试服务的同时,其用 <code class="docutils literal"><span class="pre">profile</span></code> 功能,可以记录服务的详细日志,包含了对于Python方法的详细执行分析.在服务器性能分析时,这是最佳方法了.</li>
+<li><a class="reference internal" href="runscript.html"><span class="doc">runscript</span></a> - 在当前项目的环境下执行脚本.</li>
+<li><a class="reference internal" href="runserver_plus.html"><span class="doc">runserver_plus</span></a> - 在Werkzeug debugger模式下开启服务. 需要安装 <a class="reference external" href="http://werkzeug.pocoo.org/">Werkzeug</a>. 这是个杀手级应用.</li>
+<li><code class="docutils literal"><span class="pre">set_fake_emails</span></code> - 根据每个用户的名称, 给所有用户生成一个邮箱, 默认格式为(“%(username)s&#64;example.com”). 生成邮箱的可选参数有: username, first_name, last_name. <em>仅用于测试</em></li>
+<li><code class="docutils literal"><span class="pre">set_fake_passwords</span></code> -  将所有用户的密码设置为一个统一值 (默认密码). <em>一定要在测试环境下使用</em>.</li>
+<li><code class="docutils literal"><span class="pre">show_template_tags</span></code> - 显示当前项目可用的模板标签和过滤器.</li>
+<li><code class="docutils literal"><span class="pre">show_urls</span></code> - 统一显示项目中包含的所有url.</li>
+<li><a class="reference internal" href="sqldiff.html"><span class="doc">sqldiff</span></a> - 显示app的models与数据库中的表的差别.这个功能非常好用,但还处于实验阶段,虽然不能捕获所有异常,但能很好的检查出不同的内容 [4][4]_.</li>
+<li><a class="reference internal" href="sqlcreate.html"><span class="doc">sqlcreate</span></a> - 根据配置文件的内容,生成创建数据库表的SQL语句.</li>
+<li><a class="reference internal" href="sqldsn.html"><span class="doc">sqldsn</span></a> - 从Django的配置文件中读取数据库连接参数. 可以提供给其它系统使用.</li>
+<li><a class="reference internal" href="sync_s3.html"><span class="doc">sync_s3</span></a> - 将settings.MEDIA_ROOT目录中文件复制到S3中.可以通过参数设置否是使用gzip压缩,文件编码,文件的缓存时间等.</li>
+<li><code class="docutils literal"><span class="pre">syncdata</span></code> - 把fixture(s)中的数据同步到数据库中, 一条不多, 一条不少.</li>
+<li><code class="docutils literal"><span class="pre">unreferenced_files</span></code> - 输出所有在 MEDIA_ROOT 路径下, 但是数据库中没有引用的文件名称.</li>
+<li><code class="docutils literal"><span class="pre">update_permissions</span></code> - 根据参数, 重载指定apps的权限. 如果没有参数, 则重载全部apps的权限.</li>
+<li><code class="docutils literal"><span class="pre">validate_templates</span></code> - 检查模板中可能存在的语法错误和变异错误.</li>
+<li><code class="docutils literal"><span class="pre">set_default_site</span></code> - 通过 <cite>name</cite> 和 <cite>domain</cite> 或者 <cite>system-fqdn`参数来设置默认站点 `django.contrib.sites</cite> 的参数.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Django1.6版本也开始支持通过模板创建app, 参考 <a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/django-admin/#startapp-appname-destination">https://docs.djangoproject.com/en/1.6/ref/django-admin/#startapp-appname-destination</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> 类似MySQL的relationship map, 将models的关系以描述方式输出,虽然是文本描述,但是使用了GraphViz格式,可以打开成图形</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation_instructions.html"
+                        title="previous chapter">安装django-extensions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="command_extension_ideas.html"
+                        title="next chapter">management 下一步计划的功能</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/command_extensions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="command_extension_ideas.html" title="management 下一步计划的功能"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation_instructions.html" title="安装django-extensions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

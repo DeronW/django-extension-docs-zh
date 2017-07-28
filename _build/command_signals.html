@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Command 指令信号 &#8212; django-extensions 1.2.5 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="command">
+<h1>Command 指令信号<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">摘要:</th><td class="field-body">Command指令在执行前和执行后都会发出信号.</td>
+</tr>
+</tbody>
+</table>
+<p>Command指令执行[开始前/结束后]都会发出一个信号, 允许项目在每个指令执行前后插入钩子方法.</p>
+<div class="section" id="id1">
+<h2>基础功能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>在show_template_tags中插入一个钩子方法:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django_extensions.management.signals</span> <span class="k">import</span> <span class="n">pre_command</span><span class="p">,</span> <span class="n">post_command</span>
+<span class="kn">from</span> <span class="nn">django_extensions.management.commands.show_template_tags</span> <span class="k">import</span> <span class="n">Command</span>
+
+<span class="k">def</span> <span class="nf">pre_receiver</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+  <span class="c1"># I&#39;m executed prior to the management command</span>
+
+<span class="k">def</span> <span class="nf">post_receiver</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">outcome</span><span class="p">):</span>
+  <span class="c1"># I&#39;m executed after the management command</span>
+
+<span class="n">pre_command</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pre_receiver</span><span class="p">,</span> <span class="n">Command</span><span class="p">)</span>
+<span class="n">post_command</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">post_receiver</span><span class="p">,</span> <span class="n">Command</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>给模型添加自定义权限<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在``update_permissions``的指令执行后的信号中添加一个钩子方法, 这样就可以给每个模型添加自己定义的权限了.</p>
+<p>例如, 把 <code class="docutils literal"><span class="pre">list</span></code> 和 <code class="docutils literal"><span class="pre">view</span></code> 权限添加到每个模型中. 可以在模型 <code class="docutils literal"><span class="pre">Meta</span></code> 类中的 <code class="docutils literal"><span class="pre">permissions</span></code> 元组添加参数. 但这样做很蛋疼.</p>
+<p>更简单的方案是使用 <code class="docutils literal"><span class="pre">update_permissions</span></code> 的钩子方法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="k">import</span> <span class="n">post_syncdb</span>
+<span class="kn">from</span> <span class="nn">django.contrib.contenttypes.models</span> <span class="k">import</span> <span class="n">ContentType</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="k">import</span> <span class="n">Permission</span>
+<span class="kn">from</span> <span class="nn">django_extensions.management.signals</span> <span class="k">import</span> <span class="n">post_command</span>
+<span class="kn">from</span> <span class="nn">django_extensions.management.commands.update_permissions</span> <span class="k">import</span> <span class="n">Command</span> <span class="k">as</span> <span class="n">UpdatePermissionsCommand</span>
+
+<span class="k">def</span> <span class="nf">add_permissions</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Add view and list permissions to all content types.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># for each of our content types</span>
+  <span class="k">for</span> <span class="n">content_type</span> <span class="ow">in</span> <span class="n">ContentType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+
+    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">]:</span>
+      <span class="c1"># build our permission slug</span>
+      <span class="n">codename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">content_type</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="n">content_type</span><span class="p">,</span> <span class="n">codename</span><span class="o">=</span><span class="n">codename</span><span class="p">)</span>
+        <span class="c1"># Already exists, ignore</span>
+      <span class="k">except</span> <span class="n">Permission</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="c1"># Doesn&#39;t exist, add it</span>
+        <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="n">content_type</span><span class="p">,</span>
+                      <span class="n">codename</span><span class="o">=</span><span class="n">codename</span><span class="p">,</span>
+                      <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Can </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">content_type</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="nb">print</span> <span class="s2">&quot;Added </span><span class="si">%s</span><span class="s2"> permission for </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">content_type</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">post_command</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">add_permissions</span><span class="p">,</span> <span class="n">UpdatePermissionsCommand</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>每当 <code class="docutils literal"><span class="pre">update_permissions</span></code> 方法被调用时,  <code class="docutils literal"><span class="pre">add_permissions</span></code> 会被调用. 这样就能确保view和list权限被添加到所有模型中了.</p>
+</div>
+<div class="section" id="id3">
+<h2>自定义命令的信号<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>信号的实现方式是, 给management指令的handle方法添加一个装饰器. 因此在你的项目中使用这种功能有些多余.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django_extensions.management.utils</span> <span class="k">import</span> <span class="n">signalcommand</span>
+
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+
+  <span class="nd">@signalcommand</span>
+  <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Command 指令信号</a><ul>
+<li><a class="reference internal" href="#id1">基础功能</a></li>
+<li><a class="reference internal" href="#id2">给模型添加自定义权限</a></li>
+<li><a class="reference internal" href="#id3">自定义命令的信号</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/command_signals.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>create_app &#8212; django-extensions 1.2.5 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.2.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="删除优化后多余的migrations" href="delete_squashed_migrations.html" />
+    <link rel="prev" title="shell_plus" href="shell_plus.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="delete_squashed_migrations.html" title="删除优化后多余的migrations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="shell_plus.html" title="shell_plus"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="create-app">
+<h1>create_app<a class="headerlink" href="#create-app" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">概要:</th><td class="field-body">创建一个app的简要方法.</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal"><span class="pre">--template</span></code> 参数指定使用一个模板来创建新的app.</p>
+<p><code class="docutils literal"><span class="pre">--diagram</span></code> 参数能够从 <code class="docutils literal"><span class="pre">.dia</span></code> 文件生成 <code class="docutils literal"><span class="pre">models.py</span></code> 和 <code class="docutils literal"><span class="pre">admin.py</span></code>.</p>
+<div class="section" id="id1">
+<h2>用法举例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>例子需要在项目的根目录下执行,该目录下要包含 <code class="docutils literal"><span class="pre">settings.py</span></code> 文件 <a class="footnote-reference" href="#id3" id="id2">[1]</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 获取命令行的帮助</span>
+<span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">create_app</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 从 [APP_NAME].dia 文件中生成 ``models.py`` 和 ``admin.py`` ,这个文件应该放在与 ``settings.py`` 相同的文件目录下</span>
+<span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">create_app</span> <span class="o">-</span><span class="n">d</span> <span class="n">APP_NAME</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-diaapp">
+<h2>从sample.dia文件生成app<a class="headerlink" href="#sample-diaapp" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">create_app</span> <span class="o">--</span><span class="n">diagram</span><span class="o">=</span><span class="n">sample</span><span class="o">.</span><span class="n">dia</span> <span class="n">webdata</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">-d</span></code> 参数或 <code class="docutils literal"><span class="pre">--diagram</span></code> 参数通过 <a class="reference external" href="https://svn.devnull.li/main/pythonware/dia2django/trunk/doc/">dia2django</a> 生成models.py, 详细文档查看 <a class="reference external" href="http://code.djangoproject.com/wiki/Dia2Django">django wiki</a>.</p>
+<p>译者注: 新版本Django原生命令 <code class="docutils literal"><span class="pre">startapp</span></code> 也提供了通过 <code class="docutils literal"><span class="pre">--template</span></code> 指定模板来创建app的功能</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>这个说法不准确,Django1.4版本后就独立出了配置文件目录,settings.py文件不在项目根目录下.但是这不影响使用,因为项目配置文件是通过manage.py文件指定的.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">create_app</a><ul>
+<li><a class="reference internal" href="#id1">用法举例</a></li>
+<li><a class="reference internal" href="#sample-diaapp">从sample.dia文件生成app</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="shell_plus.html"
+                        title="previous chapter">shell_plus</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="delete_squashed_migrations.html"
+                        title="next chapter">删除优化后多余的migrations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/create_app.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="delete_squashed_migrations.html" title="删除优化后多余的migrations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="shell_plus.html" title="shell_plus"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-extensions 1.2.5 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Michael Trier, Bas van Oostveen and contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
