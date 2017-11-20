@@ -6,6 +6,8 @@ Django Extensions 是Django框架的扩展功能集合.
 
 包括management命令扩展,数据库字段扩展,admin后台扩展等.
 
+`英文版 <https://django-extensions.readthedocs.io/en/latest/>`_
+
 译者注: 文档中包含了部分 `git <http://git-scm.com>`_ , `github <https://github.com/>`_ , `Python env <http://docs.python.org/2/library/os.html#os.environ>`_ 相关内容, 阅读时遇到相关只是请参考相应文档.
 
 开始
